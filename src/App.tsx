@@ -1,17 +1,19 @@
 import React from "react";
-import MainPage from "./pages/mainPage";
-import ListPage from "./pages/listPage";
-import ScanPage from "./pages/scanPage";
-import ScanFailPage from "./pages/scanFailPage";
-import BuyPage from "./pages/buyPage";
-import PayPage from "./pages/payPage";
-import PayFailPage from "./pages/payFailPage";
+import MainPage from "./pages/MainPage";
+import ListPage from "./pages/ListPage";
+import ScanPage from "./pages/ScanPage";
+import ScanFailPage from "./pages/ScanFailPage";
+import BuyPage from "./pages/BuyPage";
+import PayPage from "./pages/PayPage";
+import PayFailPage from "./pages/PayFailPage";
+import { Header } from "./components/layout/Header";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <BrowserRouter>
+      <Header />
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/list" element={<ListPage />} />
