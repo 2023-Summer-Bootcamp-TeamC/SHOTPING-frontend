@@ -4,11 +4,10 @@ import { FaCheck } from "react-icons/fa";
 import { FaUndoAlt } from "react-icons/fa";
 import ScanList from "./ScanList";
 import Feedback from "./Feedback";
-import "./scrollbar.css";
 
 export default function ScanResult() {
   return (
-    <div className="flex flex-col bg-white drop-shadow-xl border rounded-3xl w-3/4 h-45rem justify-center items-center">
+    <div className="flex flex-col bg-white drop-shadow-xl border rounded-3xl w-[90rem] h-45rem justify-center items-center">
       <div className="grid grid-cols-2 gap-10 p-10 w-full h-45rem border-black">
         <div className="relative bg-blue-300 border">
           <span>img 들어갈 곳</span>
@@ -32,7 +31,7 @@ export default function ScanResult() {
 
         <div className="flex flex-col space-y-10">
           <div className="border row-end-3 row-span-2 rounded-3xl h-25rem p-4">
-            <div className="overflow-y-auto scroll-hide scroll-smooth h-full">
+            <div className="overflow-y-auto scrollbar-hide scroll-smooth h-full">
               <ScanList />
               <ScanList />
               <ScanList />
