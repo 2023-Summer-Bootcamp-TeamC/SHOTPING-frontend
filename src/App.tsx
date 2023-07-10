@@ -13,16 +13,18 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
   return (
     <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route path="/" element={<MainPage />} />
-        <Route path="/list" element={<ListPage />} />
-        <Route path="/scan" element={<ScanPage />} />
-        <Route path="/scanfail" element={<ScanFailPage />} />
-        <Route path="/buy" element={<BuyPage />} />
-        <Route path="/pay" element={<PayPage />} />
-        <Route path="/payfail" element={<PayFailPage />} />
-      </Routes>
+      <div className="relative">
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/list" element={<ListPage />} />
+          <Route path="/scan" element={<ScanPage />} />
+          <Route path="/scanfail" element={<ScanFailPage />} />
+          <Route path="/buy" element={<BuyPage />} />
+          <Route path="/pay" element={<PayPage />} />
+          <Route path="/payfail" element={<PayFailPage />} />
+        </Routes>
+        <Header />
+      </div>
     </BrowserRouter>
   );
 }
