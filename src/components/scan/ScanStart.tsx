@@ -2,11 +2,19 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useState } from "react";
 
-export default function ScanStart() {
+export default function ScanStart({
+  onStartScan,
+}: {
+  onStartScan: () => void;
+}) {
   return (
     <div className="flex flex-col bg-white drop-shadow-xl border rounded-3xl w-3/4 h-45rem justify-center items-center">
       <div className="camera flex justify-center mt-0.5">
-        <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          onClick={onStartScan}
+        >
           <img
             src="https://i.postimg.cc/HLC973gD/2023-07-06-224526.png"
             className="image w-20 h-auto animate-bounce"

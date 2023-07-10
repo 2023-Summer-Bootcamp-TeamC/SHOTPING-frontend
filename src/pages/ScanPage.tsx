@@ -6,13 +6,29 @@ import Scanning from "../components/scan/Scanning";
 import ScanResult from "../components/scan/ScanResult";
 
 function ScanPage() {
-  const [modalOpen, setModalOpen] = useState(false);
+  const [isScan, setIsScan] = useState(false);
+  const [isResult, setIsResult] = useState(false);
+
+  const handleStartScan = () => {
+    setIsScan(true);
+    setIsResult(false);
+  };
+
+  const handleScanComplete = () => {
+    setIsScan(false);
+    setIsResult(true);
+  };
+
+  const handleRetry = () => {
+    setIsScan(false);
+    setIsResult(false);
+  };
 
   return (
     <div className="align flex flex-col items-center justify-center min-h-screen">
-      {/* <ScanStart /> */}
-      {/* <Scanning /> */}
-      <ScanResult />
+      {!isScan && !isResult && <ScanStart onStartScan={handleStartScan} />}
+      {isScan && !isResult && <Scanning onCompleteScan={handleScanComplete} />}
+      {!isScan && isResult && <ScanResult onRetry={handleRetry} />}
     </div>
   );
 }

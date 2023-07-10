@@ -4,18 +4,25 @@ import { FaCheck } from "react-icons/fa";
 import { FaUndoAlt } from "react-icons/fa";
 import ScanList from "./ScanList";
 import Feedback from "./Feedback";
+import { useNavigate } from "react-router-dom";
 
-export default function ScanResult() {
+export default function ScanResult({ onRetry }: { onRetry: () => void }) {
+  const navigate = useNavigate();
+
   return (
-    <div className="flex flex-col bg-white drop-shadow-xl border rounded-3xl w-[90rem] h-45rem justify-center items-center">
+    <div className="flex flex-col bg-white drop-shadow-xl border rounded-3xl w-[89.2rem] h-45rem justify-center items-center">
       <div className="grid grid-cols-2 gap-10 p-10 w-full h-45rem border-black">
-        <div className="relative bg-blue-300 border">
-          <span>img 들어갈 곳</span>
+        <div className="relative bg-blue-300">
+          <img
+            src="https://i.postimg.cc/HLC973gD/2023-07-06-224526.png"
+            className="absolute w-full h-full"
+          ></img>
           <div className="absolute bottom-6 right-6 flex space-x-7">
             <motion.button
               whileTap={{ scale: 0.9 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
               className="relative z-10"
+              onClick={() => navigate("/pay")}
             >
               <FaCheck className="w-14 h-14 text-gray-100 drop-shadow-xl" />
             </motion.button>
@@ -23,6 +30,7 @@ export default function ScanResult() {
               whileTap={{ scale: 0.9 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
               className="relative z-10"
+              onClick={onRetry}
             >
               <FaUndoAlt className="w-14 h-14 text-gray-100 drop-shadow-xl" />
             </motion.button>
