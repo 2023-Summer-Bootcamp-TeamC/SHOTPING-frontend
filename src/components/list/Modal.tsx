@@ -31,7 +31,7 @@ export default function Modal({
     setCount(count + 1);
   };
 
-  const totalPrice = Number(price.replace(/,/g, "")) * count; //가격개선
+  const totalPrice = Number(price.replace(/,/g, "")) * count;
 
   const closeModal = () => {
     setIsModalOpen(false);
