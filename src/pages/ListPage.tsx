@@ -7,7 +7,7 @@ import ProductList from "../components/list/ProductList";
 export default function ListPage() {
   return (
     <div className="w-full flex flex-col items-center justify-center h-full">
-      <div className="pb-5 w-3/4 pl-14">
+      <div className="pb-5 w-3/4">
         <SearchBox />
       </div>
       <div className="h-3/4 w-3/4 overflow-y-auto scrollbar-hide">
