@@ -25,7 +25,7 @@ function ScanPage() {
   };
 
   return (
-    <div className="align flex flex-col items-center justify-center min-h-screen">
+    <div className="flex flex-col items-center justify-center h-full">
       {!isScan && !isResult && <ScanStart onStartScan={handleStartScan} />}
       {isScan && !isResult && <Scanning onCompleteScan={handleScanComplete} />}
       {!isScan && isResult && <ScanResult onRetry={handleRetry} />}
