@@ -76,7 +76,7 @@ export default function ProductBox({
             </div>
           )}
         </div>
-        <div className="flex flex-col">
+        <div className="flex flex-col h-20">
           <div className="goodsName text-left pt-1">{productName}</div>
           <div className="flex pt-2">
             <div className="inventory text-left mr-auto">{stock}개 남음</div>
