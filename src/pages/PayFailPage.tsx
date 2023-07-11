@@ -5,7 +5,7 @@ import payfail_image from "../components/images/payfail_image.png";
 import { useNavigate } from "react-router-dom";
 
 const flexColumnCenterStyle = () => {
-  return "flex flex-col items-center justify-center h-screen";
+  return "flex flex-col items-center justify-center h-full";
 };
 
 const PayFailPage: React.FC = () => {
@@ -28,7 +28,6 @@ const PayFailPage: React.FC = () => {
         style={{
           width: "7.5rem",
           height: "7.5rem",
-          marginTop: "8.75rem",
           marginBottom: "1.875rem",
         }}
       />
