@@ -41,7 +41,7 @@ export default function Modal({
 
   return (
     <div
-      className="modal flex justify-center items-center absolute z-10 w-full min-h-screen top-0 left-0 right-0 bottom-0 bg-black bg-opacity-50"
+      className="modal flex justify-center items-center absolute z-50 w-full min-h-screen top-0 left-0 right-0 bottom-0 bg-black bg-opacity-50"
       style={{ cursor: "default" }}
     >
       <div

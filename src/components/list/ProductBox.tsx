@@ -50,9 +50,9 @@ export default function ProductBox({
   };
 
   return (
-    <div>
+    <div className="flex flex-col items-center justify-center">
       <div
-        className={`goods w-52 overflow:hidden cursor-pointer ml-5`}
+        className={`goods w-52 overflow:hidden cursor-pointer`}
         onClick={openModal}
       >
         <div className="relative flex items-center justify-center">
