@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router";
+import { useNavigate, useLocation } from "react-router";
 
 /**
  * 헤더 (상단바)
@@ -8,6 +8,7 @@ import { useNavigate } from "react-router";
 
 export function Header() {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const mainNavigate = () => {
     navigate("/");
@@ -53,7 +54,13 @@ export function Header() {
               whileTap={{ scale: 0.9 }}
               onClick={scanNavigate}
             >
-              <div className="hover:font-semibold hover:text-[#ff0099] text-lg">
+              <div
+                className={`hover:font-semibold text-lg ${
+                  location.pathname === "/scan"
+                    ? "text-[#ff0099] underline underline-offset-[6px] font-semibold"
+                    : "text-black"
+                }`}
+              >
                 상품인식
               </div>
             </motion.button>
@@ -63,7 +70,13 @@ export function Header() {
               whileTap={{ scale: 0.9 }}
               onClick={listNavigate}
             >
-              <div className="hover:font-semibold hover:text-[#ff0099] text-lg">
+              <div
+                className={`hover:font-semibold text-lg ${
+                  location.pathname === "/list"
+                    ? "text-[#ff0099] underline underline-offset-[6px] font-semibold"
+                    : "text-black"
+                }`}
+              >
                 상품리스트
               </div>
             </motion.button>
@@ -73,7 +86,13 @@ export function Header() {
               whileTap={{ scale: 0.9 }}
               onClick={payNavigate}
             >
-              <div className="hover:font-semibold hover:text-[#ff0099] text-lg">
+              <div
+                className={`hover:font-semibold text-lg ${
+                  location.pathname === "/buy"
+                    ? "text-[#ff0099] underline underline-offset-[6px] font-semibold"
+                    : "text-black"
+                }`}
+              >
                 결제
               </div>
             </motion.button>
