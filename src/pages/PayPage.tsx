@@ -6,7 +6,7 @@ import pay_image from "../components/images/pay_image.png";
 import PayModal from "../components/Pay/PayModal";
 
 const flexColumnCenterStyle = () => {
-  return "flex flex-col items-center justify-center h-screen";
+  return "flex flex-col items-center justify-center h-full";
 };
 interface Product {
   id: number;
@@ -103,7 +103,6 @@ const PayPage: React.FC = () => {
         style={{
           width: "7.5rem",
           height: "7.5rem",
-          marginTop: "8.75rem",
           marginBottom: "1.875rem",
         }}
       />

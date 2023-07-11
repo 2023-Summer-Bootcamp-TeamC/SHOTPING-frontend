@@ -10,7 +10,7 @@ export default function ScanResult({ onRetry }: { onRetry: () => void }) {
   const navigate = useNavigate();
 
   return (
-    <div className="flex flex-col bg-white drop-shadow-xl border rounded-3xl w-[89.2rem] h-45rem justify-center items-center">
+    <div className="flex flex-col bg-white drop-shadow-xl border rounded-3xl w-[89.5rem] h-45rem justify-center items-center">
       <div className="grid grid-cols-2 gap-10 p-10 w-full h-45rem border-black">
         <div className="relative bg-blue-300">
           <img
