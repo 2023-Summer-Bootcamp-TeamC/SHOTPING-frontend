@@ -8,7 +8,7 @@ interface PayModalProps {
 
 const PayModal: React.FC<PayModalProps> = ({ onClose }) => {
   return (
-    <div className=" fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center">
+    <div className=" fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center z-50">
       <div className="absolute w-[665px] h-[846px] left-1/2 top-1/2  -translate-x-1/2 -translate-y-1/2 rounded-[20px] bg-white p-10">
         <h2 className="text-[28px] text-[#f09] font-semibold mb-4">
           주문 상세보기
