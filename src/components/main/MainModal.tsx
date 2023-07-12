@@ -12,58 +12,60 @@ export default function Modal({ setIsModalOpen }: MainModalProps) {
       style={{ cursor: "default" }}
       onClick={setIsModalOpen}
     >
-      <div className="modalContent w-[40rem] h-[27rem] mt-16 bg-white rounded-xl flex flex-col justify-center items-center">
-        <div className="text mb-2">지금 인기있는 상품들이에요!</div>
+      <div className="modalContent w-[60rem] h-[40rem] mt-16 bg-white rounded-xl flex flex-col justify-center items-center">
+        <div className="text-2xl font-semibold mb-2">
+          지금 인기있는 상품들이에요!
+        </div>
         <div className="flex mt-4">
-          <div className="chart w-72 h-80">
+          <div className="chart w-[27rem] h-[32rem] mr-4">
             <img
               className="image w-full h-full"
               src="https://i.postimg.cc/3R1n82kk/image.png"
             ></img>
           </div>
-          <div className="ranking w-72 h-80">
+          <div className="ranking w-[27rem] h-[32rem] ml-4">
             <motion.div
-              className="1st justify-center items-center flex w-72 h-20 mt-6"
+              className="1st justify-center items-center flex w-[27rem] h-[8rem] mt-16"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.5 }}
             >
-              <div className="w-[3rem] ml-4">1위</div>
+              <div className="text-xl w-[4rem] ml-6">1위</div>
               <img
-                className="img w-14 h-16 ml-4 mr-4"
+                className="img w-[6rem] h-[7rem] ml-4 mr-5"
                 src="https://i.postimg.cc/KvD3BXk6/2023-07-11-111349.png"
               />
-              <span className="truncate">
+              <span className="truncate text-lg">
                 [Shotping's] 마시는 플레인 요거트 750mL
               </span>
             </motion.div>
             <motion.div
-              className="2nd justify-center items-center flex w-72 h-20 mt-4 mb-2 text-sm"
+              className="2nd justify-center items-center flex w-[27rem] h-[8rem] text-sm mt-3"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 1 }}
             >
-              <div className="w-[3rem] ml-4 text-base">2위</div>
+              <div className="text-xl w-[4rem] ml-6">2위</div>
               <img
-                className="img flex flex-col justify-center items-center w-12 h-14 ml-5 mr-4"
+                className="img flex flex-col justify-center items-center w-[5rem] h-[6rem] ml-5 mr-6"
                 src="https://i.postimg.cc/mgqdfFLN/2023-07-11-112702.png"
               />
-              <span className="truncate">
+              <span className="truncate text-base">
                 [어니스트] 그릭요거트 플레인 오리지널 100g
               </span>
             </motion.div>
             <motion.div
-              className="3rd justify-center items-center flex w-72 h-20 mb-6 text-xs"
+              className="3rd justify-left items-center flex w-[27rem] h-[8rem] ml-7"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 1.5 }}
             >
-              <div className="w-[3rem] ml-4 text-base">3위</div>
+              <div className="text-xl w-[3rem] ">3위</div>
               <img
-                className="img flex flex-col justify-center items-center w-10 h-12 ml-2.5 mr-4"
+                className="img flex flex-col justify-center items-center w-[4rem] h-[5rem] ml-5 mr-6"
                 src="https://i.postimg.cc/Kj3GHkxW/2023-07-11-113951.png"
               />
-              <span className="truncate">
+              <span className="truncate text-sm">
                 [치즈] 프로바이오요거트 딸기 900mL
               </span>
             </motion.div>

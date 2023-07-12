@@ -46,30 +46,30 @@ export default function ProductBox({
     setIsModalOpen(false);
     setTimeout(() => {
       setIsAddedToCart(false);
-    }, 1000);
+    }, 1200);
   };
 
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="flex flex-col items-center justify-center mb-10">
       <div
-        className={`goods w-52 overflow:hidden cursor-pointer`}
+        className={`goods w-[20rem] ml-1 mr-1 overflow:hidden cursor-pointer`}
         onClick={openModal}
       >
         <div className="relative flex items-center justify-center">
           <img
             src={image}
             alt="image"
-            className={`w-full h-64 hover:brightness-50 ${
+            className={`w-[20rem] h-[25rem] mb-1 hover:brightness-50 ${
               isSoldOut ? "brightness-50" : ""
             } ${isAddedToCart ? "brightness-50" : ""}`}
           />
           {isSoldOut && (
-            <div className="absolute text-center font-semibold text-white">
+            <div className="absolute text-center text-2xl font-semibold text-white">
               SOLD OUT
             </div>
           )}
           {isAddedToCart && (
-            <div className="absolute text-sm text-center text-white">
+            <div className="absolute text-xl text-center text-white">
               상품이 장바구니에 담겼습니다
               <br />
               결제 탭에서 확인해주세요!
@@ -77,10 +77,12 @@ export default function ProductBox({
           )}
         </div>
         <div className="flex flex-col h-20">
-          <div className="goodsName text-left pt-1">{productName}</div>
+          <div className="goodsName text-left pt-1 text-xl">{productName}</div>
           <div className="flex pt-2">
-            <div className="inventory text-left mr-auto">{stock}개 남음</div>
-            <div className="price font-semibold text-right ml-auto">
+            <div className="inventory text-left mr-auto text-xl">
+              {stock}개 남음
+            </div>
+            <div className="price font-semibold text-right ml-auto text-xl">
               {price}원
             </div>
           </div>
