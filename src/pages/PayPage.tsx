@@ -87,10 +87,6 @@ const PayPage: React.FC = () => {
     setModalOpen(false);
   };
 
-  const handleModalConfirm = () => {
-    // Logic for the action to be performed on confirming in the modal
-    console.log("확인 button clicked");
-  };
   const totalOrderAmount = products.reduce(
     (total, product) => total + product.price * product.quantity,
     0,
@@ -129,9 +125,7 @@ const PayPage: React.FC = () => {
         name="주문내역 상세보기"
         onClick={handleModalOpen}
       />
-      {modalOpen && (
-        <PayModal onClose={handleModalClose} onConfirm={handleModalConfirm} />
-      )}
+      {modalOpen && <PayModal onClose={handleModalClose} />}
       <PayButton
         variant="detail"
         name="메인으로 돌아가기"

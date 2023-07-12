@@ -1,9 +1,13 @@
 import React from "react";
+import BuyList from "../components/Buy/BuyList";
 
-export default function BuyPage() {
+const BuyPage = () => {
   return (
-    <div>
-      <div>buypage</div>
-    </div>
+    <>
+      {/* product */}
+      <BuyList />
+    </>
   );
-}
+};
+
+export default BuyPage;
