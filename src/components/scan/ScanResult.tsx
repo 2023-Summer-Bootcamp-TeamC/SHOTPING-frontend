@@ -22,7 +22,7 @@ export default function ScanResult({ onRetry }: { onRetry: () => void }) {
               whileTap={{ scale: 0.9 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
               className="relative z-10"
-              onClick={() => navigate("/pay")}
+              onClick={() => navigate("/buy")}
             >
               <FaCheck className="w-14 h-14 text-gray-100 drop-shadow-xl" />
             </motion.button>
