@@ -107,13 +107,11 @@ const PayModalList: React.FC = () => {
                       {item.quantity}
                     </span>
                     <span className="w-[90px] text-right text-base ">
-                      {item.price.toLocaleString()} 원
+                      {(item.price * item.quantity).toLocaleString()}원
                     </span>
                   </div>
                 </div>
-                {index !== products.length - 1 && (
-                  <hr style={styles.separator} />
-                )}
+                <hr style={styles.separator} />
               </div>
             ))}
           </div>
