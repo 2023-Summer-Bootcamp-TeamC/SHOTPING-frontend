@@ -1,6 +1,7 @@
 import React from "react";
 import MainPage from "./pages/MainPage";
 import ListPage from "./pages/ListPage";
+import SearchResultPage from "./pages/SearchResultPage";
 import ScanPage from "./pages/ScanPage";
 import ScanFailPage from "./pages/ScanFailPage";
 import BuyPage from "./pages/BuyPage";
@@ -19,6 +20,7 @@ function App() {
           <Routes>
             <Route path="/" element={<MainPage />} />
             <Route path="/list" element={<ListPage />} />
+            <Route path="/searchresult" element={<SearchResultPage />} />
             <Route path="/scan" element={<ScanPage />} />
             <Route path="/scanfail" element={<ScanFailPage />} />
             <Route path="/buy" element={<BuyPage />} />
