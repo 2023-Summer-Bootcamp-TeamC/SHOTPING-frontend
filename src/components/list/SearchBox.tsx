@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent, KeyboardEvent } from "react";
+import React, { useState, ChangeEvent, KeyboardEvent, MouseEvent } from "react";
 import { FaSearch } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
@@ -9,20 +9,23 @@ export function SearchBox() {
   const searchOnChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchInput(e.target.value);
   };
-  const searchClick = () => {
+  const searchClick = (e: MouseEvent<HTMLButtonElement>) => {
     if (searchInput === "") {
+      e.preventDefault();
       alert("검색어를 입력해 주세요.");
+    } else {
+      navigate("/searchresult");
     }
-    navigate("/searchresult");
   };
 
   const enterSearch = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       if (searchInput === "") {
+        e.preventDefault();
         alert("검색어를 입력해 주세요.");
+      } else {
+        navigate("/searchresult");
       }
-
-      navigate("/searchresult");
     }
   };
 
