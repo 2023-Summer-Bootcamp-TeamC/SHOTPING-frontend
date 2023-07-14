@@ -1,4 +1,5 @@
-import React, { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction, useEffect } from "react";
+import axios from "axios";
 import { motion } from "framer-motion";
 
 interface MainModalProps {
@@ -6,6 +7,17 @@ interface MainModalProps {
 }
 
 export default function Modal({ setIsModalOpen }: MainModalProps) {
+  axios
+    .get("/api/v1/popular")
+    .then((response) => {
+      console.log("인기있는 제품 데이터 불러오기 성공");
+      console.log(response.data);
+    })
+    .catch((error) => {
+      console.log("인기있는 제품 불러오기 실패");
+      console.log(error);
+    });
+
   return (
     <div
       className="modal flex justify-center items-center fixed z-50 w-full h-full top-0 left-0 right-0 bottom-0 bg-black bg-opacity-50"
