@@ -4,11 +4,16 @@ import { motion } from "framer-motion";
 import { FaRegCircle } from "react-icons/fa";
 import Webcam from "react-webcam";
 
+interface imageProps {
+  onImgFormData: (file: FormData) => void;
+  onImage: (image: string) => void;
+}
+
 export default function Scanning({
   onCompleteScan,
-}: {
-  onCompleteScan: () => void;
-}) {
+  onImgFormData,
+  onImage,
+}: imageProps & { onCompleteScan: () => void }) {
   const webcamRef = useRef<Webcam>(null);
   const [imgSrc, setImgSrc] = useState<String | null>(null);
   const [file, setFile] = useState<File | null>(null);
@@ -32,19 +37,10 @@ export default function Scanning({
       const formData = new FormData();
       await formData.append("upload", file);
 
-      await axios
-        .post("/api/v1/predict", formData, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        })
-        .then((response) => {
-          console.log("이미지 파일 분석 성공");
-          console.log(response);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      //onImage, onImgFormData 를 통해 이미지와 formData를 결과 컴포넌트로 전달
+      await onImage(imgSrc);
+      await onImgFormData(formData);
+      await onCompleteScan();
     }
   };
 
