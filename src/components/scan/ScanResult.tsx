@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { FaCheck } from "react-icons/fa";
 import { FaUndoAlt } from "react-icons/fa";
 import ScanList from "./ScanList";
+import Loading from "../common/Loading";
 import Feedback from "./Feedback";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -87,7 +88,7 @@ export default function ScanResult({
   };
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   } else {
     return (
       <div className="flex flex-col bg-white drop-shadow-xl border rounded-3xl w-[89.5rem] h-45rem justify-center items-center">
