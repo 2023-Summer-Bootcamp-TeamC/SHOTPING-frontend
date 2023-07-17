@@ -1,22 +1,14 @@
 import React, { Dispatch, SetStateAction, useEffect } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
+import Chart from "./chart";
 
 interface MainModalProps {
   setIsModalOpen: () => void;
 }
 
 export default function Modal({ setIsModalOpen }: MainModalProps) {
-  axios
-    .get("/api/v1/popular")
-    .then((response) => {
-      console.log("인기있는 제품 데이터 불러오기 성공");
-      console.log(response.data);
-    })
-    .catch((error) => {
-      console.log("인기있는 제품 불러오기 실패");
-      console.log(error);
-    });
+  axios;
 
   return (
     <div
@@ -29,11 +21,8 @@ export default function Modal({ setIsModalOpen }: MainModalProps) {
           지금 인기있는 상품들이에요!
         </div>
         <div className="flex mt-4">
-          <div className="chart w-[27rem] h-[32rem] mr-4">
-            <img
-              className="image w-full h-full"
-              src="https://i.postimg.cc/3R1n82kk/image.png"
-            ></img>
+          <div className="chart w-[27rem] h-[32rem] mr-4 flex justify-center items-center">
+            <Chart />
           </div>
           <div className="ranking w-[27rem] h-[32rem] ml-4">
             <motion.div
