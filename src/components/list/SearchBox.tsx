@@ -14,7 +14,7 @@ export function SearchBox() {
       e.preventDefault();
       alert("검색어를 입력해 주세요.");
     } else {
-      navigate("/searchresult");
+      navigate("/searchresult", { state: searchInput });
     }
   };
 
@@ -24,7 +24,7 @@ export function SearchBox() {
         e.preventDefault();
         alert("검색어를 입력해 주세요.");
       } else {
-        navigate("/searchresult");
+        navigate("/searchresult", { state: searchInput });
       }
     }
   };

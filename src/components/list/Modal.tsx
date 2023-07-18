@@ -1,11 +1,15 @@
 import React, { Dispatch, SetStateAction, useState, useCallback } from "react";
-import { ProductCardProps } from "./ProductList";
 
-interface ModalProps extends ProductCardProps {
+interface ModalProps {
   setIsModalOpen: Dispatch<SetStateAction<boolean>>;
   addToCart: () => void;
   setIsAddedToCart: Dispatch<SetStateAction<boolean>>;
   openScroll: () => void;
+  id: string;
+  productName: string;
+  price: string;
+  stock: any;
+  image: string;
 }
 
 export default function Modal({
@@ -31,7 +35,7 @@ export default function Modal({
     setCount(count + 1);
   };
 
-  const totalPrice = Number(price.replace(/,/g, "")) * count;
+  /*const totalPrice = Number(price.replace(/,/g, "")) * count;*/
 
   const closeModal = () => {
     setIsModalOpen(false);
@@ -63,7 +67,7 @@ export default function Modal({
             </div>
           </div>
           <div className="price w-full text-right text-3xl pt-[1.5rem] pr-12 pb-[3.3rem]">
-            <b>{totalPrice.toLocaleString()} 원</b>
+            <b>원</b>
           </div>
           <div className="flex w-[26.5rem] h-[3.5rem] text-center justify-center">
             <button
