@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import InfiniteScroll from "react-infinite-scroll-component";
 import ProductBox from "./ProductBox";
+import Loading from "../common/Loading";
 
 export interface Product {
   id: string;
@@ -64,7 +65,7 @@ export default function ProductKey() {
       dataLength={productList.length}
       next={fetchMoreData}
       hasMore={page !== 0}
-      loader={<h4>Loading...</h4>}
+      loader={<Loading />}
       endMessage={<p>No more products</p>}
       className="grid grid-cols-4 gap-10 mt-10"
       style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}

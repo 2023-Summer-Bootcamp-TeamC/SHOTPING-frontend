@@ -1,18 +1,28 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 
-export default function Feedback() {
+interface feedbackProps {
+  onSelectBoolean: (boolean: boolean) => void;
+  onSelectFeedback: (feedback: string) => void;
+}
+
+export default function Feedback({
+  onSelectBoolean,
+  onSelectFeedback,
+}: feedbackProps) {
   const [yesButtonColor, setYesButtonColor] = useState("");
   const [noButtonColor, setNoButtonColor] = useState("");
 
   const handleYesButtonClick = () => {
     setYesButtonColor("#FF0099");
     setNoButtonColor("");
+    onSelectBoolean(true);
   };
 
   const handleNoButtonClick = () => {
     setNoButtonColor("#FF0099");
     setYesButtonColor("");
+    onSelectBoolean(false);
   };
 
   return (
@@ -52,6 +62,7 @@ export default function Feedback() {
         <input
           className="border rounded-lg p-2 mt-2 px-2 focus:outline-none"
           type="text"
+          onChange={(event) => onSelectFeedback(event.target.value)}
         ></input>
       </div>
     </div>
