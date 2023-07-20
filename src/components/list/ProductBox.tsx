@@ -89,9 +89,11 @@ export default function ProductBox({
         <div className="flex flex-col h-20">
           <div className="goodsName text-left pt-1 text-xl">{productName}</div>
           <div className="flex pt-2">
-            <div className="inventory text-left mr-auto text-xl">
-              {stock}개 남음
-            </div>
+            {stock <= 15 && (
+              <div className="inventory text-left mr-auto text-xl text-[#FF0000]">
+                {stock}개 남음
+              </div>
+            )}
             <div className="price font-semibold text-right ml-auto text-xl">
               {price}원
             </div>
