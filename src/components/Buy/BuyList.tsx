@@ -141,7 +141,7 @@ const BuyList: React.FC = () => {
   return (
     <div className="flex flex-col items-center justify-center h-full">
       {/* 전체 감싸는 부분 */}
-      <div className="flex flex-row justify-center w-[110rem]">
+      <div className="flex flex-row justify-center ">
         {/* 왼쪽- 탭, 리스트 */}
         <div className="container flex flex-col w-[75rem] h-[50rem]">
           {/* 왼쪽- 탭 */}

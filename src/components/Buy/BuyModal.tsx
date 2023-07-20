@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { AiFillCamera, AiOutlineUnorderedList } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -9,10 +9,21 @@ interface BuyModalProps {
 
 const BuyModal: React.FC<BuyModalProps> = ({ onClose }) => {
   const navigate = useNavigate();
+  const [isMobile, setIsMobile] = useState(false);
 
   const stopPropagation = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     e.stopPropagation();
   };
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
     <div
@@ -20,19 +31,21 @@ const BuyModal: React.FC<BuyModalProps> = ({ onClose }) => {
       onClick={onClose}
     >
       <div
-        className="absolute w-[1216px] h-[724px] left-1/2 top-1/2  -translate-x-1/2 -translate-y-1/2 rounded-[20px] bg-white p-10"
+        className="absolute md:w-[76rem] md:h-[45.25rem] w-[40rem] h-[25rem] 
+        left-1/2 top-1/2  -translate-x-1/2 -translate-y-1/2 rounded-[20px] bg-white p-10"
         onClick={stopPropagation}
       >
         {/* Modal content */}
-        <h2 className="text-2xl font-semibold mb-4 text-center mt-10">
+        <h2 className="md:text-2xl text-xl font-semibold md:mb-4 mb-2 text-center md:mt-5 mt-2">
           제품을 추가하실 방법을 선택해주세요!
         </h2>
         <div className="flex flex-row justify-center">
-          <div className="flex flex-col justify-center m-10">
+          <div className="flex flex-col justify-center md:m-10 m-5">
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              className="shadow-md border border-[#000000] rounded-[40px] w-[400px] h-[400px] flex justify-center items-center"
+              className="shadow-md border border-[#000000] rounded-[40px] 
+              w-[15rem] h-[15rem] md:w-[25rem] md:h-[25rem] flex justify-center items-center"
             >
               <AiFillCamera
                 size="140"
@@ -43,15 +56,20 @@ const BuyModal: React.FC<BuyModalProps> = ({ onClose }) => {
                 }}
               />
             </motion.button>
-            <span className="text-center text-[32px] mt-5 font-medium">
+            <span
+              className={`text-center text-[32px] mt-10 font-medium ${
+                isMobile ? "hidden" : ""
+              }`}
+            >
               상품인식하기
             </span>
           </div>
-          <div className="flex flex-col justify-center  m-10">
+          <div className="flex flex-col justify-center md:m-10 m-5">
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              className="shadow-md border border-[#000000] rounded-[40px]  w-[400px] h-[400px] flex justify-center items-center"
+              className="shadow-md border border-[#000000] rounded-[40px]  
+              w-[15rem] h-[15rem] md:w-[25rem] md:h-[25rem] flex justify-center items-center"
             >
               <AiOutlineUnorderedList
                 size="140"
@@ -62,7 +80,11 @@ const BuyModal: React.FC<BuyModalProps> = ({ onClose }) => {
                 }}
               />
             </motion.button>
-            <span className="text-center text-[32px] mt-5 font-medium ">
+            <span
+              className={`text-center text-[32px] mt-10 font-medium ${
+                isMobile ? "hidden" : ""
+              }`}
+            >
               리스트 보기
             </span>
           </div>
