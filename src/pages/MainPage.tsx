@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import Lottie from "lottie-react";
 import lottie from "../assets/lottie/OnlineShopping.json";
 import { motion } from "framer-motion";
-
 export default function MainPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);

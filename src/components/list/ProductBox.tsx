@@ -53,7 +53,7 @@ export default function ProductBox({
   return (
     <div className="flex flex-col items-center justify-center mb-10">
       <div
-        className={`goods w-[20rem] ml-1 mr-1 overflow:hidden cursor-pointer`}
+        className={`goods md:w-[20rem] w-[12rem] ml-1 mr-1 overflow:hidden cursor-pointer`}
         onClick={openModal}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
@@ -62,7 +62,7 @@ export default function ProductBox({
           <img
             src={image}
             alt="image"
-            className={`w-[20rem] h-[25rem] mb-1 ${
+            className={`md:w-[20rem] md:h-[25rem] w-[12rem] h-[16rem] mb-1 ${
               isHovered ? "brightness-50" : ""
             } ${isSoldOut ? "brightness-50" : ""} ${
               isAddedToCart ? "brightness-50" : ""
@@ -74,7 +74,7 @@ export default function ProductBox({
             </div>
           )}
           {isAddedToCart && (
-            <div className="absolute text-xl text-center text-white">
+            <div className="absolute md:text-xl text-sm text-center text-white">
               상품이 장바구니에 담겼습니다
               <br />
               결제 탭에서 확인해주세요!
