@@ -19,13 +19,13 @@ const PayFailPage: React.FC = () => {
         결제가 완료되지 않았습니다.
       </p>
 
-      <div className=" md:mt-[6.25rem] mt-[2.25rem] transition-all d uration-300" />
+      <div className=" md:mt-[6.25rem] mt-[2.25rem] transition-all duration-300" />
 
       <button
         onClick={() => {
           navigate("/buy");
         }}
-        className="w-[30rem] h-[4rem] md:w-[44.8125rem] md:h-[5.5625rem] mt-6 
+        className="w-[30rem] h-[4rem] md:w-[44.8125rem] md:h-[5.5625rem] mt-6  
         text-lg md:text-2xl font-bold text-white bg-[#FF0099] hover:bg-[#D60080]"
       >
         다시 시도하기

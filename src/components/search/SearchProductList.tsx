@@ -38,7 +38,10 @@ export default function SearchProductList({
   }, [keyWord]);
 
   return (
-    <div className="grid grid-cols-4 gap-10 mt-10">
+    <div
+      className="grid grid-cols-4  lg:gap-10 gap-x-20  md:ml-0 ml-12  mt-10 transition-all duration-700 "
+      style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}
+    >
       {data &&
         data.map((v, index) => (
           <ProductBox

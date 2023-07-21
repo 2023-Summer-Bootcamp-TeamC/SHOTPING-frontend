@@ -53,7 +53,7 @@ export default function ProductBox({
   return (
     <div className="flex flex-col items-center justify-center mb-10">
       <div
-        className={`goods md:w-[20rem] w-[12rem] ml-1 mr-1 overflow:hidden cursor-pointer`}
+        className={`goods lg:w-[20rem] w-[12rem] ml-1 mr-1 overflow:hidden cursor-pointer `}
         onClick={openModal}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
@@ -62,7 +62,7 @@ export default function ProductBox({
           <img
             src={image}
             alt="image"
-            className={`md:w-[20rem] md:h-[25rem] w-[12rem] h-[16rem] mb-1 ${
+            className={`lg:w-[20rem] lg:h-[25rem] w-[12rem] h-[16rem] mb-1 transition-all duration-700 ${
               isHovered ? "brightness-50" : ""
             } ${isSoldOut ? "brightness-50" : ""} ${
               isAddedToCart ? "brightness-50" : ""

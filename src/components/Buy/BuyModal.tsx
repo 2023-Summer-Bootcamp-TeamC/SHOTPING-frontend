@@ -16,7 +16,7 @@ const BuyModal: React.FC<BuyModalProps> = ({ onClose }) => {
   };
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
+      setIsMobile(window.innerWidth <= 1280);
     };
     handleResize();
     window.addEventListener("resize", handleResize);
@@ -31,21 +31,21 @@ const BuyModal: React.FC<BuyModalProps> = ({ onClose }) => {
       onClick={onClose}
     >
       <div
-        className="absolute md:w-[76rem] md:h-[45.25rem] w-[40rem] h-[25rem] 
+        className="absolute xl:w-[76rem] xl:h-[45.25rem] w-[40rem] h-[25rem] transition-all duration-700
         left-1/2 top-1/2  -translate-x-1/2 -translate-y-1/2 rounded-[20px] bg-white p-10"
         onClick={stopPropagation}
       >
         {/* Modal content */}
-        <h2 className="md:text-2xl text-xl font-semibold md:mb-4 mb-2 text-center md:mt-5 mt-2">
+        <h2 className="xl:text-2xl text-xl font-semibold xl:mb-4 mb-4 text-center xl:mt-5 mt-0  transition-all duration-700">
           제품을 추가하실 방법을 선택해주세요!
         </h2>
         <div className="flex flex-row justify-center">
-          <div className="flex flex-col justify-center md:m-10 m-5">
+          <div className="flex flex-col justify-center xl:m-10 m-5">
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              className="shadow-md border border-[#000000] rounded-[40px] 
-              w-[15rem] h-[15rem] md:w-[25rem] md:h-[25rem] flex justify-center items-center"
+              className="shadow-xl border border-[#000000] rounded-[40px]  transition-all duration-700
+              w-[15rem] h-[15rem] xl:w-[25rem] xl:h-[25rem] flex justify-center items-center"
             >
               <AiFillCamera
                 size="140"
@@ -58,18 +58,18 @@ const BuyModal: React.FC<BuyModalProps> = ({ onClose }) => {
             </motion.button>
             <span
               className={`text-center text-[32px] mt-10 font-medium ${
-                isMobile ? "hidden" : ""
+                isMobile ? "hidden " : ""
               }`}
             >
               상품인식하기
             </span>
           </div>
-          <div className="flex flex-col justify-center md:m-10 m-5">
+          <div className="flex flex-col justify-center xl:m-10 m-5">
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              className="shadow-md border border-[#000000] rounded-[40px]  
-              w-[15rem] h-[15rem] md:w-[25rem] md:h-[25rem] flex justify-center items-center"
+              className="shadow-xl border border-[#000000] rounded-[40px]   transition-all duration-700
+              w-[15rem] h-[15rem] xl:w-[25rem] xl:h-[25rem] flex justify-center items-center"
             >
               <AiOutlineUnorderedList
                 size="140"

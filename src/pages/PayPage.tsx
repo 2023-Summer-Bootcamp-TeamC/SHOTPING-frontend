@@ -100,7 +100,7 @@ const PayPage: React.FC = () => {
         주문이 완료되었습니다.
       </p>
 
-      <div className=" md:mt-[6.25rem] mt-[2.25rem] md:w-[44.8125rem] w-[30rem] transition-all d uration-300">
+      <div className=" md:mt-[6.25rem] mt-[2.25rem] md:w-[44.8125rem] w-[30rem] transition-all duration-300">
         <p className="text-[20px] mt-6 md:text-[28px] text-[#b0b0b0]">
           결제금액
         </p>

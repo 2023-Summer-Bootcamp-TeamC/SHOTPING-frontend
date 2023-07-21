@@ -12,7 +12,7 @@ export default function SearchResultPage() {
       <div className="pb-6 w-3/4">
         <SearchBox />
       </div>
-      <div className="h-3/4 w-3/4 overflow-y-auto scrollbar-hide">
+      <div className="h-3/4 w-3/4 overflow-y-auto scrollbar-hide ">
         <SearchProductList keyWord={keyWord} />
       </div>
     </div>
