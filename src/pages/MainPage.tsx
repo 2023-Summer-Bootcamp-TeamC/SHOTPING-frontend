@@ -27,7 +27,7 @@ export default function MainPage() {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
+      setIsMobile(window.innerWidth <= 1200);
     };
 
     handleResize();
@@ -39,7 +39,7 @@ export default function MainPage() {
   }, []);
 
   return (
-    <div className="flex flex-col justify-center items-center h-full">
+    <div className="flex flex-col justify-center items-center h-full ml-38">
       <div className={`flex ${isMobile ? "flex-col-reverse" : "flex-row"}`}>
         <div
           className={`text ${
@@ -47,8 +47,8 @@ export default function MainPage() {
           } h-full flex flex-col justify-center`}
         >
           <motion.div
-            className={`logo text-9xl font-medium mb-8 ${
-              isMobile ? "text-7xl ml-6" : "ml-32"
+            className={`logo text-9xl font-medium mb-2 ${
+              isMobile ? "text-[6rem] ml-8" : ""
             }`}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -57,7 +57,9 @@ export default function MainPage() {
             SHOTPING
           </motion.div>
           <motion.div
-            className={`title text-6xl ${isMobile ? "text-4xl ml-6" : "ml-32"}`}
+            className={`title text-6xl ${
+              isMobile ? "text-[3rem] mb-[2.5rem] ml-8" : ""
+            }`}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 2, delay: 1.5 }}
@@ -70,7 +72,9 @@ export default function MainPage() {
             <motion.button
               className={`popular border border-slate-300 rounded-full w-96 h-16 text-center text-2xl mt-20 mb-2 text-slate-600 flex items-center justify-center hover:bg-[#EAEAEA] ${
                 isMobile ? "w-full" : ""
-              } ${isMobile ? "w-[19.9rem] h-[4rem] ml-6 text-xl" : "ml-32"}`}
+              } ${
+                isMobile ? "w-[21rem] h-[4rem] text-xl mt-[18rem] ml-8" : ""
+              }`}
               onClick={handleOpenModal}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -81,7 +85,7 @@ export default function MainPage() {
             <motion.button
               className={`scan border rounded-full w-96 h-16 text-center text-2xl font-semibold text-white bg-[#ff0099] flex items-center justify-center hover:bg-[#D60080] ${
                 isMobile ? "w-full" : ""
-              } ${isMobile ? "w-[19.9rem] h-[4rem] ml-6 text-xl" : "ml-32"}`}
+              } ${isMobile ? "w-[21rem] h-[4rem] text-xl mr-44 ml-8" : ""}`}
               onClick={scanNavigate}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -93,12 +97,12 @@ export default function MainPage() {
           </div>
         </div>
         <div
-          className={`animate transition-all duration-300
+          className={`animate ml-20 transition-all duration-300
            flex ${isMobile ? "w-full justify-center" : "w-1/2"} h-full`}
         >
           <div
             className={`lottie invisible md:visible ${
-              isMobile ? "w-1/12" : ""
+              isMobile ? "w-1/12 hidden" : ""
             }`}
           >
             <Lottie animationData={lottie} />

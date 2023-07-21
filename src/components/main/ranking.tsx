@@ -23,8 +23,8 @@ const RankingItem: React.FC<RankingItemProps> = ({ product, rank }) => {
 
   const getImageSizeClassName = (rank: number): string => {
     if (rank === 1) return "w-[6rem] h-[7rem]";
-    if (rank === 2) return "w-[5rem] h-[6rem] mt-1";
-    if (rank === 3) return "w-[4rem] h-[5rem]";
+    if (rank === 2) return "w-[6rem] h-[7rem] mt-1";
+    if (rank === 3) return "w-[6rem] h-[7rem]";
     return "";
   };
 
@@ -75,7 +75,7 @@ const RankingItem: React.FC<RankingItemProps> = ({ product, rank }) => {
         transition={{ duration: 1, delay: rank * 0.5 }}
       />
       <motion.span
-        className={`truncate ${getTextSizeClassName(rank)}`}
+        className={`truncate text-xl ${getTextSizeClassName(rank)}`}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: rank * 0.5 }}
