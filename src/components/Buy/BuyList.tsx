@@ -141,52 +141,55 @@ const BuyList: React.FC = () => {
   return (
     <div className="flex flex-col items-center justify-center h-full">
       {/* 전체 감싸는 부분 */}
-      <div className="flex flex-row justify-center ">
+      <div className="flex flex-row justify-center w-[85%]">
         {/* 왼쪽- 탭, 리스트 */}
-        <div className="container flex flex-col w-[75rem] h-[50rem]">
+        <div className="flex flex-col w-[75rem] h-[50rem]">
           {/* 왼쪽- 탭 */}
-          <div className="flex flex-row mt-10 items-center  h-[3rem]">
-            {productList.length === 0 ? (
-              <AiOutlineCheckCircle size="30" color="#BDBDBD" />
-            ) : (
-              <>
-                {isAllSelected ? (
-                  <AiFillCheckCircle
-                    onClick={handleSelectAllItems}
-                    size="30"
-                    color="#FF0099"
-                  />
-                ) : (
-                  <AiOutlineCheckCircle
-                    onClick={handleSelectAllItems}
-                    size="30"
-                    color="#BDBDBD"
-                  />
-                )}
-              </>
-            )}
-            <h3 className="font-semibold text-[16px] text-gray-600 w-[7rem] mx-2">
-              전체선택 (
-              {productList.filter((product) => product.selected).length}/
-              {productList.length})
-            </h3>
-            <div className="border h-5 border-l-[#A5A5A5] " />
+          <div className="flex flex-row justify-between mt-10 items-center  h-[3rem]">
+            <div className="flex flex-row items-center">
+              {productList.length === 0 ? (
+                <AiOutlineCheckCircle size="30" color="#BDBDBD" />
+              ) : (
+                <>
+                  {isAllSelected ? (
+                    <AiFillCheckCircle
+                      onClick={handleSelectAllItems}
+                      size="30"
+                      color="#FF0099"
+                    />
+                  ) : (
+                    <AiOutlineCheckCircle
+                      onClick={handleSelectAllItems}
+                      size="30"
+                      color="#BDBDBD"
+                    />
+                  )}
+                </>
+              )}
+
+              <h3 className="font-semibold text-[16px] text-gray-600 w-[7rem] mx-2">
+                전체선택 (
+                {productList.filter((product) => product.selected).length}/
+                {productList.length})
+              </h3>
+              <div className="border h-5 border-l-[#A5A5A5] " />
+              <button
+                className="font-semibold text-[16px] ml-2 text-gray-600 w-[5rem] "
+                onClick={handleDeleteSelectedItems}
+                disabled={!isAnySelected}
+              >
+                선택삭제
+              </button>
+            </div>
             <button
-              className="font-semibold text-[16px] text-gray-600 w-[5rem] mr-[50rem]"
-              onClick={handleDeleteSelectedItems}
-              disabled={!isAnySelected}
-            >
-              선택삭제
-            </button>
-            <button
-              className="bg-[FF0099] hover:bg-[D60080] text-white text-[15px] font-medium ml-9 w-[6rem] h-[2rem] flex items-center justify-center"
+              className="bg-[FF0099] hover:bg-[D60080] text-white text-[16px] font-medium  w-[6rem] h-[2rem] flex items-center justify-center"
               onClick={handleModalOpen}
             >
               추가하기
             </button>
             {modalOpen && <BuyModal onClose={handleModalClose} />}
           </div>
-          <hr />
+          <hr className="border-[#BDBDBD]" />
           {/* 리스트 */}
           <div className="h-[40rem] overflow-y-auto scrollbar-hide">
             {productList.length === 0 ? (
@@ -293,7 +296,7 @@ const BuyList: React.FC = () => {
                   </div>
 
                   {index !== productList.length - 1 && (
-                    <hr className="border-t border-[#D9D9D9]" />
+                    <hr className="border-t-[#D9D9D9]" />
                   )}
                 </div>
               ))
