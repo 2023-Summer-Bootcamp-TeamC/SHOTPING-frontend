@@ -13,7 +13,7 @@ export default function Modal({ setIsModalOpen }: MainModalProps) {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
+      setIsMobile(window.innerWidth <= 1000);
     };
 
     handleResize();
@@ -34,12 +34,12 @@ export default function Modal({ setIsModalOpen }: MainModalProps) {
     >
       <div
         className={`modalContent w-[60rem] h-[40rem] mt-16 bg-white rounded-xl flex flex-col justify-center items-center ${
-          isMobile ? "mobile w-[34rem] h-[37rem]" : ""
+          isMobile ? "mobile w-[34rem]" : ""
         }`}
       >
         <div
           className={`text-2xl font-semibold mb-2 ${
-            isMobile ? "mobile mt-10" : ""
+            isMobile ? "mobile mt-8 mb-[1.5rem]" : ""
           }`}
         >
           지금 인기있는 상품들이에요!
