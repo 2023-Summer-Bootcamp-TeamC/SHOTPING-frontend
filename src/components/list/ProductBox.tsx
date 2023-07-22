@@ -53,7 +53,7 @@ export default function ProductBox({
   return (
     <div className="flex flex-col items-center justify-center mb-10">
       <div
-        className={`goods lg:w-[20rem] w-[12rem] ml-1 mr-1 overflow:hidden cursor-pointer `}
+        className={`goods lg:w-[20rem] w-[12rem]  h-[30rem] ml-1 mr-1 overflow:hidden cursor-pointer `}
         onClick={openModal}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}

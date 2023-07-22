@@ -191,7 +191,7 @@ const BuyList: React.FC = () => {
           </div>
           <hr className="border-[#BDBDBD]" />
           {/* 리스트 */}
-          <div className="h-[40rem] overflow-y-auto scrollbar-hide">
+          <div className="h-[39.5rem] overflow-y-auto scrollbar-hide">
             {productList.length === 0 ? (
               <div className="flex items-center justify-center h-[40rem]">
                 <span className="text-gray-400 text-xl">
