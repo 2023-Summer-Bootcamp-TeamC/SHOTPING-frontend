@@ -1,6 +1,4 @@
 import React from "react";
-import PayButton from "../components/Pay/PayButton";
-import PayText from "../components/Pay/PayText";
 import payfail_image from "../components/images/payfail_image.png";
 import { useNavigate } from "react-router-dom";
 
@@ -9,52 +7,39 @@ const flexColumnCenterStyle = () => {
 };
 
 const PayFailPage: React.FC = () => {
-  const navigate = useNavigate(); // Get the navigate function from React Router
-
-  const handleRetry = () => {
-    // Logic for retrying payment
-    console.log("다시 시도하기 button clicked");
-  };
-
-  const handleGoBack = () => {
-    navigate("/main"); // Navigate to the "/main" route when the button is clicked
-  };
-
+  const navigate = useNavigate();
   return (
     <div className={flexColumnCenterStyle()}>
       <img
         src={payfail_image}
         alt="Payment"
-        style={{
-          width: "7.5rem",
-          height: "7.5rem",
-          marginBottom: "1.875rem",
-        }}
+        className="md:w-[7.5rem] md:h-[7.5rem] md:mb-[1.875rem] w-[5.5rem] h-[5.5rem] mb-[2.875rem]"
       />
-      <PayText name="결제가 완료되지 않았습니다." />
+      <p className="md:text-[40px] text-[30px] text-black">
+        결제가 완료되지 않았습니다.
+      </p>
 
-      <div
-        style={{
-          marginRight: "35rem",
-          marginTop: "6.25rem",
-          marginBottom: "0.625rem",
-        }}
-      ></div>
+      <div className=" md:mt-[6.25rem] mt-[2.25rem] transition-all duration-300" />
 
-      <PayButton
-        variant="continue"
-        name="다시 시도하기"
+      <button
         onClick={() => {
           navigate("/buy");
         }}
-      />
-      <PayButton
-        variant="detail"
-        name="메인으로 돌아가기"
+        className="w-[30rem] h-[4rem] md:w-[44.8125rem] md:h-[5.5625rem] mt-6  
+        text-lg md:text-2xl font-bold text-white bg-[#FF0099] hover:bg-[#D60080]"
+      >
+        다시 시도하기
+      </button>
+
+      <button
         onClick={() => {
           navigate("/");
         }}
-      />
+        className="w-[30rem] h-[4rem] md:w-[44.8125rem] md:h-[5.5625rem] mt-6 
+        text-lg md:text-2xl font-bold text-[#565656] bg-white hover:bg-[#EAEAEA] border-[0.7px] border-[#a6a6a6]"
+      >
+        메인으로 돌아가기
+      </button>
     </div>
   );
 };
