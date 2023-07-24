@@ -5,10 +5,10 @@ import ProductBox from "./ProductBox";
 import Loading from "../common/Loading";
 
 export interface Product {
-  id: string;
+  id: number;
   product_name: string;
-  product_price: string;
-  product_stock: any;
+  product_price: number;
+  product_stock: number;
   image_url: string;
 }
 

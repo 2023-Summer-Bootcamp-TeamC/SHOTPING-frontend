@@ -1,6 +1,9 @@
 import React from "react";
 import payfail_image from "../components/images/payfail_image.png";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "../store/store";
+import { persistor } from "../index";
 
 const flexColumnCenterStyle = () => {
   return "flex flex-col items-center justify-center h-full";
@@ -8,6 +11,10 @@ const flexColumnCenterStyle = () => {
 
 const PayFailPage: React.FC = () => {
   const navigate = useNavigate();
+  const purge = async () => {
+    await persistor.purge();
+  };
+
   return (
     <div className={flexColumnCenterStyle()}>
       <img
@@ -33,6 +40,7 @@ const PayFailPage: React.FC = () => {
 
       <button
         onClick={() => {
+          purge();
           navigate("/");
         }}
         className="w-[30rem] h-[4rem] md:w-[44.8125rem] md:h-[5.5625rem] mt-6 

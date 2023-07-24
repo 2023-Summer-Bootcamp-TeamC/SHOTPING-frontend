@@ -21,11 +21,11 @@ export default function ProductBox({
   price,
   stock,
 }: {
-  id: string;
+  id: number;
   image: string;
   productName: string;
-  price: string;
-  stock: any;
+  price: number;
+  stock: number;
 }) {
   const [isHovered, setIsHovered] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);

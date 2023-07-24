@@ -1,14 +1,16 @@
 import React, { Dispatch, SetStateAction, useState, useCallback } from "react";
+import { useDispatch } from "react-redux";
+import { addProduct } from "../../store/productSlice";
 
 interface ModalProps {
   setIsModalOpen: Dispatch<SetStateAction<boolean>>;
   addToCart: () => void;
   setIsAddedToCart: Dispatch<SetStateAction<boolean>>;
   openScroll: () => void;
-  id: string;
+  id: number;
   productName: string;
-  price: string;
-  stock: any;
+  price: number;
+  stock: number;
   image: string;
 }
 
@@ -24,6 +26,7 @@ export default function Modal({
   stock,
 }: ModalProps) {
   const [count, setCount] = useState(1);
+  const dispatch = useDispatch();
 
   const decreaseCount = () => {
     if (count > 1) {
@@ -41,6 +44,20 @@ export default function Modal({
     setIsModalOpen(false);
     setIsAddedToCart(false);
     openScroll();
+  };
+
+  const addCart = () => {
+    dispatch(
+      addProduct({
+        id: id,
+        image_url: image,
+        product_name: productName,
+        product_price: price,
+        quantity: count,
+        selected: false,
+      }),
+    );
+    addToCart();
   };
 
   return (
@@ -67,7 +84,7 @@ export default function Modal({
             </div>
           </div>
           <div className="price w-full text-right text-3xl pt-[1.5rem] pr-12 pb-[3.3rem]">
-            <b>원</b>
+            <b>{(price * count).toLocaleString()} 원</b>
           </div>
           <div className="flex w-[26.5rem] h-[3.5rem] text-center justify-center">
             <button
@@ -78,7 +95,7 @@ export default function Modal({
             </button>
             <button
               className="w-[18rem] border rounded text-center text-xl bg-[#ff0099] hover:bg-[#D60080] pt-1.7 pb-1.7 text-white"
-              onClick={addToCart}
+              onClick={addCart}
             >
               장바구니 담기
             </button>

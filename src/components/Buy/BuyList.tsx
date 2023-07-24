@@ -1,77 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { CgMathMinus, CgMathPlus } from "react-icons/cg";
 import { AiFillCheckCircle, AiOutlineCheckCircle } from "react-icons/ai";
 import { RiCloseLine } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
 import BuyModal from "./BuyModal";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../store/store";
+import {
+  deleteProduct,
+  deleteSelectProduct,
+  plusProduct,
+  minusProduct,
+  checkedProduct,
+  unCheckedProduct,
+  checkWholeProduct,
+  unCheckWholeProduct,
+  totalProductPrice,
+} from "../../store/productSlice";
 
-interface Product {
+export interface BuyProduct {
   id: number;
-  name: string;
-  price: number;
-  image: string;
+  product_name: string;
+  product_price: number;
+  image_url: string;
   quantity: number;
   selected: boolean;
 }
 
-const products: Product[] = [
-  {
-    id: 1,
-    name: "[그릭데이] 그릭요거트 시그니처 ",
-    price: 17100,
-    image: "src/components/images/image001.png",
-    quantity: 1,
-    selected: false,
-  },
-  {
-    id: 2,
-    name: "에어팟 키링",
-    price: 3000,
-    image: "src/components/images/image001.png",
-    quantity: 1,
-    selected: false,
-  },
-  {
-    id: 3,
-    name: "폴리폴리 무릎 담요",
-    price: 7000,
-    image: "src/components/images/image001.png",
-    quantity: 1,
-    selected: false,
-  },
-  {
-    id: 4,
-    name: "아이폰 스티커 팩",
-    price: 1900,
-    image: "src/components/images/image001.png",
-    quantity: 1,
-    selected: false,
-  },
-  {
-    id: 5,
-    name: "개발자 키보드",
-    price: 99000,
-    image: "src/components/images/image001.png",
-    quantity: 1,
-    selected: false,
-  },
-  {
-    id: 6,
-    name: "개발자 커스텀 케이블",
-    price: 69000,
-    image: "src/components/images/image001.png",
-    quantity: 1,
-    selected: false,
-  },
-  {
-    id: 7,
-    name: "문 긁는 고양이",
-    price: 1000000,
-    image: "src/components/images/image001.png",
-    quantity: 1,
-    selected: false,
-  },
-];
 const BuyList: React.FC = () => {
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -83,7 +38,27 @@ const BuyList: React.FC = () => {
     setModalOpen(false);
   };
 
+  const productList = useSelector((state: RootState) => {
+    return state.buylist.products;
+  });
+
+  const total = useSelector((state: RootState) => {
+    return state.buylist.productTotal;
+  });
+
+  useEffect(() => {
+    dispatch(
+      totalProductPrice(
+        productList
+          .map((item) => item.product_price * item.quantity)
+          .reduce((acc, price) => acc + price, 0),
+      ),
+    );
+  }, [productList]);
+
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const handlePayButtonClick = () => {
     if (productList.length === 0) {
       alert("상품을 담은 후에 시도해주세요.");
@@ -92,50 +67,22 @@ const BuyList: React.FC = () => {
     }
   };
 
-  const [productList, setProductList] = useState<Product[]>(products);
+  // const [productList, setProductList] = useState<Product[]>(products);
 
   // Check if all items are selected
   const isAllSelected = productList.every((product) => product.selected);
   const isAnySelected = productList.some((product) => product.selected);
 
-  const handleQuantityChange = (productId: number, newQuantity: number) => {
-    const updatedProductList = productList.map((product) => {
-      if (product.id === productId) {
-        return {
-          ...product,
-          quantity: newQuantity,
-        };
-      }
-      return product;
-    });
-    setProductList(updatedProductList);
-  };
-
-  const totalOrderAmount = productList.reduce(
-    (total, product) => total + product.price * product.quantity,
-    0,
-  );
-
-  const handleCloseItemClick = (productId: number) => {
-    const updatedProductList = productList.filter(
-      (product) => product.id !== productId,
-    );
-    setProductList(updatedProductList);
-  };
-
   const handleSelectAllItems = () => {
-    const updatedProductList = productList.map((product) => ({
-      ...product,
-      selected: !isAllSelected,
-    }));
-    setProductList(updatedProductList);
+    dispatch(checkWholeProduct(productList));
+  };
+
+  const handleUnSelectAllItems = () => {
+    dispatch(unCheckWholeProduct(productList));
   };
 
   const handleDeleteSelectedItems = () => {
-    const updatedProductList = productList.filter(
-      (product) => !product.selected,
-    );
-    setProductList(updatedProductList);
+    dispatch(deleteSelectProduct(productList));
   };
 
   return (
@@ -153,7 +100,7 @@ const BuyList: React.FC = () => {
                 <>
                   {isAllSelected ? (
                     <AiFillCheckCircle
-                      onClick={handleSelectAllItems}
+                      onClick={handleUnSelectAllItems}
                       size="30"
                       color="#FF0099"
                     />
@@ -209,18 +156,7 @@ const BuyList: React.FC = () => {
                           color="#FF0099 "
                           className="mt-12 mr-5"
                           onClick={() => {
-                            const updatedProductList = productList.map(
-                              (product) => {
-                                if (product.id === item.id) {
-                                  return {
-                                    ...product,
-                                    selected: !item.selected,
-                                  };
-                                }
-                                return product;
-                              },
-                            );
-                            setProductList(updatedProductList);
+                            dispatch(unCheckedProduct(item.id));
                           }}
                         />
                       ) : (
@@ -229,28 +165,17 @@ const BuyList: React.FC = () => {
                           color="#BDBDBD "
                           className="mt-12 mr-5"
                           onClick={() => {
-                            const updatedProductList = productList.map(
-                              (product) => {
-                                if (product.id === item.id) {
-                                  return {
-                                    ...product,
-                                    selected: !item.selected,
-                                  };
-                                }
-                                return product;
-                              },
-                            );
-                            setProductList(updatedProductList);
+                            dispatch(checkedProduct(item.id));
                           }}
                         />
                       )}
                       <img
                         className="w-[100px] h-[125px] mr-5"
-                        src={item.image}
+                        src={item.image_url}
                         alt="이미지"
                       />
                       <span className="text-[17px] flex items-center font-semibold w-[40rem] mr-4">
-                        {item.name}
+                        {item.product_name}
                       </span>
                     </div>
                     <div className="flex items-end justify-end w-[30rem] ">
@@ -261,12 +186,7 @@ const BuyList: React.FC = () => {
                           style={{
                             color: item.quantity === 1 ? "#D0D0D0" : "inherit",
                           }} // 이 부분이 색상을 제어하는 부분입니다.
-                          onClick={() =>
-                            handleQuantityChange(
-                              item.id,
-                              item.quantity - 1 >= 1 ? item.quantity - 1 : 1,
-                            )
-                          }
+                          onClick={() => dispatch(minusProduct(item.id))}
                         />
 
                         <input
@@ -278,19 +198,18 @@ const BuyList: React.FC = () => {
                         <CgMathPlus
                           size="17px"
                           className="mx-3"
-                          onClick={() =>
-                            handleQuantityChange(item.id, item.quantity + 1)
-                          }
+                          onClick={() => dispatch(plusProduct(item.id))}
                         />
                       </div>
                       <span className="text-right w-[10rem] font-bold text-[20px] mr-10">
-                        {(item.price * item.quantity).toLocaleString()}원
+                        {(item.product_price * item.quantity).toLocaleString()}
+                        원
                       </span>
                       <RiCloseLine
                         className="mr-10"
                         size="25px"
                         color="#A4A4A4"
-                        onClick={() => handleCloseItemClick(item.id)}
+                        onClick={() => dispatch(deleteProduct(item.id))}
                       />
                     </div>
                   </div>
@@ -309,15 +228,11 @@ const BuyList: React.FC = () => {
           <div className="h-[31rem]">
             <div className="flex justify-between p-5 border h-[25rem]  border-x-[#D0D0D0] border-t-[#D0D0D0] font-semibold text-[18px]">
               <span className="mt-3">상품금액</span>
-              <span className="mt-3">
-                {totalOrderAmount.toLocaleString()}원
-              </span>
+              <span className="mt-3">{total.toLocaleString()}원</span>
             </div>
             <div className="flex justify-between border h-[5rem] p-5 border-x-[#D0D0D0] border-b-[#D0D0D0] bg-[#F9F9F9] font-semibold text-[18px]">
               <span className="mt-1">총 결제금액</span>
-              <span className="mt-1">
-                {totalOrderAmount.toLocaleString()}원
-              </span>
+              <span className="mt-1">{total.toLocaleString()}원</span>
             </div>
           </div>
           {/* 결제하기버튼 */}
