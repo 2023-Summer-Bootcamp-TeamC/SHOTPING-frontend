@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import { persistor } from "../index";
 import pay_image from "../components/images/pay_image.png";
 import PayModal from "../components/Pay/PayModal";
+import axios from "axios";
+import Lottie from "lottie-react";
+import lottie from "../assets/lottie/CircleCheck.json";
 
 const flexColumnCenterStyle = () => {
   return "flex flex-col items-center justify-center h-full";
@@ -43,13 +46,35 @@ const PayPage: React.FC = () => {
     await persistor.purge();
   };
 
+  console.log(modifiedProductList);
+  // API 호출하여 구매 및 재고 값을 업데이트합니다.
+  const updateBuyAndStock = async () => {
+    try {
+      // 상품 재고를 서버로 업데이트하기 위한 POST 요청
+      await axios
+        .post(`/api/v1/order`, {
+          data: modifiedProductList,
+        })
+        .then((response) => {
+          console.log("상품 재고 업데이트 성공:", response.data);
+          // 업데이트된 재고를 로컬 상태로 업데이트합니다
+        })
+        .catch((error) => {
+          console.error("상품 재고 업데이트 에러:", error);
+        });
+    } catch (error) {
+      console.error("재고 업데이트 에러:", error);
+    }
+  };
+
+  // 컴포넌트가 마운트될 때 API 호출을 수행합니다.
+  updateBuyAndStock(); // 빈 종속성 배열은 컴포넌트가 마운트될 때 한 번만 API 호출되도록 합니다.
+
   return (
     <div className={flexColumnCenterStyle()}>
-      <img
-        src={pay_image}
-        alt="Payment"
-        className="md:w-[7.5rem] md:h-[7.5rem] md:mb-[1.875rem] w-[5.5rem] h-[5.5rem] mb-[2.875rem]"
-      />
+      <div className="md:w-[17.5rem] md:h-[17.5rem]  w-[11.5.5rem] h-[11.5rem] ">
+        <Lottie animationData={lottie} />
+      </div>
       <p className="md:text-[40px] text-[30px] text-black">
         주문이 완료되었습니다.
       </p>
