@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { CgMathMinus, CgMathPlus } from "react-icons/cg";
 import { AiFillCheckCircle, AiOutlineCheckCircle } from "react-icons/ai";
 import { RiCloseLine } from "react-icons/ri";
@@ -15,6 +15,7 @@ import {
   unCheckedProduct,
   checkWholeProduct,
   unCheckWholeProduct,
+  totalProductPrice,
 } from "../../store/productSlice";
 
 export interface BuyProduct {
@@ -44,6 +45,16 @@ const BuyList: React.FC = () => {
   const total = useSelector((state: RootState) => {
     return state.buylist.productTotal;
   });
+
+  useEffect(() => {
+    dispatch(
+      totalProductPrice(
+        productList
+          .map((item) => item.product_price * item.quantity)
+          .reduce((acc, price) => acc + price, 0),
+      ),
+    );
+  }, [productList]);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -89,7 +100,7 @@ const BuyList: React.FC = () => {
                 <>
                   {isAllSelected ? (
                     <AiFillCheckCircle
-                      onClick={handleSelectAllItems}
+                      onClick={handleUnSelectAllItems}
                       size="30"
                       color="#FF0099"
                     />

@@ -57,7 +57,7 @@ export default function Modal({
         selected: false,
       }),
     );
-    addToCart;
+    addToCart();
   };
 
   return (
