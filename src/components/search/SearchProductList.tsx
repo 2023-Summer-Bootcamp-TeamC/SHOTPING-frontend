@@ -4,11 +4,11 @@ import ProductBox from "../list/ProductBox";
 import { motion } from "framer-motion";
 
 interface ProductCardProps {
-  id: string;
+  id: number;
   image_url: string;
   product_name: string;
-  product_price: string;
-  product_stock: any;
+  product_price: number;
+  product_stock: number;
 }
 
 export default function SearchProductList({

@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "../store/store";
+import { persistor } from "../index";
 import pay_image from "../components/images/pay_image.png";
 import PayModal from "../components/Pay/PayModal";
 import axios from "axios";
@@ -9,54 +12,6 @@ import lottie from "../assets/lottie/CircleCheck.json";
 const flexColumnCenterStyle = () => {
   return "flex flex-col items-center justify-center h-full";
 };
-interface Product {
-  product_id: number;
-  product_buy: number;
-  product_stock: number;
-}
-
-const products: Product[] = [
-  {
-    product_id: 1,
-    product_buy: 100,
-    product_stock: 100,
-  },
-  {
-    product_id: 2,
-    product_buy: 100,
-    product_stock: 100,
-  },
-  {
-    product_id: 3,
-    product_buy: 100,
-    product_stock: 100,
-  },
-  {
-    product_id: 4,
-    product_buy: 100,
-    product_stock: 100,
-  },
-  {
-    product_id: 5,
-    product_buy: 100,
-    product_stock: 100,
-  },
-  {
-    product_id: 6,
-    product_buy: 100,
-    product_stock: 100,
-  },
-  {
-    product_id: 7,
-    product_buy: 100,
-    product_stock: 100,
-  },
-  {
-    product_id: 8,
-    product_buy: 100,
-    product_stock: 100,
-  },
-];
 
 const PayPage: React.FC = () => {
   const navigate = useNavigate();
@@ -72,6 +27,27 @@ const PayPage: React.FC = () => {
 
   const handleModalClose = () => {
     setModalOpen(false);
+  };
+
+  const productList = useSelector((state: RootState) => {
+    return state.buylist.products;
+  });
+
+  //상품 결제 API에 사용할 데이터
+  const modifiedProductList = productList.map((product) => ({
+    product_id: product.id,
+    product_buy: product.quantity,
+    product_stock: product.quantity,
+  }));
+
+  console.log(modifiedProductList);
+
+  const total = useSelector((state: RootState) => {
+    return state.buylist.productTotal;
+  });
+
+  const purge = async () => {
+    await persistor.purge();
   };
 
   /*const totalOrderAmount = products.reduce(
@@ -117,7 +93,7 @@ const PayPage: React.FC = () => {
         </p>
         <div>
           <span className="md:text-[40px] text-[30px] text-black font-semibold">
-            {/* {totalOrderAmount.toLocaleString()} */}
+            {total.toLocaleString()}
           </span>
           <span className="md:text-[40px] text-[30px] ml-1">원</span>
         </div>
@@ -134,6 +110,7 @@ const PayPage: React.FC = () => {
 
       <button
         onClick={() => {
+          purge();
           navigate("/");
         }}
         className="w-[30rem] h-[4rem] md:w-[44.8125rem] md:h-[5.5625rem] mt-6 
