@@ -16,10 +16,6 @@ const flexColumnCenterStyle = () => {
 const PayPage: React.FC = () => {
   const navigate = useNavigate();
   const [modalOpen, setModalOpen] = useState(false);
-  // const [selectedProducts, setSelectedProducts] = useState<Product[]>(products);
-  const [product_id, setProductproduct_id] = useState<number>(1); // 실제 상품 product_id로 변경하세요
-  const [quantity, setQuantity] = useState<number>(0);
-  const [remainingStock, setRemainingStock] = useState<number>(0);
 
   const handleModalOpen = () => {
     setModalOpen(true);
@@ -50,18 +46,14 @@ const PayPage: React.FC = () => {
     await persistor.purge();
   };
 
-  /*const totalOrderAmount = products.reduce(
-    (total, product) => total + product.price * product.product_buy,
-    0,
-  );*/
-  console.log(products);
+  console.log(modifiedProductList);
   // API 호출하여 구매 및 재고 값을 업데이트합니다.
   const updateBuyAndStock = async () => {
     try {
       // 상품 재고를 서버로 업데이트하기 위한 POST 요청
       await axios
         .post(`/api/v1/order`, {
-          data: products,
+          data: modifiedProductList,
         })
         .then((response) => {
           console.log("상품 재고 업데이트 성공:", response.data);
