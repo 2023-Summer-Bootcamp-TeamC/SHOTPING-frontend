@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import the useHistory hook from React Router
-import PayButton from "../components/Pay/PayButton";
-import PayText from "../components/Pay/PayText";
+import { useNavigate } from "react-router-dom";
 import pay_image from "../components/images/pay_image.png";
 import PayModal from "../components/Pay/PayModal";
 
@@ -76,7 +74,7 @@ const products: Product[] = [
 ];
 
 const PayPage: React.FC = () => {
-  const navigate = useNavigate(); // Get the history object from React Router
+  const navigate = useNavigate();
   const [modalOpen, setModalOpen] = useState(false);
 
   const handleModalOpen = () => {
@@ -96,43 +94,42 @@ const PayPage: React.FC = () => {
       <img
         src={pay_image}
         alt="Payment"
-        style={{
-          width: "7.5rem",
-          height: "7.5rem",
-          marginBottom: "1.875rem",
-        }}
+        className="md:w-[7.5rem] md:h-[7.5rem] md:mb-[1.875rem] w-[5.5rem] h-[5.5rem] mb-[2.875rem]"
       />
-      <PayText name="주문이 완료되었습니다." />
+      <p className="md:text-[40px] text-[30px] text-black">
+        주문이 완료되었습니다.
+      </p>
 
-      <div
-        style={{
-          marginTop: "6.25rem",
-          marginBottom: "0.625rem",
-          width: "44.8125rem",
-        }}
-      >
-        <p className="text-[28px] mt-6 text-[#b0b0b0]">결제금액</p>
+      <div className=" md:mt-[6.25rem] mt-[2.25rem] md:w-[44.8125rem] w-[30rem] transition-all duration-300">
+        <p className="text-[20px] mt-6 md:text-[28px] text-[#b0b0b0]">
+          결제금액
+        </p>
         <div>
-          <span className="text-[40px]  text-black font-semibold">
+          <span className="md:text-[40px] text-[30px] text-black font-semibold">
             {totalOrderAmount.toLocaleString()}
           </span>
-          <span className="text-[40px] ml-1">원</span>
+          <span className="md:text-[40px] text-[30px] ml-1">원</span>
         </div>
       </div>
 
-      <PayButton
-        variant="continue"
-        name="주문내역 상세보기"
+      <button
         onClick={handleModalOpen}
-      />
+        className="w-[30rem] h-[4rem] md:w-[44.8125rem] md:h-[5.5625rem] mt-6 
+        text-lg md:text-2xl font-bold text-white bg-[#FF0099] hover:bg-[#D60080]"
+      >
+        주문내역 상세보기
+      </button>
       {modalOpen && <PayModal onClose={handleModalClose} />}
-      <PayButton
-        variant="detail"
-        name="메인으로 돌아가기"
+
+      <button
         onClick={() => {
           navigate("/");
         }}
-      />
+        className="w-[30rem] h-[4rem] md:w-[44.8125rem] md:h-[5.5625rem] mt-6 
+        text-lg md:text-2xl font-bold text-[#565656] bg-white hover:bg-[#EAEAEA] border-[0.7px] border-[#a6a6a6]"
+      >
+        메인으로 돌아가기
+      </button>
     </div>
   );
 };

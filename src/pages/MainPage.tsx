@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import Lottie from "lottie-react";
 import lottie from "../assets/lottie/OnlineShopping.json";
 import { motion } from "framer-motion";
-
 export default function MainPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -14,20 +13,17 @@ export default function MainPage() {
   const handleOpenModal = () => {
     setIsModalOpen(true);
   };
-
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
-
   const navigate = useNavigate();
-
   const scanNavigate = () => {
     navigate("/scan");
   };
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
+      setIsMobile(window.innerWidth <= 1200);
     };
 
     handleResize();
@@ -39,7 +35,7 @@ export default function MainPage() {
   }, []);
 
   return (
-    <div className="flex flex-col justify-center items-center h-full">
+    <div className="flex flex-col justify-center items-center h-full ml-38">
       <div className={`flex ${isMobile ? "flex-col-reverse" : "flex-row"}`}>
         <div
           className={`text ${
@@ -47,8 +43,8 @@ export default function MainPage() {
           } h-full flex flex-col justify-center`}
         >
           <motion.div
-            className={`logo text-9xl font-medium mb-8 ${
-              isMobile ? "text-7xl ml-6" : "ml-32"
+            className={`logo text-9xl font-medium mb-1 ${
+              isMobile ? "text-[6rem]" : ""
             }`}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -57,7 +53,7 @@ export default function MainPage() {
             SHOTPING
           </motion.div>
           <motion.div
-            className={`title text-6xl ${isMobile ? "text-4xl ml-6" : "ml-32"}`}
+            className="text-5xl md:text-6xl"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 2, delay: 1.5 }}
@@ -68,9 +64,7 @@ export default function MainPage() {
           </motion.div>
           <div className="button mt-8">
             <motion.button
-              className={`popular border border-slate-300 rounded-full w-96 h-16 text-center text-2xl mt-20 mb-2 text-slate-600 flex items-center justify-center hover:bg-[#EAEAEA] ${
-                isMobile ? "w-full" : ""
-              } ${isMobile ? "w-[19.9rem] h-[4rem] ml-6 text-xl" : "ml-32"}`}
+              className="popular border border-slate-300 rounded-full w-80 h-[3.7rem] mb-2 text-xl mt-[18rem] md:w-96 md:h-16 text-center md:text-2xl md:mt-20 md:mb-2 text-slate-600 flex items-center justify-center hover:bg-[#EAEAEA]"
               onClick={handleOpenModal}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -79,9 +73,7 @@ export default function MainPage() {
               지금 인기있는 상품
             </motion.button>
             <motion.button
-              className={`scan border rounded-full w-96 h-16 text-center text-2xl font-semibold text-white bg-[#ff0099] flex items-center justify-center hover:bg-[#D60080] ${
-                isMobile ? "w-full" : ""
-              } ${isMobile ? "w-[19.9rem] h-[4rem] ml-6 text-xl" : "ml-32"}`}
+              className="scan border rounded-full w-80 h-[4rem] text-xl mr-44 md:w-96 md:h-16 text-center md:text-2xl font-semibold text-white bg-[#ff0099] flex items-center justify-center hover:bg-[#D60080]"
               onClick={scanNavigate}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -92,13 +84,10 @@ export default function MainPage() {
             </motion.button>
           </div>
         </div>
-        <div
-          className={`animate transition-all duration-300
-           flex ${isMobile ? "w-full justify-center" : "w-1/2"} h-full`}
-        >
+        <div className="animate w-full justify-center md:ml-20 md:transition-all md:duration-300">
           <div
             className={`lottie invisible md:visible ${
-              isMobile ? "w-1/12" : ""
+              isMobile ? "w-1/12 hidden" : ""
             }`}
           >
             <Lottie animationData={lottie} />

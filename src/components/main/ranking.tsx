@@ -23,8 +23,8 @@ const RankingItem: React.FC<RankingItemProps> = ({ product, rank }) => {
 
   const getImageSizeClassName = (rank: number): string => {
     if (rank === 1) return "w-[6rem] h-[7rem]";
-    if (rank === 2) return "w-[5rem] h-[6rem] mt-1";
-    if (rank === 3) return "w-[4rem] h-[5rem]";
+    if (rank === 2) return "w-[6rem] h-[7rem]";
+    if (rank === 3) return "w-[6rem] h-[7rem]";
     return "";
   };
 
@@ -37,12 +37,12 @@ const RankingItem: React.FC<RankingItemProps> = ({ product, rank }) => {
 
   return (
     <div
-      className={`ranking-item border-b-2 flex items-center w-[25rem] h-[8rem] mt-7`}
+      className={`ranking-item border-b-2 flex items-center w-[25rem] h-[8rem] mt-9`}
     >
-      <div className={`text-xl w-[4rem] ml-6 ${getRankingClassName(rank)}`}>
+      <div className={`text-xl w-[4rem] ml-4 ${getRankingClassName(rank)}`}>
         {rank === 1 ? (
           <img
-            className="w-[5rem] h-[5rem]"
+            className="w-[6rem] h-[5rem] mb-3"
             src="https://i.postimg.cc/hvV1bsCL/2023-07-17-211032.png"
             alt={`${rank}위`}
           />
@@ -51,7 +51,7 @@ const RankingItem: React.FC<RankingItemProps> = ({ product, rank }) => {
         )}
         {rank === 2 ? (
           <img
-            className="w-[5rem] h-[5rem]"
+            className="w-[4rem] h-[5rem] mb-3"
             src="https://i.postimg.cc/wv8shGv0/2023-07-17-211100.png"
           />
         ) : (
@@ -59,7 +59,7 @@ const RankingItem: React.FC<RankingItemProps> = ({ product, rank }) => {
         )}
         {rank === 3 ? (
           <img
-            className="w-[5rem] h-[5rem]"
+            className="w-[5rem] h-[5rem] mb-2"
             src="https://i.postimg.cc/PrQW4Ts9/2023-07-17-211112.png"
           />
         ) : (
@@ -67,7 +67,7 @@ const RankingItem: React.FC<RankingItemProps> = ({ product, rank }) => {
         )}
       </div>
       <motion.img
-        className={`img ${getImageSizeClassName(rank)} ml-10 mr-8 mb-5`}
+        className={`img ${getImageSizeClassName(rank)} ml-6 mr-6 mb-5`}
         src={product.image_url}
         alt={`${rank}위 이미지`}
         initial={{ opacity: 0 }}
@@ -75,7 +75,9 @@ const RankingItem: React.FC<RankingItemProps> = ({ product, rank }) => {
         transition={{ duration: 1, delay: rank * 0.5 }}
       />
       <motion.span
-        className={`truncate ${getTextSizeClassName(rank)}`}
+        className={`truncate text-xl mb-4 w-[10rem] ${getTextSizeClassName(
+          rank,
+        )}`}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: rank * 0.5 }}

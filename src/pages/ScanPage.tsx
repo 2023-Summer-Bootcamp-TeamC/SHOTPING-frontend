@@ -4,10 +4,13 @@ import { useState } from "react";
 import ScanStart from "../components/scan/ScanStart";
 import Scanning from "../components/scan/Scanning";
 import ScanResult from "../components/scan/ScanResult";
+import axios from "axios";
 
 function ScanPage() {
   const [isScan, setIsScan] = useState(false);
   const [isResult, setIsResult] = useState(false);
+  const [imgFormData, setImgFormData] = useState<FormData>();
+  const [image, setImage] = useState<string>();
 
   const handleStartScan = () => {
     setIsScan(true);
@@ -17,6 +20,21 @@ function ScanPage() {
   const handleScanComplete = () => {
     setIsScan(false);
     setIsResult(true);
+    console.log("Scan Complete!");
+  };
+
+  const handleFormData = (file: FormData) => {
+    console.log("전달된 formData : ", file);
+    if (file) {
+      setImgFormData(file);
+    }
+  };
+
+  const handleImage = (image: string) => {
+    console.log("전달된 이미지 : ", image);
+    if (image) {
+      setImage(image);
+    }
   };
 
   const handleRetry = () => {
@@ -27,8 +45,20 @@ function ScanPage() {
   return (
     <div className="flex flex-col items-center justify-center h-full">
       {!isScan && !isResult && <ScanStart onStartScan={handleStartScan} />}
-      {isScan && !isResult && <Scanning onCompleteScan={handleScanComplete} />}
-      {!isScan && isResult && <ScanResult onRetry={handleRetry} />}
+      {isScan && !isResult && (
+        <Scanning
+          onCompleteScan={handleScanComplete}
+          onImgFormData={handleFormData}
+          onImage={handleImage}
+        />
+      )}
+      {!isScan && isResult && (
+        <ScanResult
+          onRetry={handleRetry}
+          imgFormData={imgFormData}
+          img={image}
+        />
+      )}
     </div>
   );
 }
