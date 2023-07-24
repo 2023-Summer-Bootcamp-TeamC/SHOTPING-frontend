@@ -17,6 +17,7 @@ import {
   unCheckWholeProduct,
   totalProductPrice,
 } from "../../store/productSlice";
+import axios from "axios";
 
 export interface BuyProduct {
   id: number;
@@ -59,11 +60,29 @@ const BuyList: React.FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const handleKakaoPay = async () => {
+    try {
+      const totalAmount = totalOrderAmount;
+      const paymentData = {
+        total_amount: totalAmount,
+      };
+      const response = await axios.post("/api/v1/payment", paymentData);
+      if (response.data && response.data.next_redirect_pc_url) {
+        const nextUrl = response.data.next_redirect_pc_url;
+        window.open(nextUrl, "_parent");
+      } else {
+        console.error("카카오 API 응답 오류:", response.data);
+      }
+    } catch (error) {
+      console.error("카카오 API 결제 요청 오류:", error);
+    }
+  };
+
   const handlePayButtonClick = () => {
     if (productList.length === 0) {
       alert("상품을 담은 후에 시도해주세요.");
     } else {
-      navigate("/pay");
+      handleKakaoPay();
     }
   };
 
@@ -247,4 +266,5 @@ const BuyList: React.FC = () => {
     </div>
   );
 };
+
 export default BuyList;
