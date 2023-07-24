@@ -1,81 +1,68 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import pay_image from "../components/images/pay_image.png";
 import PayModal from "../components/Pay/PayModal";
+import axios from "axios";
 
 const flexColumnCenterStyle = () => {
   return "flex flex-col items-center justify-center h-full";
 };
 interface Product {
-  id: number;
-  name: string;
-  price: number;
-  image: string;
-  quantity: number;
+  product_id: number;
+  product_buy: number;
+  product_stock: number;
 }
 
 const products: Product[] = [
   {
-    id: 1,
-    name: "[그릭데이] 그릭요거트 시그니처그 ",
-    price: 17100,
-    image: "src/components/images/image001.png",
-    quantity: 1,
+    product_id: 1,
+    product_buy: 100,
+    product_stock: 100,
   },
   {
-    id: 2,
-    name: "에어팟 키링",
-    price: 3000,
-    image: "src/components/images/image001.png",
-    quantity: 1,
+    product_id: 2,
+    product_buy: 100,
+    product_stock: 100,
   },
   {
-    id: 3,
-    name: "폴리폴리 무릎 담요",
-    price: 7000,
-    image: "src/components/images/image001.png",
-    quantity: 1,
+    product_id: 3,
+    product_buy: 100,
+    product_stock: 100,
   },
   {
-    id: 4,
-    name: "아이폰 스티커 팩",
-    price: 1900,
-    image: "src/components/images/image001.png",
-    quantity: 1,
+    product_id: 4,
+    product_buy: 100,
+    product_stock: 100,
   },
   {
-    id: 5,
-    name: "개발자 키보드",
-    price: 99000,
-    image: "src/components/images/image001.png",
-    quantity: 1,
+    product_id: 5,
+    product_buy: 100,
+    product_stock: 100,
   },
   {
-    id: 6,
-    name: "개발자 커스텀 케이블",
-    price: 69000,
-    image: "src/components/images/image001.png",
-    quantity: 1,
+    product_id: 6,
+    product_buy: 100,
+    product_stock: 100,
   },
   {
-    id: 7,
-    name: "문 긁는 고양이",
-    price: 1000000,
-    image: "src/components/images/image001.png",
-    quantity: 1,
+    product_id: 7,
+    product_buy: 100,
+    product_stock: 100,
   },
   {
-    id: 8,
-    name: "우당탕탕 인테리어 책",
-    price: 5900,
-    image: "src/components/images/image001.png",
-    quantity: 200,
+    product_id: 8,
+    product_buy: 100,
+    product_stock: 100,
   },
 ];
 
 const PayPage: React.FC = () => {
   const navigate = useNavigate();
   const [modalOpen, setModalOpen] = useState(false);
+  // const [selectedProducts, setSelectedProducts] = useState<Product[]>(products);
+  const [product_id, setProductproduct_id] = useState<number>(1); // 실제 상품 product_id로 변경하세요
+  const [quantity, setQuantity] = useState<number>(0);
+  const [remainingStock, setRemainingStock] = useState<number>(0);
 
   const handleModalOpen = () => {
     setModalOpen(true);
@@ -85,12 +72,45 @@ const PayPage: React.FC = () => {
     setModalOpen(false);
   };
 
-  const totalOrderAmount = products.reduce(
-    (total, product) => total + product.price * product.quantity,
+  /*const totalOrderAmount = products.reduce(
+    (total, product) => total + product.price * product.product_buy,
     0,
-  );
+  );*/
+  console.log(products);
+  // API 호출하여 구매 및 재고 값을 업데이트합니다.
+  const updateBuyAndStock = async () => {
+    try {
+      // 상품 재고를 서버로 업데이트하기 위한 POST 요청
+      await axios
+        .post(`/api/v1/order`, {
+          data: products,
+        })
+        .then((response) => {
+          console.log("상품 재고 업데이트 성공:", response.data);
+          // 업데이트된 재고를 로컬 상태로 업데이트합니다
+        })
+        .catch((error) => {
+          console.error("상품 재고 업데이트 에러:", error);
+        });
+    } catch (error) {
+      console.error("재고 업데이트 에러:", error);
+    }
+  };
+
+  // 컴포넌트가 마운트될 때 API 호출을 수행합니다.
+  updateBuyAndStock(); // 빈 종속성 배열은 컴포넌트가 마운트될 때 한 번만 API 호출되도록 합니다.
+
   return (
     <div className={flexColumnCenterStyle()}>
+      <div>
+        {/* 결제 완료 페이지 내용 */}
+        <p>상품: {product_id}</p>
+        <p>수량: {quantity}</p>
+        <p>남은 재고: {remainingStock}</p>
+
+        {/* 결제 완료 버튼 */}
+        <button onClick={updateBuyAndStock}>결제 완료</button>
+      </div>
       <img
         src={pay_image}
         alt="Payment"
@@ -106,7 +126,7 @@ const PayPage: React.FC = () => {
         </p>
         <div>
           <span className="md:text-[40px] text-[30px] text-black font-semibold">
-            {totalOrderAmount.toLocaleString()}
+            {/* {totalOrderAmount.toLocaleString()} */}
           </span>
           <span className="md:text-[40px] text-[30px] ml-1">원</span>
         </div>
