@@ -1,6 +1,8 @@
 import React from "react";
 import payfail_image from "../components/images/payfail_image.png";
 import { useNavigate } from "react-router-dom";
+import Lottie from "lottie-react";
+import lottie from "../assets/lottie/CircleClose.json";
 
 const flexColumnCenterStyle = () => {
   return "flex flex-col items-center justify-center h-full";
@@ -10,11 +12,10 @@ const PayFailPage: React.FC = () => {
   const navigate = useNavigate();
   return (
     <div className={flexColumnCenterStyle()}>
-      <img
-        src={payfail_image}
-        alt="Payment"
-        className="md:w-[7.5rem] md:h-[7.5rem] md:mb-[1.875rem] w-[5.5rem] h-[5.5rem] mb-[2.875rem]"
-      />
+      <div className="md:w-[17.5rem] md:h-[17.5rem] w-[11.5.5rem] h-[11.5rem] ">
+        <Lottie animationData={lottie} />
+      </div>
+
       <p className="md:text-[40px] text-[30px] text-black">
         결제가 완료되지 않았습니다.
       </p>

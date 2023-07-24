@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import pay_image from "../components/images/pay_image.png";
 import PayModal from "../components/Pay/PayModal";
 import axios from "axios";
+import Lottie from "lottie-react";
+import lottie from "../assets/lottie/CircleCheck.json";
 
 const flexColumnCenterStyle = () => {
   return "flex flex-col items-center justify-center h-full";
@@ -102,20 +104,9 @@ const PayPage: React.FC = () => {
 
   return (
     <div className={flexColumnCenterStyle()}>
-      <div>
-        {/* 결제 완료 페이지 내용 */}
-        <p>상품: {product_id}</p>
-        <p>수량: {quantity}</p>
-        <p>남은 재고: {remainingStock}</p>
-
-        {/* 결제 완료 버튼 */}
-        <button onClick={updateBuyAndStock}>결제 완료</button>
+      <div className="md:w-[17.5rem] md:h-[17.5rem]  w-[11.5.5rem] h-[11.5rem] ">
+        <Lottie animationData={lottie} />
       </div>
-      <img
-        src={pay_image}
-        alt="Payment"
-        className="md:w-[7.5rem] md:h-[7.5rem] md:mb-[1.875rem] w-[5.5rem] h-[5.5rem] mb-[2.875rem]"
-      />
       <p className="md:text-[40px] text-[30px] text-black">
         주문이 완료되었습니다.
       </p>
