@@ -62,9 +62,8 @@ const BuyList: React.FC = () => {
 
   const handleKakaoPay = async () => {
     try {
-      const totalAmount = totalOrderAmount;
       const paymentData = {
-        total_amount: totalAmount,
+        total_amount: total,
       };
       const response = await axios.post("/api/v1/payment", paymentData);
       if (response.data && response.data.next_redirect_pc_url) {
