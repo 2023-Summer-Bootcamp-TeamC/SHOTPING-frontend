@@ -19,9 +19,9 @@ import {
 
 export interface BuyProduct {
   id: number;
-  name: string;
-  price: number;
-  image: string;
+  product_name: string;
+  product_price: number;
+  image_url: string;
   quantity: number;
   selected: boolean;
 }
@@ -160,11 +160,11 @@ const BuyList: React.FC = () => {
                       )}
                       <img
                         className="w-[100px] h-[125px] mr-5"
-                        src={item.image}
+                        src={item.image_url}
                         alt="이미지"
                       />
                       <span className="text-[17px] flex items-center font-semibold w-[40rem] mr-4">
-                        {item.name}
+                        {item.product_name}
                       </span>
                     </div>
                     <div className="flex items-end justify-end w-[30rem] ">
@@ -191,7 +191,8 @@ const BuyList: React.FC = () => {
                         />
                       </div>
                       <span className="text-right w-[10rem] font-bold text-[20px] mr-10">
-                        {(item.price * item.quantity).toLocaleString()}원
+                        {(item.product_price * item.quantity).toLocaleString()}
+                        원
                       </span>
                       <RiCloseLine
                         className="mr-10"
