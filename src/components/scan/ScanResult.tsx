@@ -6,6 +6,8 @@ import ScanList from "./ScanList";
 import Loading from "../common/Loading";
 import Feedback from "./Feedback";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addProduct } from "../../store/productSlice";
 import axios from "axios";
 
 export interface predictResultProps {
@@ -33,6 +35,8 @@ export default function ScanResult({
   const [feedback, setFeedback] = useState<string>("");
   const [feedbackBoolean, setFeedbackBoolean] = useState<boolean>();
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const handleResize = () => {
@@ -95,6 +99,18 @@ export default function ScanResult({
         });
     } else {
       console.log("그냥 제출!");
+      predictData.map((product) => {
+        dispatch(
+          addProduct({
+            id: product.id,
+            product_name: product.product_name,
+            product_price: product.product_price,
+            image_url: product.image_url,
+            selected: false,
+            quantity: 1,
+          }),
+        );
+      });
       navigate("/buy");
     }
   };
