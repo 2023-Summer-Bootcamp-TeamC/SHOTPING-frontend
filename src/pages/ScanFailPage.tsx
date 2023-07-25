@@ -1,7 +1,8 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import Lottie from "lottie-react";
 import WarningLottie from "../assets/lottie/WarningLottie.json";
+
+/* 상품 인식 실패 페이지 */
 
 export default function ScanFailPage() {
   const navigate = useNavigate();

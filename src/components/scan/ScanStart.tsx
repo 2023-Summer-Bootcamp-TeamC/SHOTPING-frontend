@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 
+/* 상품 인식 시작 컴포넌트 */
+
 export default function ScanStart({
   onStartScan,
 }: {

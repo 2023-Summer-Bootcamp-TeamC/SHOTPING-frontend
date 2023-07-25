@@ -3,6 +3,8 @@ import ScanStart from "../components/scan/ScanStart";
 import Scanning from "../components/scan/Scanning";
 import ScanResult from "../components/scan/ScanResult";
 
+/* 상품 인식 페이지 */
+
 function ScanPage() {
   const [isScan, setIsScan] = useState(false);
   const [isResult, setIsResult] = useState(false);

@@ -3,6 +3,11 @@ import { motion } from "framer-motion";
 import { FaRegCircle } from "react-icons/fa";
 import Webcam from "react-webcam";
 
+/* 
+  상품 인식 중 컴포넌트
+  웹캠을 통해 인식할 제품의 사진을 찍음
+*/
+
 interface imageProps {
   onImgFormData: (file: FormData) => void;
   onImage: (image: string) => void;

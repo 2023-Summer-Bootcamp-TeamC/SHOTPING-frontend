@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 
+/* 피드백 컴포넌트 */
+
 interface feedbackProps {
   onSelectBoolean: (boolean: boolean) => void;
   onSelectFeedback: (feedback: string) => void;

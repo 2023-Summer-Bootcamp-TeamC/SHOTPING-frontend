@@ -10,6 +10,11 @@ import { useDispatch } from "react-redux";
 import { addProduct } from "../../store/productSlice";
 import axios from "axios";
 
+/* 
+  상품 인식 결과 컴포넌트
+  인식 결과를 리스트에 표시, 피드백 작성 
+*/
+
 export interface predictResultProps {
   id: number;
   product_name: string;
