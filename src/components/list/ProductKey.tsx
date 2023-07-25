@@ -1,8 +1,13 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import InfiniteScroll from "react-infinite-scroll-component";
 import ProductBox from "./ProductBox";
 import Loading from "../common/Loading";
+
+/* 제품 리스트 컴포넌트
+  제품 컴포넌트들을 불러와서
+  무한스크롤로 확인
+*/
 
 export interface Product {
   id: number;

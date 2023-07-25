@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { FaCheck } from "react-icons/fa";
 import { FaUndoAlt } from "react-icons/fa";
@@ -9,6 +9,11 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addProduct } from "../../store/productSlice";
 import axios from "axios";
+
+/* 
+  상품 인식 결과 컴포넌트
+  인식 결과를 리스트에 표시, 피드백 작성 
+*/
 
 export interface predictResultProps {
   id: number;
@@ -58,9 +63,6 @@ export default function ScanResult({
         },
       })
       .then((response) => {
-        console.log("이미지 파일 분석 성공");
-        console.log(response.data);
-
         setDataId(response.data.data_id);
         setPredictData(response.data.outputProducts);
         setLoading(false);
@@ -79,11 +81,6 @@ export default function ScanResult({
     setFeedback(feedback);
   };
 
-  console.log("dataId : ", dataId);
-  console.log("predictData: ", predictData);
-  console.log("feedback boolean값: ", feedbackBoolean);
-  console.log("feedback 내용 : ", feedback);
-
   const clickEvent = () => {
     setLoading(true);
     if (feedbackBoolean !== undefined && feedback !== "") {
@@ -96,10 +93,21 @@ export default function ScanResult({
         .then((response) => {
           console.log(response);
           setLoading(false);
+          predictData.map((product) => {
+            dispatch(
+              addProduct({
+                id: product.id,
+                product_name: product.product_name,
+                product_price: product.product_price,
+                image_url: product.image_url,
+                selected: false,
+                quantity: 1,
+              }),
+            );
+          });
           navigate("/buy");
         });
     } else {
-      console.log("그냥 제출!");
       predictData.map((product) => {
         dispatch(
           addProduct({

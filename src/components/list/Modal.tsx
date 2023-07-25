@@ -1,6 +1,10 @@
-import React, { Dispatch, SetStateAction, useState, useCallback } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addProduct } from "../../store/productSlice";
+
+/* 제품을 담기 위한 모달
+  - / + 버튼을 통해 담을 물건의 개수 조절
+*/
 
 interface ModalProps {
   setIsModalOpen: Dispatch<SetStateAction<boolean>>;
@@ -23,7 +27,6 @@ export default function Modal({
   price,
   id,
   image,
-  stock,
 }: ModalProps) {
   const [count, setCount] = useState(1);
   const dispatch = useDispatch();
@@ -37,8 +40,6 @@ export default function Modal({
   const increaseCount = () => {
     setCount(count + 1);
   };
-
-  /*const totalPrice = Number(price.replace(/,/g, "")) * count;*/
 
   const closeModal = () => {
     setIsModalOpen(false);
