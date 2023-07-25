@@ -15,7 +15,7 @@ import {
   checkWholeProduct,
   unCheckWholeProduct,
   totalProductPrice,
-} from "../../store/productSlice";
+} from "../../store/ProductSlice";
 import axios from "axios";
 
 /* 결제 페이지 리스트 */

@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction, useState } from "react";
 import { useDispatch } from "react-redux";
-import { addProduct } from "../../store/productSlice";
+import { addProduct } from "../../store/ProductSlice";
 
 /* 제품을 담기 위한 모달
   - / + 버튼을 통해 담을 물건의 개수 조절

@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { useState } from "react";
 import Chart from "./chart";
 import Ranking from "./ranking";
 

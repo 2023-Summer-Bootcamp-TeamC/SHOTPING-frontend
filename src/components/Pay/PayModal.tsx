@@ -1,4 +1,3 @@
-import React from "react";
 import PayModalList from "./PayModalList";
 import { RiCheckboxBlankCircleFill } from "react-icons/ri";
 
