@@ -2,6 +2,8 @@ import { SearchBox } from "../components/list/SearchBox";
 import SearchProductList from "../components/search/SearchProductList";
 import { useLocation } from "react-router-dom";
 
+/* 상품 검색 결과 페이지 */
+
 export default function SearchResultPage() {
   const location = useLocation();
   const keyWord = location.state as string;

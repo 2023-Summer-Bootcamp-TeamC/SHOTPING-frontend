@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import ProductBox from "../list/ProductBox";
 
+/* 검색 시 나오는 결과 제품 리스트 */
+
 interface ProductCardProps {
   id: number;
   image_url: string;
