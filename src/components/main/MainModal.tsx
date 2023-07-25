@@ -1,8 +1,8 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
-import axios from "axios";
-import { motion } from "framer-motion";
 import Chart from "./chart";
 import Ranking from "./ranking";
+
+/* 메인 지금 인기있는 상품 눌렀을 때 나오는 모달 */
 
 interface MainModalProps {
   setIsModalOpen: () => void;
