@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
 
+/* 메인모달 오른쪽에 뜨는 랭킹 */
+
 interface Product {
   id: number;
   product_name: string;

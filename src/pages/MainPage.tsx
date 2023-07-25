@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Header } from "../components/layout/Header";
 import { FaArrowRight } from "react-icons/fa";
 import Modal from "../components/main/MainModal";
 import { useNavigate } from "react-router-dom";
 import Lottie from "lottie-react";
 import lottie from "../assets/lottie/OnlineShopping.json";
 import { motion } from "framer-motion";
+
+/* 메인페이지, MainModal Chart Ranking 컴포넌트 */
+
 export default function MainPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);

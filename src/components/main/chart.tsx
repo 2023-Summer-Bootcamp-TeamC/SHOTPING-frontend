@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import ApexCharts from "apexcharts";
 import axios from "axios";
 
+/* 메인모달 왼쪽에 뜨는 차트 */
+
 interface ChartData {
   product_name: string;
   product_price: number;
@@ -79,7 +81,7 @@ export default function Chart() {
 
   return (
     <div id="chart" ref={chartRef} className={chartContainerStyle}>
-      {/* 레이블 숨기기 */}
+      {}
     </div>
   );
 }
