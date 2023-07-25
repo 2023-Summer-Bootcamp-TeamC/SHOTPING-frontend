@@ -1,6 +1,4 @@
-import React, { useState } from "react";
 import { SearchBox } from "../components/list/SearchBox";
-import ProductBox from "../components/list/ProductBox";
 import ProductKey from "../components/list/ProductKey";
 
 export default function ListPage() {

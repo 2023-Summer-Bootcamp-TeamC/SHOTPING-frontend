@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import ProductBox from "../list/ProductBox";
-import { motion } from "framer-motion";
 
 interface ProductCardProps {
   id: number;
@@ -28,7 +27,6 @@ export default function SearchProductList({
         });
 
         setData(response.data);
-        console.log(response.data);
       } catch (error) {
         console.log("서치에러", error);
       }

@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import { useState, useCallback } from "react";
 import { TfiPlus } from "react-icons/tfi";
 import Modal from "./Modal";
 

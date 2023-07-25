@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useState, useCallback } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addProduct } from "../../store/productSlice";
 
@@ -23,7 +23,6 @@ export default function Modal({
   price,
   id,
   image,
-  stock,
 }: ModalProps) {
   const [count, setCount] = useState(1);
   const dispatch = useDispatch();
@@ -37,8 +36,6 @@ export default function Modal({
   const increaseCount = () => {
     setCount(count + 1);
   };
-
-  /*const totalPrice = Number(price.replace(/,/g, "")) * count;*/
 
   const closeModal = () => {
     setIsModalOpen(false);

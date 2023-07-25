@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent, KeyboardEvent, MouseEvent } from "react";
+import { useState, ChangeEvent, KeyboardEvent, MouseEvent } from "react";
 import { FaSearch } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 

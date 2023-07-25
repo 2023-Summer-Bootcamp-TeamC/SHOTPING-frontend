@@ -1,4 +1,3 @@
-import React from "react";
 import { SearchBox } from "../components/list/SearchBox";
 import SearchProductList from "../components/search/SearchProductList";
 import { useLocation } from "react-router-dom";
