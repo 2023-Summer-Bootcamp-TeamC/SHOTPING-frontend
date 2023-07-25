@@ -7,7 +7,7 @@ import Loading from "../common/Loading";
 import Feedback from "./Feedback";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addProduct } from "../../store/productSlice";
+import { addProduct } from "../../store/ProductSlice";
 import axios from "axios";
 
 /* 
