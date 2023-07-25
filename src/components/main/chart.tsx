@@ -25,24 +25,42 @@ export default function Chart() {
           const options = {
             series: series,
             chart: {
-              width: 450,
-              height: 450,
-              type: "pie",
+              width: 500,
+              height: 500,
+              type: "polarArea",
             },
             labels: labels,
-            responsive: [
-              {
-                breakpoint: 480,
-                options: {
-                  chart: {
-                    width: 200,
-                  },
-                  legend: {
-                    position: "bottom",
-                  },
+            colors: ["#ff0099", "#ff9900", "#ffe500", "#00ff66", "#33001f"],
+            fill: {
+              opacity: 1,
+            },
+            stroke: {
+              width: 1,
+              colors: undefined,
+            },
+            yaxis: {
+              show: false,
+            },
+            legend: {
+              position: "bottom",
+            },
+            plotOptions: {
+              polarArea: {
+                rings: {
+                  strokeWidth: 0,
+                },
+                spokes: {
+                  strokeWidth: 0,
                 },
               },
-            ],
+            },
+            theme: {
+              monochrome: {
+                enabled: false,
+                shadeTo: "light",
+                shadeIntensity: 0.6,
+              },
+            },
           };
 
           const chart = new ApexCharts(chartRef.current, options);
@@ -57,5 +75,11 @@ export default function Chart() {
     }
   }, [isChartRendered]);
 
-  return <div id="chart" ref={chartRef}></div>;
+  const chartContainerStyle = "relative";
+
+  return (
+    <div id="chart" ref={chartRef} className={chartContainerStyle}>
+      {/* 레이블 숨기기 */}
+    </div>
+  );
 }

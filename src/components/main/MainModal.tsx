@@ -18,12 +18,12 @@ export default function Modal({ setIsModalOpen }: MainModalProps) {
       onClick={setIsModalOpen}
     >
       <div className="w-[35rem] md:modalContent md:w-[60rem] md:h-[40rem] md:mt-16 bg-white rounded-xl flex flex-col justify-center items-center">
-        <div className="mt-10 mb-[1rem] text-2xl font-semibold md:mb-2">
+        <div className="mt-2 mb-[1rem] text-2xl font-semibold md:mb-2">
           지금 인기있는 상품들이에요!
         </div>
         <div className="flex">
           <div className="md:chartContainer">
-            <div className="hidden md:chart md:w-[27rem] md:h-[32rem] md:mr-4 md:flex justify-center items-center">
+            <div className="hidden md:chart md:w-[27rem] md:h-[32rem] md:mr-4 md:flex justify-center items-center h-full">
               <Chart />
             </div>
           </div>
