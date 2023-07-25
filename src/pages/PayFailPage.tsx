@@ -1,7 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { RootState } from "../store/store";
 import { persistor } from "../index";
 import Lottie from "lottie-react";
 import lottie from "../assets/lottie/CircleClose.json";
