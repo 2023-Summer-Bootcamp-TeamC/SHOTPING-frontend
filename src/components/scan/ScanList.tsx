@@ -16,7 +16,7 @@ export default function ScanList({
         </div>
         <span className="truncate text-lg w-2/4">{product_name}</span>
         <span className="text-lg"> 1 </span>
-        <span className="text-xl"> {product_price}원 </span>
+        <span className="text-xl"> {product_price.toLocaleString()}원 </span>
       </div>
     </div>
   );
