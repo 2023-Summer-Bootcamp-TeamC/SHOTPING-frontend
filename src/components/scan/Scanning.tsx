@@ -14,13 +14,10 @@ export default function Scanning({
   onImage,
 }: imageProps & { onCompleteScan: () => void }) {
   const webcamRef = useRef<Webcam>(null);
-  // const [imgSrc, setImgSrc] = useState<String | null>(null);
-  // const [file, setFile] = useState<File | null>(null);
 
   const captureEvent = useCallback(() => {
     if (webcamRef.current) {
       const imageSrc = webcamRef.current.getScreenshot();
-      // setImgSrc(imageSrc);
       createImgFile(imageSrc);
     }
   }, [webcamRef]);

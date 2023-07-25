@@ -58,9 +58,6 @@ export default function ScanResult({
         },
       })
       .then((response) => {
-        console.log("이미지 파일 분석 성공");
-        console.log(response.data);
-
         setDataId(response.data.data_id);
         setPredictData(response.data.outputProducts);
         setLoading(false);
@@ -78,11 +75,6 @@ export default function ScanResult({
   const handleFeedback = (feedback: string) => {
     setFeedback(feedback);
   };
-
-  console.log("dataId : ", dataId);
-  console.log("predictData: ", predictData);
-  console.log("feedback boolean값: ", feedbackBoolean);
-  console.log("feedback 내용 : ", feedback);
 
   const clickEvent = () => {
     setLoading(true);
@@ -111,7 +103,6 @@ export default function ScanResult({
           navigate("/buy");
         });
     } else {
-      console.log("그냥 제출!");
       predictData.map((product) => {
         dispatch(
           addProduct({
