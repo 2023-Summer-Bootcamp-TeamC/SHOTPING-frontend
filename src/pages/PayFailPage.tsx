@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import { persistor } from "../index";
 import Lottie from "lottie-react";
-import lottie from "../assets/lottie/CircleCheck.json";
+import lottie from "../assets/lottie/CircleClose.json";
 
 const flexColumnCenterStyle = () => {
   return "flex flex-col items-center justify-center h-full";

@@ -7,7 +7,7 @@ interface BuyModalProps {
   onClose: () => void;
 }
 
-const BuyModal: React.FC<BuyModalProps> = ({ onClose }) => {
+export default function BuyModal({ onClose }: BuyModalProps) {
   const navigate = useNavigate();
   const [isMobile, setIsMobile] = useState(false);
 
@@ -92,6 +92,4 @@ const BuyModal: React.FC<BuyModalProps> = ({ onClose }) => {
       </div>
     </div>
   );
-};
-
-export default BuyModal;
+}
