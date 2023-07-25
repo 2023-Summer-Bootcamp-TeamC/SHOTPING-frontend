@@ -1,13 +1,12 @@
 import React from "react";
-import BuyList from "../components/Buy/BuyList";
+import BuyList from "../components/buy/BuyList";
 
-const BuyPage = () => {
+/* 결제 페이지 */
+
+export default function BuyPage() {
   return (
     <>
-      {/* product */}
       <BuyList />
     </>
   );
-};
-
-export default BuyPage;
+}
