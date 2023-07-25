@@ -2,15 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 
-interface Product {
-  id: number;
-  name: string;
-  price: number;
-  image: string;
-  quantity: number;
-}
-
-const PayModalList: React.FC = () => {
+export default function PayModalList() {
   const productList = useSelector((state: RootState) => {
     return state.buylist.products;
   });
@@ -33,18 +25,17 @@ const PayModalList: React.FC = () => {
         </span>
       </div>
       <div>
-        <div style={styles.container} className="scrollbar-hide">
-          <div style={styles.list}>
+        <div className=" h-[410px] overflow-y-auto scrollbar-hide">
+          <div className="w-[100%]">
             {productList.map((item, index) => (
               <div key={item.id}>
-                <div style={styles.item}>
+                <div className="flex m-[5px] p-[8.5px] text-[13px]">
                   <img
                     src={item.image_url}
                     alt={item.product_name}
-                    style={styles.image}
-                    className="w-[60px] h-[75px] overflow-hidden"
+                    className="w-[60px] h-[75px] overflow-hidden mr-[20px]"
                   />
-                  <div style={styles.details} className="flex items-center">
+                  <div className="flex items-center">
                     <span className="w-[250px] text-left mr-9 text-base">
                       {item.product_name}
                     </span>
@@ -56,7 +47,7 @@ const PayModalList: React.FC = () => {
                     </span>
                   </div>
                 </div>
-                <hr style={styles.separator} />
+                <hr className="mx-[10px] my-[2px] border-t-1 border-solid border-gray-300" />
               </div>
             ))}
           </div>
@@ -71,32 +62,4 @@ const PayModalList: React.FC = () => {
       </div>
     </div>
   );
-};
-
-const styles = {
-  container: {
-    height: 410,
-    overflowY: "auto",
-  },
-  list: {
-    width: "100%",
-  },
-  item: {
-    display: "flex",
-    margin: "5px",
-    padding: "8.5px",
-    fontSize: "13px",
-  },
-  image: {
-    marginRight: "20px",
-  },
-  details: {
-    flex: 1,
-  },
-  separator: {
-    margin: "2px 10px",
-    borderTop: "1px solid #ccc",
-  },
-} as const;
-
-export default PayModalList;
+}

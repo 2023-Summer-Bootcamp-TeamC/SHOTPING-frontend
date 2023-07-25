@@ -1,5 +1,4 @@
 import React from "react";
-import payfail_image from "../components/images/payfail_image.png";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
@@ -7,11 +6,13 @@ import { persistor } from "../index";
 import Lottie from "lottie-react";
 import lottie from "../assets/lottie/CircleClose.json";
 
+/* 결제 실패 페이지 */
+
 const flexColumnCenterStyle = () => {
   return "flex flex-col items-center justify-center h-full";
 };
 
-const PayFailPage: React.FC = () => {
+export default function PayFailPage() {
   const navigate = useNavigate();
   const purge = async () => {
     await persistor.purge();
@@ -51,6 +52,4 @@ const PayFailPage: React.FC = () => {
       </button>
     </div>
   );
-};
-
-export default PayFailPage;
+}

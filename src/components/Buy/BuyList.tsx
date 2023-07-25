@@ -18,6 +18,7 @@ import {
   totalProductPrice,
 } from "../../store/productSlice";
 import axios from "axios";
+/* 결제 페이지 */
 
 export interface BuyProduct {
   id: number;
@@ -239,11 +240,11 @@ export default function BuyList() {
         <div className="flex flex-col 2xl:mt-[90px] mt-[0px] 2xl:ml-10  w-[100%] 2xl:w-[25%] 2xl:h-[80%] h-[20%] ">
           {/* 상품금액, 총결제금액 부분 */}
           <div className="mb-5 2xl:h-[80%] h-[60%]  ">
-            <div className="flex justify-between p-5 border 2xl:h-[85%] h-[60%]  border-x-[#D0D0D0] border-t-[#D0D0D0] font-semibold text-[1.125rem]">
+            <div className="flex justify-between p-5 border 2xl:h-[85%] h-[62%]  border-x-[#D0D0D0] border-t-[#D0D0D0] font-semibold text-[1.125rem]">
               <span className="2xl:mt-3">상품금액</span>
               <span className="2xl:mt-3">{total.toLocaleString()}원</span>
             </div>
-            <div className="flex justify-between items-center border 2xl:h-[15%] h-[40%] p-5 border-x-[#D0D0D0] border-b-[#D0D0D0] bg-[#F9F9F9] font-semibold text-[1.125rem]">
+            <div className="flex justify-between items-center border 2xl:h-[15%] h-[38%] p-5 border-x-[#D0D0D0] border-b-[#D0D0D0] bg-[#F9F9F9] font-semibold text-[1.125rem]">
               <span className="mt-1">총 결제금액</span>
               <span className="mt-1">{total.toLocaleString()}원</span>
             </div>

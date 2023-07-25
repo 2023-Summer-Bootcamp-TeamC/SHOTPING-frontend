@@ -3,17 +3,18 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import { persistor } from "../index";
-import pay_image from "../components/images/pay_image.png";
 import PayModal from "../components/Pay/PayModal";
 import axios from "axios";
 import Lottie from "lottie-react";
 import lottie from "../assets/lottie/CircleCheck.json";
 
+/* 결제 성공 페이지 */
+
 const flexColumnCenterStyle = () => {
   return "flex flex-col items-center justify-center h-full";
 };
 
-const PayPage: React.FC = () => {
+export default function PayPage() {
   const navigate = useNavigate();
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -112,6 +113,4 @@ const PayPage: React.FC = () => {
       </button>
     </div>
   );
-};
-
-export default PayPage;
+}

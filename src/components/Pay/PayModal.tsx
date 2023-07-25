@@ -2,11 +2,13 @@ import React from "react";
 import PayModalList from "./PayModalList";
 import { RiCheckboxBlankCircleFill } from "react-icons/ri";
 
+/*pay페이지 주문내역 상세보기 버튼 클릭 시 모달 */
+
 interface PayModalProps {
-  onClose: () => void; // 모달을 닫을 때 호출할 함수
+  onClose: () => void;
 }
 
-const PayModal: React.FC<PayModalProps> = ({ onClose }) => {
+export default function PayModal({ onClose }: PayModalProps) {
   return (
     <div className=" fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center z-50">
       <div className="absolute w-[665px] h-[846px] left-1/2 top-1/2  -translate-x-1/2 -translate-y-1/2 rounded-[20px] bg-white p-10">
@@ -24,7 +26,6 @@ const PayModal: React.FC<PayModalProps> = ({ onClose }) => {
             주문상품 내역
           </p>
         </div>
-        {/* 위는 고정 */}
 
         <PayModalList />
 
@@ -37,6 +38,4 @@ const PayModal: React.FC<PayModalProps> = ({ onClose }) => {
       </div>
     </div>
   );
-};
-
-export default PayModal;
+}

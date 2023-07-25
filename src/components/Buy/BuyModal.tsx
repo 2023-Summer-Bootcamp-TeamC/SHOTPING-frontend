@@ -3,6 +3,8 @@ import { AiFillCamera, AiOutlineUnorderedList } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
+/* buy 페이지 추가하기 버튼 클릭 시 모달 */
+
 interface BuyModalProps {
   onClose: () => void;
 }
