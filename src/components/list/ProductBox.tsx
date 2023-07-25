@@ -47,7 +47,7 @@ export default function ProductBox({
     setIsModalOpen(false);
     setTimeout(() => {
       setIsAddedToCart(false);
-    }, 1200);
+    }, 2000);
   };
 
   return (
@@ -95,7 +95,7 @@ export default function ProductBox({
               </div>
             )}
             <div className="price font-semibold text-right ml-auto text-xl">
-              {price}원
+              {price.toLocaleString()}원
             </div>
           </div>
         </div>
