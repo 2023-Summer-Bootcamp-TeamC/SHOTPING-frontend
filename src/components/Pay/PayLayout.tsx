@@ -8,6 +8,11 @@ import axios from "axios";
 import Lottie from "lottie-react";
 import lottie from "../../assets/lottie/CircleCheck.json";
 
+/* 
+  결제 성공 레이아웃
+  모달을 통해 결제 내역 확인 및 메인으로 돌아가기 
+*/
+
 const flexColumnCenterStyle = () => {
   return "flex flex-col items-center justify-center h-full";
 };

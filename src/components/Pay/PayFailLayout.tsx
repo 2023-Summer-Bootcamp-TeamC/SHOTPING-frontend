@@ -3,6 +3,11 @@ import { persistor } from "../../index";
 import Lottie from "lottie-react";
 import lottie from "../../assets/lottie/CircleClose.json";
 
+/* 
+  결제 실패 레이아웃
+  다시 시도 및 메인으로 돌아가기 
+*/
+
 const flexColumnCenterStyle = () => {
   return "flex flex-col items-center justify-center h-full";
 };
