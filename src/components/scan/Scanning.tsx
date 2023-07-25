@@ -1,5 +1,4 @@
-import React, { useCallback, useRef, useState } from "react";
-import axios from "axios";
+import { useCallback, useRef } from "react";
 import { motion } from "framer-motion";
 import { FaRegCircle } from "react-icons/fa";
 import Webcam from "react-webcam";
@@ -15,29 +14,26 @@ export default function Scanning({
   onImage,
 }: imageProps & { onCompleteScan: () => void }) {
   const webcamRef = useRef<Webcam>(null);
-  const [imgSrc, setImgSrc] = useState<String | null>(null);
-  const [file, setFile] = useState<File | null>(null);
+  // const [imgSrc, setImgSrc] = useState<String | null>(null);
+  // const [file, setFile] = useState<File | null>(null);
 
   const captureEvent = useCallback(() => {
     if (webcamRef.current) {
       const imageSrc = webcamRef.current.getScreenshot();
-      setImgSrc(imageSrc);
+      // setImgSrc(imageSrc);
       createImgFile(imageSrc);
     }
-  }, [webcamRef, setImgSrc]);
+  }, [webcamRef]);
 
   const createImgFile = async (imgSrc: string | null) => {
     if (imgSrc) {
-      await console.log("이미지옴?", imgSrc);
       const res = await fetch(imgSrc);
       const blob = await res.blob();
       const file = new File([blob], "image", { type: "image/jpeg" });
-      await console.log("파일 : ", file);
 
       const formData = new FormData();
       await formData.append("upload", file);
 
-      //onImage, onImgFormData 를 통해 이미지와 formData를 결과 컴포넌트로 전달
       await onImage(imgSrc);
       await onImgFormData(formData);
       await onCompleteScan();

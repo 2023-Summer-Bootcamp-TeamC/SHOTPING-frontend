@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { FaCheck } from "react-icons/fa";
 import { FaUndoAlt } from "react-icons/fa";
@@ -96,6 +96,18 @@ export default function ScanResult({
         .then((response) => {
           console.log(response);
           setLoading(false);
+          predictData.map((product) => {
+            dispatch(
+              addProduct({
+                id: product.id,
+                product_name: product.product_name,
+                product_price: product.product_price,
+                image_url: product.image_url,
+                selected: false,
+                quantity: 1,
+              }),
+            );
+          });
           navigate("/buy");
         });
     } else {

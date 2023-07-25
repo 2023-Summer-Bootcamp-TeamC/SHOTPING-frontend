@@ -1,8 +1,6 @@
-import React from "react";
 import { predictResultProps } from "./ScanResult";
 
 export default function ScanList({
-  id,
   product_name,
   product_price,
   image_url,
