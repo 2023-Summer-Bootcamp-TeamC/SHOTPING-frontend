@@ -67,6 +67,7 @@ export default function ScanResult({
       })
       .catch((error) => {
         console.log(error);
+        navigate("/scanfail");
       });
   }, [imgFormData]);
 

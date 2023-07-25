@@ -38,7 +38,11 @@ export function SearchBox() {
         onKeyPress={enterSearch}
         className="md:w-[25rem] w-[20rem] h-[3rem] md:ml-0 ml-10 text-xl px-2 py-2 border-b border-gray-300 focus:outline-none focus:none"
       />
-      <button type="button" className="mr-2 mt-1" onClick={searchClick}>
+      <button
+        type="button"
+        className="mr-2 border-b border-gray-300 h-[3rem]"
+        onClick={searchClick}
+      >
         <FaSearch className="w-7 h-7 text-gray-300" />
       </button>
     </div>

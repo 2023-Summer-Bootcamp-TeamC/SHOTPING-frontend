@@ -66,7 +66,7 @@ export default function ProductKey() {
       next={fetchMoreData}
       hasMore={page !== 0}
       loader={<Loading />}
-      endMessage={<h3>더 이상 상품이 없습니다.</h3>}
+      endMessage={<></>}
       className="grid grid-cols-4  lg:gap-10 gap-x-20 md:ml-0 ml-12  mt-10 transition-all duration-700 "
       style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}
     >

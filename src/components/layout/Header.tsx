@@ -56,7 +56,8 @@ export function Header() {
             >
               <div
                 className={`hover:font-semibold text-lg ${
-                  location.pathname === "/scan"
+                  location.pathname === "/scan" ||
+                  location.pathname === "/scanfail"
                     ? "text-[#ff0099] underline underline-offset-[6px] font-semibold"
                     : "text-black"
                 }`}
