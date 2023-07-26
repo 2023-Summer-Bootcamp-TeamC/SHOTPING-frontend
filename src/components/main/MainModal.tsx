@@ -23,7 +23,7 @@ export default function Modal({ setIsModalOpen }: MainModalProps) {
         </div>
         <div className="flex">
           <div className="lg:chartContainer">
-            <div className="hidden lg:chart lg:w-[27rem] lg:h-[32rem] lg:mr-4 lg:flex justify-center items-center h-full">
+            <div className="hidden lg:chart lg:w-[27rem] lg:h-[32rem] lg:flex justify-center items-center h-full">
               <Chart />
             </div>
           </div>

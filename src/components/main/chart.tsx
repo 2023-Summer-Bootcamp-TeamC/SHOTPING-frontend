@@ -25,42 +25,62 @@ export default function Chart() {
           const series = chartData.map((data: ChartData) => data.product_buy);
 
           const options = {
-            series: series,
+            series: [
+              {
+                data: series,
+              },
+            ],
             chart: {
-              width: 500,
-              height: 500,
-              type: "polarArea",
-            },
-            labels: labels,
-            colors: ["#ff0099", "#ff9900", "#ffe500", "#00ff66", "#33001f"],
-            fill: {
-              opacity: 1,
-            },
-            stroke: {
-              width: 1,
-              colors: undefined,
-            },
-            yaxis: {
-              show: false,
-            },
-            legend: {
-              position: "bottom",
+              type: "bar",
+              height: 450,
+              width: 400,
             },
             plotOptions: {
-              polarArea: {
-                rings: {
-                  strokeWidth: 0,
-                },
-                spokes: {
-                  strokeWidth: 0,
+              bar: {
+                barHeight: "100%",
+                distributed: true,
+                horizontal: true,
+                dataLabels: {
+                  position: "bottom",
                 },
               },
             },
-            theme: {
-              monochrome: {
+            colors: ["#ff0099", "#ff9900", "#ffe500", "#00ff66", "#33001f"],
+            dataLabels: {
+              enabled: false,
+              textAnchor: "start",
+              style: {
+                colors: ["#000"],
+              },
+
+              offsetX: 0,
+              dropShadow: {
                 enabled: false,
-                shadeTo: "light",
-                shadeIntensity: 0.6,
+              },
+            },
+            stroke: {
+              width: 1,
+              colors: ["#fff"],
+            },
+            xaxis: {
+              categories: labels,
+            },
+            yaxis: {
+              labels: {
+                show: false,
+              },
+            },
+            tooltip: {
+              theme: "dark",
+              x: {
+                show: false,
+              },
+              y: {
+                title: {
+                  formatter: function () {
+                    return "";
+                  },
+                },
               },
             },
           };
@@ -79,9 +99,5 @@ export default function Chart() {
 
   const chartContainerStyle = "relative";
 
-  return (
-    <div id="chart" ref={chartRef} className={chartContainerStyle}>
-      {}
-    </div>
-  );
+  return <div id="chart" ref={chartRef} className={chartContainerStyle}></div>;
 }
