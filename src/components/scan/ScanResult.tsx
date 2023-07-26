@@ -154,7 +154,7 @@ export default function ScanResult({
               <motion.button
                 whileTap={{ scale: 0.9 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                className="absolute top-[25rem] mt-7 right-12 z-10"
+                className="absolute top-[25rem] mt-7 right-28 z-10"
                 onClick={clickEvent}
               >
                 <FaCheck className="w-10 h-10 text-gray-500 drop-shadow-xl" />
@@ -162,7 +162,7 @@ export default function ScanResult({
               <motion.button
                 whileTap={{ scale: 0.9 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                className="absolute top-[25rem] mt-7 right-28 z-10"
+                className="absolute top-[25rem] mt-7 right-12 z-10"
                 onClick={onRetryClickEvent}
               >
                 <FaUndoAlt className="w-10 h-10 text-gray-500 drop-shadow-xl" />
