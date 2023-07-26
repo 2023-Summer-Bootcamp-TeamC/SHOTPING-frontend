@@ -55,16 +55,16 @@ export default function LeftList() {
                 </div>
 
                 <img
-                  className="2xl:w-[6.25rem] 2xl:h-[7.8125rem] w-[4.25rem] h-[5.8125rem] mr-5"
+                  className="2xl:w-[6.25rem] 2xl:h-[7.8125rem] w-[4.25rem] h-[5.8125rem] mr-5 transition-all duration-700"
                   src={item.image_url}
                   alt="이미지"
                 />
-                <span className="2xl:text-[1.0625rem] text-[0.9rem] flex items-center font-semibold w-[40rem] mr-4">
+                <span className="2xl:text-[1.0625rem] text-[0.9rem] flex items-center font-semibold w-[40rem] mr-4 transition-all duration-700">
                   {item.product_name}
                 </span>
               </div>
               <div className="flex md:flex-row items-end justify-end w-[30%] ">
-                <div className="flex justify-center items-center xl:w-[6.5rem] w-[5rem] border rounded-[0.3125rem]">
+                <div className="flex justify-center items-center xl:w-[6.5rem] w-[5rem] border rounded-[0.3125rem] transition-all duration-700">
                   <CgMathMinus
                     className="mx-3 xl:text-[1rem] text-[0.7rem]"
                     style={{
@@ -74,7 +74,7 @@ export default function LeftList() {
                   />
 
                   <input
-                    className="text-center xl:w-[2rem] w-[1rem] xl:text-[1rem] text-[0.7rem] font-medium"
+                    className="text-center xl:w-[2rem] w-[1rem] xl:text-[1rem] text-[0.7rem] font-medium transition-all duration-700"
                     value={item.quantity}
                   />
 
