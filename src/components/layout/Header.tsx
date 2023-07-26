@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useNavigate, useLocation } from "react-router";
+import { persistor } from "../../index";
 
 /**
  * 헤더 (상단바)
@@ -8,6 +9,9 @@ import { useNavigate, useLocation } from "react-router";
 export function Header() {
   const navigate = useNavigate();
   const location = useLocation();
+  const purge = async () => {
+    await persistor.purge();
+  };
 
   return (
     <div className="sticky top-0 left-0 right-0 z-50 w-full h-20">
@@ -16,7 +20,14 @@ export function Header() {
           <motion.button
             whileTap={{ scale: 0.9 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
-            onClick={() => navigate("/")}
+            onClick={() => {
+              if (location.pathname === "/pay") {
+                purge();
+                navigate("/");
+              } else {
+                navigate("/");
+              }
+            }}
           >
             <span className="text-[#ff0099] text-2xl font-sans font-bold">
               SHOTPING
@@ -27,7 +38,14 @@ export function Header() {
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              onClick={() => navigate("/scan")}
+              onClick={() => {
+                if (location.pathname === "/pay") {
+                  purge();
+                  navigate("/scan");
+                } else {
+                  navigate("/scan");
+                }
+              }}
             >
               <div
                 className={`hover:font-semibold text-lg ${
@@ -44,7 +62,14 @@ export function Header() {
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              onClick={() => navigate("/list")}
+              onClick={() => {
+                if (location.pathname === "/pay") {
+                  purge();
+                  navigate("/list");
+                } else {
+                  navigate("/list");
+                }
+              }}
             >
               <div
                 className={`hover:font-semibold text-lg ${
@@ -61,7 +86,14 @@ export function Header() {
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              onClick={() => navigate("/buy")}
+              onClick={() => {
+                if (location.pathname === "/pay") {
+                  purge();
+                  navigate("/buy");
+                } else {
+                  navigate("/buy");
+                }
+              }}
             >
               <div
                 className={`hover:font-semibold text-lg ${

@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { CgMathMinus, CgMathPlus } from "react-icons/cg";
 import { AiFillCheckCircle, AiOutlineCheckCircle } from "react-icons/ai";
 import { RiCloseLine } from "react-icons/ri";
@@ -10,7 +9,6 @@ import {
   minusProduct,
   checkedProduct,
   unCheckedProduct,
-  totalProductPrice,
 } from "../../store/ProductSlice";
 
 /* 결제 페이지 왼쪽 레이아웃 리스트 */
@@ -24,16 +22,7 @@ export default function LeftList() {
     return state.buylist.productTotal;
   });
 
-  useEffect(() => {
-    dispatch(
-      totalProductPrice(
-        productList
-          .map((item) => item.product_price * item.quantity)
-          .reduce((acc, price) => acc + price, 0),
-      ),
-    );
-  }, [productList]);
-
+  console.log(productList);
   const dispatch = useDispatch();
 
   return (
