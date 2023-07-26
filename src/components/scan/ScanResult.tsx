@@ -124,6 +124,25 @@ export default function ScanResult({
     }
   };
 
+  const onRetryClickEvent = () => {
+    setLoading(true);
+    if (feedbackBoolean !== undefined && feedback !== "") {
+      axios
+        .post("/api/v1/feedback", {
+          data_id: dataId,
+          iscorrect: feedbackBoolean,
+          feedback_text: feedback,
+        })
+        .then((response) => {
+          console.log(response);
+          setLoading(false);
+          onRetry();
+        });
+    } else {
+      onRetry();
+    }
+  };
+
   if (loading) {
     return <Loading />;
   } else {
@@ -144,7 +163,7 @@ export default function ScanResult({
                 whileTap={{ scale: 0.9 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
                 className="absolute top-[25rem] mt-7 right-28 z-10"
-                onClick={onRetry}
+                onClick={onRetryClickEvent}
               >
                 <FaUndoAlt className="w-10 h-10 text-gray-500 drop-shadow-xl" />
               </motion.button>
@@ -165,7 +184,7 @@ export default function ScanResult({
                   whileTap={{ scale: 0.9 }}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
                   className="relative z-10"
-                  onClick={onRetry}
+                  onClick={onRetryClickEvent}
                 >
                   <FaUndoAlt className="w-14 h-14 text-gray-100 drop-shadow-xl" />
                 </motion.button>
