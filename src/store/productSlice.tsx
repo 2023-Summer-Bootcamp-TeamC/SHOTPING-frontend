@@ -44,6 +44,16 @@ const BuyListSlice = createSlice({
       );
     },
 
+    deleteUnSelectProduct: (state, action) => {
+      const selectedProductIds = state.products
+        .filter((item) => item.selected === false)
+        .map((item) => item.id);
+
+      state.products = state.products.filter(
+        (item) => !selectedProductIds.includes(item.id),
+      );
+    },
+
     plusProduct: (state, action) => {
       const index = state.products.findIndex(
         (item) => item.id === action.payload,
@@ -111,6 +121,7 @@ export const {
   addProduct,
   deleteProduct,
   deleteSelectProduct,
+  deleteUnSelectProduct,
   plusProduct,
   minusProduct,
   checkedProduct,

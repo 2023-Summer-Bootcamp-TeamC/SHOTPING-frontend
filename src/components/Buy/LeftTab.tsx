@@ -27,10 +27,6 @@ export default function LeftTab() {
     return state.buylist.products;
   });
 
-  const total = useSelector((state: RootState) => {
-    return state.buylist.productTotal;
-  });
-
   useEffect(() => {
     dispatch(
       totalProductPrice(
