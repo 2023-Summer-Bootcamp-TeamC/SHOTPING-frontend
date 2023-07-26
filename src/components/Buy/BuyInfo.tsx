@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store";
-import { totalProductPrice } from "../../store/productSlice";
+import { totalProductPrice } from "../../store/ProductSlice";
 
 /* 결제 페이지 오른쪽 레이아웃 결제 정보 */
 

@@ -4,8 +4,8 @@ import ScanFailLayout from "../components/scan/ScanfailLayout";
 
 export default function ScanFailPage() {
   return (
-    <div>
+    <>
       <ScanFailLayout />
-    </div>
+    </>
   );
 }

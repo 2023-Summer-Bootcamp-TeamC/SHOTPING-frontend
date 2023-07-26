@@ -11,7 +11,7 @@ import {
   checkedProduct,
   unCheckedProduct,
   totalProductPrice,
-} from "../../store/productSlice";
+} from "../../store/ProductSlice";
 
 /* 결제 페이지 왼쪽 레이아웃 리스트 */
 
