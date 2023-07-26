@@ -24,16 +24,17 @@ export default function LeftList() {
     return state.buylist.productTotal;
   });
 
-  useEffect(() => {
-    dispatch(
-      totalProductPrice(
-        productList
-          .map((item) => item.product_price * item.quantity)
-          .reduce((acc, price) => acc + price, 0),
-      ),
-    );
-  }, [productList]);
+  // useEffect(() => {
+  //   dispatch(
+  //     totalProductPrice(
+  //       productList
+  //         .map((item) => item.product_price * item.quantity)
+  //         .reduce((acc, price) => acc + price, 0),
+  //     ),
+  //   );
+  // }, [productList]);
 
+  console.log(productList);
   const dispatch = useDispatch();
 
   return (

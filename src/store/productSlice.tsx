@@ -58,9 +58,17 @@ const BuyListSlice = createSlice({
         state.products[index].quantity--;
       }
     },
+
     totalProductPrice: (state, action) => {
-      state.productTotal = action.payload;
+      const selectedProducts = state.products.filter((item) => item.selected);
+
+      const totalPrice = selectedProducts.reduce((acc, product) => {
+        return acc + product.product_price * product.quantity;
+      }, 0);
+
+      state.productTotal = totalPrice;
     },
+
     checkedProduct: (state, action) => {
       const index = state.products.findIndex(
         (item) => item.id === action.payload,
