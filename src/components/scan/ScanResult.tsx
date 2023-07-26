@@ -147,8 +147,8 @@ export default function ScanResult({
     return <Loading />;
   } else {
     return (
-      <div className="flex flex-col bg-white drop-shadow-xl border rounded-3xl w-[37rem] 2xl:w-[89.5rem] h-45rem justify-center items-center">
-        <div className="grid grid-cols-2 gap-10 p-10 w-full h-45rem border-black">
+      <div className="flex flex-col bg-white drop-shadow-xl border rounded-3xl w-[44rem] 2xl:w-[89.5rem] h-45rem justify-center items-center transition-all duration-700">
+        <div className="grid grid-cols-2 gap-10 p-10 w-full h-45rem border-black transition-all duration-700">
           {isMobile ? (
             <>
               <motion.button
@@ -191,9 +191,9 @@ export default function ScanResult({
               </div>
             </div>
           )}
-          <div className="flex flex-col space-y-16 2xl:space-y-10">
-            <div className="border row-end-3 row-span-2 rounded-3xl w-[32rem] h-[23.5rem] 2xl:w-full 2xl:h-[25rem] p-4">
-              <div className="overflow-y-auto scrollbar-hide scroll-smooth w-[30rem] h-[20rem] 2xl:w-full 2xl:h-full">
+          <div className="flex flex-col space-y-16 2xl:space-y-10 transition-all duration-700">
+            <div className="border row-end-3 row-span-2 rounded-3xl w-[39rem] h-[23.5rem] 2xl:w-full 2xl:h-[25rem] p-4 transition-all duration-700">
+              <div className="overflow-y-auto scrollbar-hide scroll-smooth w-[37rem] h-[20rem] 2xl:w-full 2xl:h-full transition-all duration-700">
                 {predictData.map((predictData) => {
                   return (
                     <ScanList
@@ -206,7 +206,7 @@ export default function ScanResult({
                 })}
               </div>
             </div>
-            <div className="border rounded-3xl w-[32rem] h-12.5rem p-5 bg-gray-100 2xl:w-[41rem]">
+            <div className="border rounded-3xl w-[39rem] h-12.5rem p-5 bg-gray-100 2xl:w-[41rem]">
               <Feedback
                 onSelectBoolean={handleBoolean}
                 onSelectFeedback={handleFeedback}
