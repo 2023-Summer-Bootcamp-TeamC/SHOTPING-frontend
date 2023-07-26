@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Chart from "./chart";
-import Ranking from "./ranking";
+import Chart from "./Chart";
+import Ranking from "./Ranking";
 
 /* 메인 지금 인기있는 상품 눌렀을 때 나오는 모달 */
 
@@ -18,7 +18,7 @@ export default function Modal({ setIsModalOpen }: MainModalProps) {
       onClick={setIsModalOpen}
     >
       <div className="w-[35rem] md:modalContent md:w-[60rem] md:h-[40rem] md:mt-16 bg-white rounded-xl flex flex-col justify-center items-center">
-        <div className="mt-2 mb-[1rem] text-2xl font-semibold md:mb-2">
+        <div className="mt-12 mb-[1rem] text-2xl font-semibold 2xl:mb-2 md:mt-4 transition-all duration-700">
           지금 인기있는 상품들이에요!
         </div>
         <div className="flex">
@@ -27,7 +27,7 @@ export default function Modal({ setIsModalOpen }: MainModalProps) {
               <Chart />
             </div>
           </div>
-          <div className="mobile mb-2 md:ranking md:w-[27rem] md:h-[32rem] md:ml-4">
+          <div className="mobile mb-4 md:ranking md:w-[27rem] md:h-[32rem] md:ml-4">
             <Ranking />
           </div>
         </div>
