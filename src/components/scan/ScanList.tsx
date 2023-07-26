@@ -1,13 +1,12 @@
-import React from "react";
 import { predictResultProps } from "./ScanResult";
 
+/* 상품 인식 결과 리스트의 제품 컴포넌트 */
+
 export default function ScanList({
-  id,
   product_name,
   product_price,
   image_url,
 }: predictResultProps) {
-  console.log("imgUrl(ScanList)", image_url);
   return (
     <div className="flex flex-col">
       <div className=" flex items-center space-x-9 place-content-center p-4 pr-1">

@@ -1,7 +1,7 @@
-import React, { useState } from "react";
 import { SearchBox } from "../components/list/SearchBox";
-import ProductBox from "../components/list/ProductBox";
 import ProductKey from "../components/list/ProductKey";
+
+/* 상품 리스트 페이지  */
 
 export default function ListPage() {
   return (

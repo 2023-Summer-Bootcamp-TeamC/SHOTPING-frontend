@@ -1,6 +1,10 @@
-import React, { useState, useCallback } from "react";
+import { useState, useCallback } from "react";
 import { TfiPlus } from "react-icons/tfi";
 import Modal from "./Modal";
+
+/* 제품 컴포넌트
+  클릭 시 제품을 담기 위한 모달 열림
+*/
 
 function useBodyScrollLock() {
   const lockScroll = useCallback(() => {

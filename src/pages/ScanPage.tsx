@@ -1,10 +1,9 @@
-import React from "react";
-import { motion } from "framer-motion";
 import { useState } from "react";
 import ScanStart from "../components/scan/ScanStart";
 import Scanning from "../components/scan/Scanning";
 import ScanResult from "../components/scan/ScanResult";
-import axios from "axios";
+
+/* 상품 인식 페이지 */
 
 function ScanPage() {
   const [isScan, setIsScan] = useState(false);
@@ -20,18 +19,15 @@ function ScanPage() {
   const handleScanComplete = () => {
     setIsScan(false);
     setIsResult(true);
-    console.log("Scan Complete!");
   };
 
   const handleFormData = (file: FormData) => {
-    console.log("전달된 formData : ", file);
     if (file) {
       setImgFormData(file);
     }
   };
 
   const handleImage = (image: string) => {
-    console.log("전달된 이미지 : ", image);
     if (image) {
       setImage(image);
     }

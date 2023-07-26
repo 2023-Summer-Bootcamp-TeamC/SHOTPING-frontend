@@ -1,6 +1,5 @@
-import { configureStore, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { persistReducer, PURGE } from "redux-persist";
-import storage from "redux-persist/lib/storage";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { PURGE } from "redux-persist";
 import { BuyProduct } from "../components/buy/BuyList";
 
 interface BuyCheckProps {
