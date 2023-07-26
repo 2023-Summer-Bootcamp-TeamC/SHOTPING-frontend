@@ -34,23 +34,19 @@ export default function LeftList() {
       ) : (
         productList.map((item, index) => (
           <div key={item.id}>
-            <div className="flex my-4">
+            <div className="flex my-[1rem]">
               <div className="flex w-[70%]">
-                <div>
+                <div className="flex items-center mr-5">
                   {item.selected ? (
                     <AiFillCheckCircle
-                      size="1.875rem"
-                      color="#FF0099 "
-                      className="mt-12 mr-5"
+                      className="text-[1.875rem] text-[#FF0099]"
                       onClick={() => {
                         dispatch(unCheckedProduct(item.id));
                       }}
                     />
                   ) : (
                     <AiOutlineCheckCircle
-                      size="1.875rem"
-                      color="#BDBDBD "
-                      className="mt-12 mr-5"
+                      className="text-[1.875rem] text-[#BDBDBD]"
                       onClick={() => {
                         dispatch(checkedProduct(item.id));
                       }}
