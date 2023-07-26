@@ -27,8 +27,8 @@ export default function RightLayout() {
   const dispatch = useDispatch();
 
   return (
-    <div className="mb-5 2xl:h-[80%] h-[60%]  ">
-      <div className="flex justify-between p-5 border 2xl:h-[85%] h-[62%]  border-x-[#D0D0D0] border-t-[#D0D0D0] font-semibold text-[1.125rem]">
+    <div className="mb-5 2xl:h-[80%] h-[60%] transition-all duration-700 ">
+      <div className="flex justify-between p-5 border 2xl:h-[85%] h-[62%]  border-x-[#D0D0D0] border-t-[#D0D0D0] font-semibold text-[1.125rem] ">
         <span className="2xl:mt-3">상품금액</span>
         <span className="2xl:mt-3">{total.toLocaleString()}원</span>
       </div>
