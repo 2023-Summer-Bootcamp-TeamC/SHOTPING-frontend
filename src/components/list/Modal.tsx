@@ -67,15 +67,15 @@ export default function Modal({
       style={{ cursor: "default" }}
     >
       <div
-        className="modalContent w-[30rem] h-[25rem] bg-white rounded-3xl pt-7 pl-7"
+        className="modalContent w-[30rem] h-[25rem] bg-white rounded-3xl pt-7 pl-[1.97rem]"
         title={productName}
       >
-        <div>
-          <div className="productName w-[17rem] h-[6.5rem] text-left text-3xl">
+        <div className="border w-[26rem]">
+          <div className="productName border w-full h-[6.5rem] text-left text-3xl">
             {productName}
           </div>
           <br />
-          <div className="flex w-[5.5rem] h-[2rem] border rounded text-right ml-auto mr-12 mt-4">
+          <div className="flex w-[5.5rem] h-[2rem] border rounded text-right ml-auto mt-4">
             <div className="minus pl-[1.1rem]" onClick={decreaseCount}>
               <button className="text-xl">-</button>
             </div>
@@ -84,10 +84,10 @@ export default function Modal({
               <button className="text-xl">+</button>
             </div>
           </div>
-          <div className="price w-full text-right text-3xl pt-[1.5rem] pr-12 pb-[3.3rem]">
+          <div className="price border w-full h-[1rem] text-right text-3xl mt-10 pb-[4.3rem]">
             <b>{(price * count).toLocaleString()} 원</b>
           </div>
-          <div className="flex w-[26.5rem] h-[3.5rem] text-center justify-center">
+          <div className="flex border w-full h-[3.4rem] text-center justify-center">
             <button
               className="w-[18rem] border border-slate-600 rounded text-center text-xl hover:bg-[#EAEAEA] pt-1.5 pb-1.5 mr-2"
               onClick={closeModal}
