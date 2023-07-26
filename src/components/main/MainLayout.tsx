@@ -39,18 +39,18 @@ export default function MainLayout() {
   return (
     <div className="flex flex-col justify-center items-center h-full ml-38">
       <div
-        className={`flex ${
-          isMobile ? "flex-col-reverse transition-all duration-700" : "flex-row"
+        className={`flex transition-all duration-700 ${
+          isMobile ? "flex-col-reverse" : "flex-row"
         }`}
       >
         <div
-          className={`text ${
-            isMobile ? "w-full transition-all duration-700" : "w-1/2"
+          className={`text transition-all duration-700 ${
+            isMobile ? "w-full" : "w-1/2"
           } h-full flex flex-col justify-center`}
         >
           <motion.div
-            className={`logo text-9xl font-medium mb-1 ${
-              isMobile ? "text-[6rem] transition-all duration-700" : ""
+            className={`logo text-9xl font-medium mb-1 transition-all duration-700 ${
+              isMobile ? "text-[6rem]" : ""
             }`}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -59,7 +59,7 @@ export default function MainLayout() {
             SHOTPING
           </motion.div>
           <motion.div
-            className="text-5xl md:text-6xl"
+            className="text-5xl transition-all duration-700 md:text-6xl"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 2, delay: 1.5 }}
@@ -70,7 +70,7 @@ export default function MainLayout() {
           </motion.div>
           <div className="button mt-8">
             <motion.button
-              className="popular border border-slate-300 rounded-full w-80 h-[3.7rem] mb-2 text-xl mt-[18rem] md:w-96 md:h-16 text-center md:text-2xl md:mt-20 md:mb-2 text-slate-600 flex items-center justify-center hover:bg-[#EAEAEA]"
+              className="popular transition-all duration-700 border border-slate-300 rounded-full w-80 h-[3.7rem] mb-2 text-xl mt-[18rem] md:w-96 md:h-16 text-center md:text-2xl md:mt-20 md:mb-2 text-slate-600 flex items-center justify-center hover:bg-[#EAEAEA]"
               onClick={handleOpenModal}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -79,7 +79,7 @@ export default function MainLayout() {
               지금 인기있는 상품
             </motion.button>
             <motion.button
-              className="scan border rounded-full w-80 h-[4rem] text-xl mr-44 md:w-96 md:h-16 text-center md:text-2xl font-semibold text-white bg-[#ff0099] flex items-center justify-center hover:bg-[#D60080]"
+              className="scan transition-all duration-700 border rounded-full w-80 h-[4rem] text-xl mr-44 md:w-96 md:h-16 text-center md:text-2xl font-semibold text-white bg-[#ff0099] flex items-center justify-center hover:bg-[#D60080]"
               onClick={scanNavigate}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -90,9 +90,9 @@ export default function MainLayout() {
             </motion.button>
           </div>
         </div>
-        <div className="animate w-full justify-center md:ml-20 md:transition-all md:duration-300">
+        <div className="animate transition-all duration-700 w-full justify-center md:ml-20 md:transition-all md:duration-300">
           <div
-            className={`lottie invisible md:visible ${
+            className={`lottie invisible md:visible transition-all duration-700${
               isMobile ? "w-1/12 hidden" : ""
             }`}
           >
