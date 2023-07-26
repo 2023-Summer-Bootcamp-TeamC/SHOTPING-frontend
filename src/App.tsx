@@ -7,6 +7,7 @@ import ScanFailPage from "./pages/ScanFailPage";
 import BuyPage from "./pages/BuyPage";
 import PayPage from "./pages/PayPage";
 import PayFailPage from "./pages/PayFailPage";
+import NowPayingPage from "./pages/NowPayingPage";
 import { Header } from "./components/layout/Header";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -26,6 +27,7 @@ function App() {
             <Route path="/buy" element={<BuyPage />} />
             <Route path="/pay" element={<PayPage />} />
             <Route path="/payfail" element={<PayFailPage />} />
+            <Route path="/nowpaying" element={<NowPayingPage />} />
           </Routes>
         </section>
       </div>

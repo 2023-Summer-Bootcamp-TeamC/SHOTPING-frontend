@@ -11,7 +11,10 @@ export default function Loading() {
         justifyContent: "center",
       }}
     >
-      <Lottie className="max-w-[15rem]" animationData={lottie} />
+      <Lottie
+        className="max-w-[10rem] md:max-w-[15rem]"
+        animationData={lottie}
+      />
     </div>
   );
 }
