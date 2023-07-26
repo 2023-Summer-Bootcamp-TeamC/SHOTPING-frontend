@@ -38,15 +38,19 @@ export default function MainLayout() {
 
   return (
     <div className="flex flex-col justify-center items-center h-full ml-38">
-      <div className={`flex ${isMobile ? "flex-col-reverse" : "flex-row"}`}>
+      <div
+        className={`flex ${
+          isMobile ? "flex-col-reverse transition-all duration-700" : "flex-row"
+        }`}
+      >
         <div
           className={`text ${
-            isMobile ? "w-full" : "w-1/2"
+            isMobile ? "w-full transition-all duration-700" : "w-1/2"
           } h-full flex flex-col justify-center`}
         >
           <motion.div
             className={`logo text-9xl font-medium mb-1 ${
-              isMobile ? "text-[6rem]" : ""
+              isMobile ? "text-[6rem] transition-all duration-700" : ""
             }`}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
