@@ -36,26 +36,56 @@ export default function BuyButton() {
     }
   };
 
-  const handlePayButtonClick = async () => {
-    if (productList.length === 0) {
-      alert("상품을 담은 후에 시도해주세요.");
-    } else {
-      const allUnselected = productList.every((item) => !item.selected);
+  // const handlePayButtonClick = async () => {
+  //   if (productList.length === 0) {
+  //     alert("상품을 담아주세요.");
+  //   } else {
+  //     const allUnselected = productList.every((item) => !item.selected);
 
-      if (allUnselected) {
-        alert("선택된 상품이 없습니다.");
-      } else {
-        await handleKakaoPay();
-      }
-    }
+  //     if (allUnselected) {
+  //       alert("상품을 선택해주세요.");
+  //     } else {
+  //       await handleKakaoPay();
+  //     }
+  //   }
+  // };
+  const handlePayButtonClick = async () => {
+    await handleKakaoPay();
   };
+
+  // Determine the button styles based on the conditions
+  const buttonStyles =
+    productList.length === 0 || productList.every((item) => !item.selected)
+      ? "bg-[#CCCCCC] font-semibold text-[1.25rem] cursor-not-allowed"
+      : "bg-[#FF0099] font-semibold text-[1.25rem] hover:bg-[#D60080]";
+
+  const buttonText =
+    productList.length === 0
+      ? "상품을 담아주세요"
+      : productList.every((item) => !item.selected)
+      ? "상품을 선택해주세요"
+      : "결제하기";
 
   return (
     <button
-      className="bg-[FF0099] font-semibold text-[1.25rem] hover:bg-[D60080] text-white  2xl:h-[10%] h-[30%] "
-      onClick={handlePayButtonClick}
+      className={`2xl:h-[10%] h-[30%] text-white ${buttonStyles}`}
+      onClick={
+        productList.length !== 0 && !productList.every((item) => !item.selected)
+          ? handlePayButtonClick
+          : undefined
+      }
+      disabled={
+        productList.length === 0 || productList.every((item) => !item.selected)
+      }
+      style={{
+        cursor:
+          productList.length === 0 ||
+          productList.every((item) => !item.selected)
+            ? "default"
+            : "pointer",
+      }}
     >
-      결제하기
+      {buttonText}
     </button>
   );
 }

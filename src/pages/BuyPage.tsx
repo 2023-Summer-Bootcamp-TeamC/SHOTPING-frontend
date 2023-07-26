@@ -12,10 +12,9 @@ export default function BuyPage() {
       <div className="flex 2xl:flex-row flex-col  w-[85%] h-[90%] ">
         <div className="flex flex-col 2xl:w-[75%] w-[100%] 2xl:h-[100%] h-[80%] mt-[1rem]">
           <LeftTab />
-          <hr className="border-[#BDBDBD]" />
           <LeftList />
         </div>
-        <div className="flex flex-col 2xl:mt-[90px] mt-[0px] 2xl:ml-10  w-[100%] 2xl:w-[25%] 2xl:h-[80%] h-[20%] ">
+        <div className="flex flex-col 2xl:mt-[90px] mt-[0px] 2xl:ml-[2%] ml-[0%] 2xl:w-[23%] w-[100%]  2xl:h-[80%] h-[20%] ">
           <BuyInfo />
           <BuyButton />
         </div>
