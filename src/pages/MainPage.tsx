@@ -4,8 +4,8 @@ import MainLayout from "../components/main/MainLayout";
 
 export default function MainPage() {
   return (
-    <div>
+    <>
       <MainLayout />
-    </div>
+    </>
   );
 }
