@@ -11,7 +11,6 @@ export default function PayModalList() {
   const total = useSelector((state: RootState) => {
     return state.buylist.productTotal;
   });
-
   return (
     <div className="border border-gray-300  h-[550px] rounded-[40px]  ">
       <div className=" flex items-center border border-b-gray-300  h-[57px] rounded-t-[39px]">

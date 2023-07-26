@@ -1,7 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store";
-import { deleteUnSelectProduct } from "../../store/ProductSlice";
+
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 /* 결제 페이지 오른쪽 레이아웃 결제 버튼 */
 
@@ -15,6 +16,7 @@ export default function BuyButton() {
   });
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleKakaoPay = async () => {
     try {
@@ -24,7 +26,8 @@ export default function BuyButton() {
       const response = await axios.post("/api/v1/payment", paymentData);
       if (response.data && response.data.next_redirect_pc_url) {
         const nextUrl = response.data.next_redirect_pc_url;
-        window.open(nextUrl, "_parent");
+        navigate("/nowpaying");
+        window.location.replace(nextUrl);
       } else {
         console.error("카카오 API 응답 오류:", response.data);
       }
@@ -42,7 +45,6 @@ export default function BuyButton() {
       if (allUnselected) {
         alert("선택된 상품이 없습니다.");
       } else {
-        await dispatch(deleteUnSelectProduct(productList));
         await handleKakaoPay();
       }
     }

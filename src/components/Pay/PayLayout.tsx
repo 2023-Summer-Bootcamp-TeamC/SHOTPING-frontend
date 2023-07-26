@@ -1,13 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../store/store";
 import { persistor } from "../../index";
 import PayModal from "../../components/pay/PayModal";
 import axios from "axios";
 import Lottie from "lottie-react";
 import lottie from "../../assets/lottie/CircleCheck.json";
-
+import { deleteUnSelectProduct } from "../../store/ProductSlice";
 /* 
   결제 성공 레이아웃
   모달을 통해 결제 내역 확인 및 메인으로 돌아가기 
@@ -21,6 +21,8 @@ export default function PayLayout() {
   const navigate = useNavigate();
   const [modalOpen, setModalOpen] = useState(false);
 
+  const dispatch = useDispatch();
+
   const handleModalOpen = () => {
     setModalOpen(true);
   };
@@ -33,11 +35,13 @@ export default function PayLayout() {
     return state.buylist.products;
   });
 
-  const modifiedProductList = productList.map((product) => ({
-    product_id: product.id,
-    product_buy: product.quantity,
-    product_stock: product.quantity,
-  }));
+  const modifiedProductList = productList
+    .filter((product) => product.selected === true)
+    .map((product) => ({
+      product_id: product.id,
+      product_buy: product.quantity,
+      product_stock: product.quantity,
+    }));
 
   const total = useSelector((state: RootState) => {
     return state.buylist.productTotal;
@@ -49,15 +53,22 @@ export default function PayLayout() {
 
   const updateBuyAndStock = async () => {
     try {
-      const response = await axios.post(`/api/v1/order`, {
-        data: modifiedProductList,
-      });
+      await axios
+        .post(`/api/v1/order`, {
+          data: modifiedProductList,
+        })
+        .then((response) => {
+          console.log(response.data);
+        });
+      await dispatch(deleteUnSelectProduct(productList));
     } catch (error) {
       console.error("재고 업데이트 에러:", error);
     }
   };
 
-  updateBuyAndStock();
+  useEffect(() => {
+    updateBuyAndStock();
+  }, []);
 
   return (
     <div className={flexColumnCenterStyle()}>
