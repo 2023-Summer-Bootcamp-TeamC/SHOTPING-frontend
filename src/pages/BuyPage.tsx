@@ -15,7 +15,7 @@ export default function BuyPage() {
           <hr className="border-[#BDBDBD]" />
           <LeftList />
         </div>
-        <div className="flex flex-col 2xl:mt-[90px] mt-[0px] 2xl:ml-10  w-[100%] 2xl:w-[25%] 2xl:h-[80%] h-[20%] ">
+        <div className="flex flex-col 2xl:mt-[90px] mt-[0px] 2xl:ml-[0.8rem] ml-[0rem] w-[100%] 2xl:w-[25%] 2xl:h-[80%] h-[20%] ">
           <BuyInfo />
           <BuyButton />
         </div>
