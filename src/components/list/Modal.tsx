@@ -70,8 +70,8 @@ export default function Modal({
         className="modalContent w-[30rem] h-[25rem] bg-white rounded-3xl pt-7 pl-[1.97rem]"
         title={productName}
       >
-        <div className="border w-[26rem]">
-          <div className="productName border w-full h-[6.5rem] text-left text-3xl">
+        <div className="w-[26rem]">
+          <div className="productName w-full h-[6.5rem] text-left text-3xl">
             {productName}
           </div>
           <br />
@@ -84,10 +84,10 @@ export default function Modal({
               <button className="text-xl">+</button>
             </div>
           </div>
-          <div className="price border w-full h-[1rem] text-right text-3xl mt-10 pb-[4.3rem]">
+          <div className="price w-full h-[1rem] text-right text-3xl mt-10 pb-[4.3rem]">
             <b>{(price * count).toLocaleString()} 원</b>
           </div>
-          <div className="flex border w-full h-[3.4rem] text-center justify-center">
+          <div className="flex w-full h-[3.4rem] text-center justify-center">
             <button
               className="w-[18rem] border border-slate-600 rounded text-center text-xl hover:bg-[#EAEAEA] pt-1.5 pb-1.5 mr-2"
               onClick={closeModal}
