@@ -55,7 +55,7 @@ export default function Modal({
         product_name: productName,
         product_price: price,
         quantity: count,
-        selected: false,
+        selected: true,
       }),
     );
     addToCart();

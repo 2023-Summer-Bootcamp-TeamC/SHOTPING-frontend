@@ -100,7 +100,7 @@ export default function ScanResult({
                 product_name: product.product_name,
                 product_price: product.product_price,
                 image_url: product.image_url,
-                selected: false,
+                selected: true,
                 quantity: 1,
               }),
             );
@@ -115,7 +115,7 @@ export default function ScanResult({
             product_name: product.product_name,
             product_price: product.product_price,
             image_url: product.image_url,
-            selected: false,
+            selected: true,
             quantity: 1,
           }),
         );
