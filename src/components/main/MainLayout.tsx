@@ -38,7 +38,7 @@ export default function MainLayout() {
   });
 
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <div className="flex flex-col justify-center items-center h-full ml-38">
         <div
           className={`flex transition-all duration-700 ${
@@ -94,7 +94,7 @@ export default function MainLayout() {
           </div>
           <div className="animate transition-all duration-700 w-full justify-center md:ml-20 md:transition-all md:duration-300">
             <div
-              className={`lottie invisible md:visible transition-all duration-700${
+              className={` invisible md:visible transition-all duration-700${
                 isMobile ? "w-1/12 hidden" : ""
               }`}
             >
@@ -106,29 +106,35 @@ export default function MainLayout() {
       </div>
       <div className="flex flex-col">
         {/*상품을 인식하세요 부분 */}
-        <div className="flex flex-row w-full h-full justify-between items-right">
-          <div className="flex justify-start justify-items-start">
-            <Lottie
-              className="w-[40rem] mt-[15rem]"
-              animationData={ScanLottie}
-            />
+        <div className="flex flex-row w-full h-full justify-center items-right">
+          <div className="lg:flex lg:justify-start lg:justify-items-start">
+            <div
+              className={` invisible md:visible transition-all duration-700${
+                isMobile ? "w-1/12 hidden" : ""
+              }`}
+            >
+              <Lottie
+                className="w-[40rem] mt-[15rem] mr-[5rem]"
+                animationData={ScanLottie}
+              />
+            </div>
           </div>
-          <div className="flex flex-col justify-center items-right h-full mt-[17rem] mr-[10rem] ">
-            <p className="text-[7.5rem] font-semibold text-right text-black mb-[2rem]">
+          <div className="flex flex-col justify-center lg:items-right h-full mt-[17rem] lg:mr-[10rem]">
+            <p className="text-[3.3rem] lg:text-[7.5rem]  font-semibold text-center lg:text-right text-black mb-[1rem] lg:mb-[2rem]">
               상품을 인식하세요.
             </p>
-            <span className="text-[2.5rem] font-medium text-right text-black">
+            <span className="text-[2rem] lg:text-[2.5rem] font-medium text-center lg:text-right text-black">
               원하는 상품을 카메라에 인식시켜
             </span>
-            <span className="text-[2.5rem] font-medium text-right text-black">
+            <span className="text-[2rem] lg:text-[2.5rem] font-medium text-center lg:text-right text-black">
               쉽게 결제할 수 있습니다.
             </span>
             <br />
-            <div className="flex text-right justify-end mb-[17rem]">
+            <div className="flex text-center justify-center lg:text-right lg:justify-end mb-[17rem]">
               <motion.button
                 whileTap={{ scale: 0.9 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                className="flex items-center font-semibold text-[#ff0099] tracking-[0.5rem] text-[2.5rem] mt-[2rem]"
+                className="flex items-center font-semibold text-[#ff0099] tracking-[0.5rem] text-[1.8rem] lg:text-[2.5rem] lg:mt-[2rem] "
                 onClick={() => navigate("/scan")}
               >
                 인식하러 가기
@@ -138,23 +144,23 @@ export default function MainLayout() {
           </div>
         </div>
         {/*상품을 담아보세요 부분 */}
-        <div className="flex flex-row w-full h-full justify-center items-left relative">
-          <div className="flex flex-col z-20 justify-center items-left h-full mt-[17rem] mr-[33rem]">
-            <p className="text-[7.5rem] font-semibold text-left text-black mt-0 mb-[2rem]">
+        <div className="flex flex-row w-full h-full justify-center items-center lg:items-left relative transition-all duration-700">
+          <div className="flex flex-col z-20 justify-center items-left h-full mt-[17rem] lg:mr-[33rem]">
+            <p className="text-[3.3rem] lg:text-[7.5rem] font-semibold text-center lg:text-left text-black mt-0 mb-[2rem]">
               상품을 담아보세요.
             </p>
-            <span className="text-[2.5rem] font-medium text-left text-black">
+            <span className="text-[2rem] lg:text-[2.5rem] font-medium text-center lg:text-left text-black">
               모든 상품들을 리스트로 한눈에,
             </span>
-            <span className="text-[2.5rem] font-medium text-left text-black">
+            <span className="text-[2rem] lg:text-[2.5rem] font-medium text-center lg:text-left text-black">
               원하는 상품을 검색해서 쉽게 찾을 수 있습니다.
             </span>
             <br />
-            <div className="flex text-left justify-start mb-[17rem]">
+            <div className="flex text-center justify-center lg:text-left lg:justify-start mb-[17rem]">
               <motion.button
                 whileTap={{ scale: 0.9 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                className="flex items-center font-semibold text-[#ff0099] tracking-[0.5rem] text-[2.5rem]  mt-20"
+                className="flex items-center font-semibold text-[#ff0099] tracking-[0.5rem] text-[1.8rem] lg:text-[2.5rem]"
                 onClick={() => navigate("/list")}
               >
                 상품 보러 가기
@@ -162,44 +168,54 @@ export default function MainLayout() {
               </motion.button>
             </div>
           </div>
-          <motion.div
-            className="absolute top-0 right-[-140]"
-            animate={{ rotate: -25 }}
+          <div
+            className={` invisible md:visible transition-all duration-700${
+              isMobile ? "w-1/12 hidden" : ""
+            }`}
           >
-            <img
-              src="https://i.postimg.cc/nzjg1kjS/2023-07-27-160611.png"
-              className="w-[80rem] pt-[10rem] ml-[20rem]"
-            />
-          </motion.div>
+            <motion.div
+              className="absolute top-0 right-[-140]"
+              animate={{ rotate: -25 }}
+            >
+              <img
+                src="https://i.postimg.cc/nzjg1kjS/2023-07-27-160611.png"
+                className="w-[80rem] pt-[10rem] ml-[20rem] "
+              />
+            </motion.div>
+          </div>
         </div>
 
         {/*인기 상품 보러가기 부분 */}
-        <div className="flex flex-row w-full h-full justify-center items-right">
-          <div className="">
+        <div className="flex flex-row w-full h-full justify-center lg:items-right transition-all duration-700">
+          <div
+            className={` invisible md:visible transition-all duration-700${
+              isMobile ? "w-1/12 hidden" : ""
+            }`}
+          >
             <img
               className="mt-[35rem] w-[40rem] h-[30rem]"
               src="https://i.postimg.cc/4y6WMLgW/2023-07-27-225947.png"
             ></img>
           </div>
-          <div className="flex flex-col justify-center items-right h-full mt-[17rem] ml-[4.5rem]">
-            <p className="text-[7.5rem] font-semibold text-right text-black">
+          <div className="flex flex-col justify-center lg:items-right h-full mt-[15rem] mb-[10rem] lg:mb-0 lg:mt-[17rem] lg:ml-[4.5rem]">
+            <p className="text-[3.3rem] lg:text-[7.5rem]  font-semibold text-center lg:text-right text-black">
               인기 있는 상품을
             </p>
-            <p className="text-[7.5rem] font-semibold text-right text-black">
+            <p className="text-[3.3rem] lg:text-[7.5rem]  font-semibold text-center lg:text-right mb-[2rem] text-black">
               구매하세요.
             </p>
-            <span className="text-[2.5rem] font-medium text-right text-black">
+            <span className="text-[2rem] lg:text-[2.5rem] font-medium text-center lg:text-right text-black">
               차트와 랭킹으로
             </span>
-            <span className="text-[2.5rem] font-medium text-right text-black">
+            <span className="text-[2rem] lg:text-[2.5rem] font-medium text-center lg:text-right text-black">
               많이 팔린 상품들을 확인할 수 있습니다.
             </span>
             <br />
-            <div className="flex text-right justify-end mb-[8rem]">
+            <div className="flex text-right justify-center lg:justify-end mb-[8rem]">
               <motion.button
                 whileTap={{ scale: 0.9 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                className="flex items-center font-semibold text-[#ff0099] tracking-[0.5rem] text-[2.5rem] mt-[5rem]"
+                className="flex items-center font-semibold text-[#ff0099] tracking-[0.5rem] text-[1.8rem] lg:text-[2.5rem] lg:mt-[5rem]"
                 onClick={handleOpenModal}
               >
                 인기 상품 보러 가기
