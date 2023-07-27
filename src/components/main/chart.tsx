@@ -33,7 +33,7 @@ export default function Chart() {
             chart: {
               type: "bar",
               height: 450,
-              width: 400,
+              width: 450,
             },
             plotOptions: {
               bar: {

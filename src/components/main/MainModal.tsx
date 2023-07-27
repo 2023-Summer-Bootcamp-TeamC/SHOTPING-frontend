@@ -22,13 +22,13 @@ export default function Modal({ setIsModalOpen }: MainModalProps) {
           지금 인기있는 상품들이에요!
         </div>
         <div className="flex">
+          <div className="mobile mb-4 mr-2 lg:ranking lg:w-[27rem] lg:h-[32rem] lg:ml-4">
+            <Ranking />
+          </div>
           <div className="lg:chartContainer">
-            <div className="hidden lg:chart lg:w-[27rem] lg:h-[32rem] lg:flex justify-center items-center h-full">
+            <div className="hidden ml-4 mr-6 lg:chart lg:w-[27rem] lg:h-[32rem] lg:flex justify-center items-center h-full">
               <Chart />
             </div>
-          </div>
-          <div className="mobile mb-4 lg:ranking lg:w-[27rem] lg:h-[32rem] lg:ml-4">
-            <Ranking />
           </div>
         </div>
       </div>
