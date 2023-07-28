@@ -45,7 +45,7 @@ export default function BuyModal({ onClose }: BuyModalProps) {
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              className="shadow-xl border border-[#000000] rounded-[40px]  transition-all duration-700
+              className="shadow-xl border border-[#000000] rounded-[4.5rem]  transition-all duration-700
               w-[15rem] h-[15rem] xl:w-[25rem] xl:h-[25rem] flex justify-center items-center"
             >
               <AiFillCamera
@@ -69,7 +69,7 @@ export default function BuyModal({ onClose }: BuyModalProps) {
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              className="shadow-xl border border-[#000000] rounded-[40px]   transition-all duration-700
+              className="shadow-xl border border-[#000000] rounded-[4.5rem]   transition-all duration-700
               w-[15rem] h-[15rem] xl:w-[25rem] xl:h-[25rem] flex justify-center items-center"
             >
               <AiOutlineUnorderedList
