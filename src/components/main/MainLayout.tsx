@@ -161,12 +161,10 @@ export default function MainLayout() {
           </div>
         </div>
         {/*상품을 담아보세요 부분 */}
-        <div
-          ref={ListRef}
-          className="flex flex-row w-full h-full justify-center items-center lg:items-left relative transition-all duration-700"
-        >
+        <div className="flex flex-row w-full h-full justify-center items-center lg:items-left relative transition-all duration-700">
           <div className="flex flex-col z-20 justify-center items-left h-full mt-[17rem] lg:mr-[33rem]">
             <motion.div
+              ref={ListRef}
               className="flex flex-col justify-center h-full"
               initial={{ x: -100, opacity: 0 }}
               animate={
