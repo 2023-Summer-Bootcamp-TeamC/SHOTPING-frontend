@@ -17,8 +17,8 @@ export default function Modal({ setIsModalOpen }: MainModalProps) {
       style={{ cursor: "default" }}
       onClick={setIsModalOpen}
     >
-      <div className="w-[35rem] lg:w-[60rem] lg:h-[40rem] lg:mt-16 bg-white rounded-lg flex flex-col justify-center items-center">
-        <div className="mt-12 mb-[1rem] text-2xl font-semibold 2lg:mb-2 lg:mt-4 transition-all duration-700">
+      <div className="w-[35rem] lg:w-[60rem] lg:h-[40rem] lg:mt-16 bg-white rounded-[1.25rem] flex flex-col justify-center items-center">
+        <div className="mt-12 mb-[1rem] text-2xl font-semibold lg:mb-2 lg:mt-4 transition-all duration-700">
           지금 인기있는 상품들이에요!
         </div>
         <div className="flex">

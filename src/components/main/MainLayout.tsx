@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import lottieData from "../../assets/lottie/OnlineShopping.json";
 import Modal from "./MainModal";
 import Lottie from "lottie-react";
@@ -12,6 +12,15 @@ import ScanLottie from "../../assets/lottie/ScanProduct.json";
 export default function MainLayout() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+
+  const ScanRef = useRef(null);
+  const isInView = useInView(ScanRef);
+
+  const ListRef = useRef(null);
+  const ListisInView = useInView(ListRef);
+
+  const RankRef = useRef(null);
+  const RankisInView = useInView(RankRef);
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -72,7 +81,7 @@ export default function MainLayout() {
             </motion.div>
             <div className="button mt-8">
               <motion.button
-                className="popular transition-all duration-700 rounded-full w-80 h-[3.7rem] mb-2 text-xl mt-[18rem] md:w-96 md:h-16 text-center md:text-2xl md:mt-20 md:mb-2 text-slate-600 flex items-center justify-center hover:bg-[#EAEAEA]"
+                className="popular transition-all duration-700 border rounded-full w-80 h-[3.7rem] mb-2 text-xl mt-[18rem] md:w-96 md:h-16 text-center md:text-2xl md:mt-20 md:mb-2 text-slate-600 flex items-center justify-center hover:bg-[#EAEAEA]"
                 onClick={handleOpenModal}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -108,7 +117,7 @@ export default function MainLayout() {
         {/*상품을 인식하세요 부분 */}
         <div className="flex flex-row w-full h-full justify-center items-right">
           <div className="lg:flex lg:justify-start lg:justify-items-start">
-            <div
+            <motion.div
               className={` invisible md:visible transition-all duration-700${
                 isMobile ? "w-1/12 hidden" : ""
               }`}
@@ -117,18 +126,26 @@ export default function MainLayout() {
                 className="w-[40rem] mt-[15rem] mr-[5rem]"
                 animationData={ScanLottie}
               />
-            </div>
+            </motion.div>
           </div>
           <div className="flex flex-col justify-center lg:items-right h-full mt-[17rem] lg:mr-[10rem]">
-            <p className="text-[3.3rem] lg:text-[7.5rem]  font-semibold text-center lg:text-right text-black mb-[1rem] lg:mb-[2rem]">
-              상품을 인식하세요.
-            </p>
-            <span className="text-[2rem] lg:text-[2.5rem] font-medium text-center lg:text-right text-black">
-              원하는 상품을 카메라에 인식시켜
-            </span>
-            <span className="text-[2rem] lg:text-[2.5rem] font-medium text-center lg:text-right text-black">
-              쉽게 결제할 수 있습니다.
-            </span>
+            <motion.div
+              ref={ScanRef}
+              className="flex flex-col justify-center lg:items-right h-full"
+              initial={{ x: 100, opacity: 0 }}
+              animate={isInView ? { x: 0, opacity: 1 } : { x: 100, opacity: 0 }}
+              transition={{ duration: 1.5 }}
+            >
+              <p className="text-[3.3rem] lg:text-[7.5rem]  font-semibold text-center lg:text-right text-black mb-[1rem] lg:mb-[2rem]">
+                상품을 인식하세요.
+              </p>
+              <span className="text-[2rem] lg:text-[2.5rem] font-medium text-center lg:text-right text-black">
+                원하는 상품을 카메라에 인식시켜
+              </span>
+              <span className="text-[2rem] lg:text-[2.5rem] font-medium text-center lg:text-right text-black">
+                쉽게 결제할 수 있습니다.
+              </span>
+            </motion.div>
             <br />
             <div className="flex text-center justify-center lg:text-right lg:justify-end mb-[17rem]">
               <motion.button
@@ -144,17 +161,29 @@ export default function MainLayout() {
           </div>
         </div>
         {/*상품을 담아보세요 부분 */}
-        <div className="flex flex-row w-full h-full justify-center items-center lg:items-left relative transition-all duration-700">
+        <div
+          ref={ListRef}
+          className="flex flex-row w-full h-full justify-center items-center lg:items-left relative transition-all duration-700"
+        >
           <div className="flex flex-col z-20 justify-center items-left h-full mt-[17rem] lg:mr-[33rem]">
-            <p className="text-[3.3rem] lg:text-[7.5rem] font-semibold text-center lg:text-left text-black mt-0 mb-[2rem]">
-              상품을 담아보세요.
-            </p>
-            <span className="text-[2rem] lg:text-[2.5rem] font-medium text-center lg:text-left text-black">
-              모든 상품들을 리스트로 한눈에,
-            </span>
-            <span className="text-[2rem] lg:text-[2.5rem] font-medium text-center lg:text-left text-black">
-              원하는 상품을 검색해서 쉽게 찾을 수 있습니다.
-            </span>
+            <motion.div
+              className="flex flex-col justify-center h-full"
+              initial={{ x: -100, opacity: 0 }}
+              animate={
+                ListisInView ? { x: 0, opacity: 1 } : { x: -100, opacity: 0 }
+              }
+              transition={{ duration: 1.5 }}
+            >
+              <p className="text-[3.3rem] lg:text-[7.5rem] font-semibold text-center lg:text-left text-black mt-0 mb-[2rem]">
+                상품을 담아보세요.
+              </p>
+              <span className="text-[2rem] lg:text-[2.5rem] font-medium text-center lg:text-left text-black">
+                모든 상품들을 리스트로 한눈에,
+              </span>
+              <span className="text-[2rem] lg:text-[2.5rem] font-medium text-center lg:text-left text-black">
+                원하는 상품을 검색해서 쉽게 찾을 수 있습니다.
+              </span>
+            </motion.div>
             <br />
             <div className="flex text-center justify-center lg:text-left lg:justify-start mb-[17rem]">
               <motion.button
@@ -186,7 +215,10 @@ export default function MainLayout() {
         </div>
 
         {/*인기 상품 보러가기 부분 */}
-        <div className="flex flex-row w-full h-full justify-center lg:items-right transition-all duration-700">
+        <div
+          ref={RankRef}
+          className="flex flex-row w-full h-full justify-center lg:items-right transition-all duration-700"
+        >
           <div
             className={` invisible md:visible transition-all duration-700${
               isMobile ? "w-1/12 hidden" : ""
@@ -198,18 +230,27 @@ export default function MainLayout() {
             ></img>
           </div>
           <div className="flex flex-col justify-center lg:items-right h-full mt-[15rem] mb-[10rem] lg:mb-0 lg:mt-[17rem] lg:ml-[4.5rem]">
-            <p className="text-[3.3rem] lg:text-[7.5rem]  font-semibold text-center lg:text-right text-black">
-              인기 있는 상품을
-            </p>
-            <p className="text-[3.3rem] lg:text-[7.5rem]  font-semibold text-center lg:text-right mb-[2rem] text-black">
-              구매하세요.
-            </p>
-            <span className="text-[2rem] lg:text-[2.5rem] font-medium text-center lg:text-right text-black">
-              차트와 랭킹으로
-            </span>
-            <span className="text-[2rem] lg:text-[2.5rem] font-medium text-center lg:text-right text-black">
-              많이 팔린 상품들을 확인할 수 있습니다.
-            </span>
+            <motion.div
+              className="flex flex-col justify-center lg:items-right h-full"
+              initial={{ x: 100, opacity: 0 }}
+              animate={
+                RankisInView ? { x: 0, opacity: 1 } : { x: 100, opacity: 0 }
+              }
+              transition={{ duration: 1.5 }}
+            >
+              <p className="text-[3.3rem] lg:text-[7.5rem]  font-semibold text-center lg:text-right text-black">
+                인기 있는 상품을
+              </p>
+              <p className="text-[3.3rem] lg:text-[7.5rem]  font-semibold text-center lg:text-right mb-[2rem] text-black">
+                구매하세요.
+              </p>
+              <span className="text-[2rem] lg:text-[2.5rem] font-medium text-center lg:text-right text-black">
+                차트와 랭킹으로
+              </span>
+              <span className="text-[2rem] lg:text-[2.5rem] font-medium text-center lg:text-right text-black">
+                많이 팔린 상품들을 확인할 수 있습니다.
+              </span>
+            </motion.div>
             <br />
             <div className="flex text-right justify-center lg:justify-end mb-[8rem]">
               <motion.button
