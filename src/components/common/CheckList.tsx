@@ -16,7 +16,7 @@ export default function CheckList({ onClose, isOpen }: CheckListProps) {
       className="flex justify-end items-center fixed z-50 w-full h-full top-0 left-0 right-0 bottom-0 bg-black bg-opacity-50"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}
+      transition={{ duration: 0.7 }}
     >
       <motion.div
         className="absolute right-0 xl:w-[40rem] h-full w-[40rem] transition-all duration-700
@@ -24,12 +24,9 @@ export default function CheckList({ onClose, isOpen }: CheckListProps) {
         initial={{ opacity: 0, x: "100%" }}
         animate={{ opacity: 1, x: 0 }}
         transition={{
+          type: "tween",
           duration: 0.1,
-          type: "spring",
-          stiffness: 100,
-          damping: 10,
         }}
-        // variants={variants}
       >
         <div className="flex flex-col">
           <div className="flex flex-row items-center text-center align-middle">
