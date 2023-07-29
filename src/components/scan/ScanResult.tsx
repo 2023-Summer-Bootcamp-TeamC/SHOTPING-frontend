@@ -20,6 +20,7 @@ export interface predictResultProps {
   product_name: string;
   product_price: number;
   image_url: string;
+  quantity: number;
 }
 
 interface scanResultProps {
@@ -143,6 +144,20 @@ export default function ScanResult({
     }
   };
 
+  // 중복 상품을 제거한 리스트 생성
+  const uniqueProducts: predictResultProps[] = [];
+  predictData.forEach((product) => {
+    const existingProduct = uniqueProducts.find(
+      (item) => item.product_name === product.product_name,
+    );
+
+    if (existingProduct) {
+      existingProduct.quantity += 1; // 이미 있는 상품이면 수량을 더해줌
+    } else {
+      uniqueProducts.push({ ...product, quantity: 1 }); // 새로운 상품이면 리스트에 추가
+    }
+  });
+
   if (loading) {
     return <Loading />;
   } else {
@@ -194,13 +209,14 @@ export default function ScanResult({
           <div className="flex flex-col space-y-16 2xl:space-y-10 transition-all duration-700">
             <div className="border row-end-3 row-span-2 rounded-3xl w-[39rem] h-[23.5rem] 2xl:w-full 2xl:h-[25rem] p-4 transition-all duration-700">
               <div className="overflow-y-auto scrollbar-hide scroll-smooth w-[37rem] h-[20rem] 2xl:w-full 2xl:h-full transition-all duration-700">
-                {predictData.map((predictData) => {
+                {uniqueProducts.map((predictData) => {
                   return (
                     <ScanList
                       id={predictData.id}
                       product_name={predictData.product_name}
                       product_price={predictData.product_price}
                       image_url={predictData.image_url}
+                      quantity={predictData.quantity}
                     />
                   );
                 })}
