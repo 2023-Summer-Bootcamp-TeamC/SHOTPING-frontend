@@ -14,12 +14,8 @@ export function Header() {
   const purge = async () => {
     await persistor.purge();
   };
-  const [modalOpen, setModalOpen] = useState(false);
-  const [showImage, setShowImage] = useState(false);
+  const [isModalOpen, setModalOpen] = useState(false);
 
-  const addCart = () => {
-    setShowImage(true);
-  };
   const handleModalOpen = () => {
     setModalOpen(true);
   };
@@ -27,6 +23,7 @@ export function Header() {
   const handleModalClose = () => {
     setModalOpen(false);
   };
+
   return (
     <div className="sticky top-0 left-0 right-0 z-50 w-full h-20">
       {/* 하얀 긴 부분 + 회색 선*/}
@@ -132,14 +129,15 @@ export function Header() {
               style={{ position: "absolute", zIndex: 1 }}
               onClick={handleModalOpen}
             />
-            {/* {showImage && (
-       
-  )} */}
             <span
               className=" w-[1rem] h-[1rem] rounded-full bg-[#ff0099] top-1 mt-[1.2rem] ml-[1rem]"
               style={{ position: "absolute", zIndex: 2 }}
+              onClick={handleModalOpen}
             />
           </div>
+          {isModalOpen && (
+            <CheckList isOpen={isModalOpen} onClose={handleModalClose} />
+          )}
         </div>
         {/*헤더 밑 회색 선 */}
         <div className="flex px-4 py-2 w-full border-b-2" />
