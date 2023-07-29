@@ -1,7 +1,16 @@
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { IoClose } from "react-icons/io5";
 import { CgMathMinus, CgMathPlus } from "react-icons/cg";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../store/store";
+import {
+  deleteProduct,
+  plusProduct,
+  minusProduct,
+  totalProductPrice,
+} from "../../store/ProductSlice";
 
 interface CheckListProps {
   onClose: any;
@@ -10,6 +19,29 @@ interface CheckListProps {
 
 export default function CheckList({ onClose, isOpen }: CheckListProps) {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const productList = useSelector((state: RootState) => {
+    return state.buylist.products;
+  });
+
+  const total = useSelector((state: RootState) => {
+    return state.buylist.productTotal;
+  });
+
+  const modifiedProductList = productList.filter(
+    (product) => product.selected === true,
+  );
+
+  useEffect(() => {
+    dispatch(
+      totalProductPrice(
+        productList
+          .map((item) => item.product_price * item.quantity)
+          .reduce((acc, price) => acc + price, 0),
+      ),
+    );
+  }, [productList]);
 
   return (
     <motion.div
@@ -43,31 +75,59 @@ export default function CheckList({ onClose, isOpen }: CheckListProps) {
           <hr className="border-t-black mt-[1.5rem] mb-[1rem]" />
         </div>
         <div className="flex flex-col h-[38rem] overflow-y-auto scrollbar-hide">
-          <div className="flex flex-row  w-full mt-[1rem] h-[7rem]">
-            <img
-              className="w-[6rem] h-full"
-              src="https://i.postimg.cc/Nfb5HTHH/image.png"
-              alt="flight"
-            ></img>
-            <div>
-              <p className=" text-xl w-[25rem] h-[4rem] ml-[1.5rem]">
-                [탄단지] 단백질 닭가슴살 100g 단백질 파우더 프로틴
-              </p>
-              <div className="flex flex-row ml-[1.5rem] items-center">
-                <div className="flex flex-row border rounded-md w-[6rem] h-[1.8rem] mr-[13rem] mt-[1rem] items-center justify-center ">
-                  <CgMathMinus className="ml-[0.5rem]"></CgMathMinus>
-                  <div className="ml-[1.3rem] mr-[1.3rem]">1</div>
-                  <CgMathPlus className="mr-[0.5rem]"></CgMathPlus>
-                </div>
-                <div className="mt-[1rem] text-lg">100,000원</div>
-              </div>
+          {modifiedProductList.length === 0 ? (
+            <div className="flex flex-col items-center justify-center h-[100%] text-gray-400 text-[1.25rem]">
+              <span>상품이 없습니다.</span>
+              <span>상품을 추가해 보세요!</span>
             </div>
-            <motion.button className="mb-auto ml-auto">
-              <IoClose className="text-[2.3rem] text-[#b9b9b9]" />
-            </motion.button>
-          </div>
+          ) : (
+            modifiedProductList.map((item, index) => (
+              <div className="flex flex-col">
+                <div className="flex flex-row  w-full mt-[1rem] h-[7rem]">
+                  <img
+                    className="w-[6rem] h-full"
+                    src={item.image_url}
+                    alt="flight"
+                  ></img>
+                  <div>
+                    <p className=" text-xl w-[25rem] h-[4rem] ml-[1.5rem]">
+                      {item.product_name}
+                    </p>
+                    <div className="flex flex-row ml-[1.5rem] items-center">
+                      <div className="flex flex-row border rounded-md w-[6rem] h-[1.8rem] mt-[1rem] items-center justify-center ">
+                        <CgMathMinus
+                          className="ml-[0.5rem]"
+                          style={{
+                            color: item.quantity === 1 ? "#D0D0D0" : "inherit",
+                          }}
+                          onClick={() => dispatch(minusProduct(item.id))}
+                        />
+                        <span className="w-[1rem] ml-[1rem] mr-[1rem] text-center">
+                          {item.quantity}
+                        </span>
+                        <CgMathPlus
+                          className="mr-[0.5rem]"
+                          onClick={() => dispatch(plusProduct(item.id))}
+                        />
+                      </div>
+                      <div className="mt-[1rem] text-lg text-right items-end justify-end ml-auto mr-[2.3rem]">
+                        {(item.product_price * item.quantity).toLocaleString()}
+                        원
+                      </div>
+                    </div>
+                  </div>
+                  <motion.button className="mb-auto ml-auto">
+                    <IoClose
+                      className="text-[2.3rem] text-[#b9b9b9]"
+                      onClick={() => dispatch(deleteProduct(item.id))}
+                    />
+                  </motion.button>
+                </div>
 
-          <hr className="border-t-gray mt-[2rem]" />
+                <hr className="border-t-gray mt-[2rem]" />
+              </div>
+            ))
+          )}
         </div>
         <hr className="border-t-black mt-[1rem]" />
         <div className="flex flex-row mt-[1.3rem] mb-[1.5rem]">
@@ -75,7 +135,7 @@ export default function CheckList({ onClose, isOpen }: CheckListProps) {
             최종 결제 금액
           </span>
           <span className="text-2xl font-semibold ml-auto mr-[1rem]">
-            100,000원
+            {total.toLocaleString()}원
           </span>
         </div>
         <button
