@@ -11,11 +11,6 @@ interface CheckListProps {
 export default function CheckList({ onClose, isOpen }: CheckListProps) {
   const navigate = useNavigate();
 
-  const variants = {
-    open: { opacity: 1, x: 0 },
-    closed: { opacity: 0, x: 0 },
-  };
-
   return (
     <motion.div
       className="flex justify-end items-center fixed z-50 w-full h-full top-0 left-0 right-0 bottom-0 bg-black bg-opacity-50"
@@ -26,8 +21,15 @@ export default function CheckList({ onClose, isOpen }: CheckListProps) {
       <motion.div
         className="absolute right-0 xl:w-[40rem] h-full w-[40rem] transition-all duration-700
         -translate-y-1/2 rounded-l-[1.4rem] bg-white p-10"
-        animate={isOpen ? "open" : "closed"}
-        variants={variants}
+        initial={{ opacity: 0, x: "100%" }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{
+          duration: 0.1,
+          type: "spring",
+          stiffness: 100,
+          damping: 10,
+        }}
+        // variants={variants}
       >
         <div className="flex flex-col">
           <div className="flex flex-row items-center text-center align-middle">
