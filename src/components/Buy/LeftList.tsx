@@ -87,7 +87,7 @@ export default function LeftList() {
                   <CgMathPlus
                     className={`mx-[0.75rem] md:text-[1rem] text-[0.7rem] ${
                       item.quantity >= item.stock
-                        ? "pointer-events-none opacity-50"
+                        ? "pointer-events-none text-[#D0D0D0]"
                         : ""
                     }`}
                     onClick={() => increaseCount(item)}

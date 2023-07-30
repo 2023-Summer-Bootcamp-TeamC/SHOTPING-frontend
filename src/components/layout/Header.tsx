@@ -4,8 +4,7 @@ import { useNavigate, useLocation } from "react-router";
 import { persistor } from "../../index";
 import CheckList from "../common/CheckList";
 import { RootState } from "../../store/store";
-import { useDispatch, useSelector } from "react-redux";
-import { totalProductAmount } from "../../store/ProductSlice";
+import { useSelector } from "react-redux";
 
 /**
  * 헤더 (상단바)
@@ -13,7 +12,6 @@ import { totalProductAmount } from "../../store/ProductSlice";
 
 export function Header() {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   const location = useLocation();
   const isAllowedPath = ["/scan", "/list", "/searchresult"].includes(
     location.pathname,
@@ -27,9 +25,10 @@ export function Header() {
   const productList = useSelector((state: RootState) => {
     return state.buylist.products;
   });
-  const productAmount = useSelector((state: RootState) => {
-    return state.buylist.productAmount;
-  });
+
+  const modifiedProductList = productList.filter(
+    (product) => product.selected === true,
+  );
 
   const handleModalOpen = () => {
     setModalOpen(true);
@@ -38,12 +37,6 @@ export function Header() {
   const handleModalClose = () => {
     setModalOpen(false);
   };
-
-  useEffect(() => {
-    dispatch(totalProductAmount(productList));
-  }, [productList]);
-
-  console.log(productAmount);
 
   return (
     <div className="sticky top-0 left-0 right-0 z-50 w-full h-20">
@@ -151,13 +144,13 @@ export function Header() {
                 style={{ position: "absolute", zIndex: 1 }}
                 onClick={handleModalOpen}
               />
-              {productAmount !== 0 && (
+              {modifiedProductList.length !== 0 && (
                 <span
                   className=" w-[1.25rem] h-[1.25rem] rounded-full bg-[#ff0099] top-1 mt-[1rem] ml-[1rem] text-white text-center text-xs pt-[0.07rem]"
                   style={{ position: "absolute", zIndex: 2 }}
                   onClick={handleModalOpen}
                 >
-                  {productAmount}
+                  {modifiedProductList.length}
                 </span>
               )}
             </div>

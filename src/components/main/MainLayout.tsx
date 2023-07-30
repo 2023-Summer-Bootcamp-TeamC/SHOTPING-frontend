@@ -123,7 +123,7 @@ export default function MainLayout() {
               }`}
             >
               <Lottie
-                className="w-[40rem] mt-[15rem] mr-[5rem]"
+                className="w-[40rem] mt-[15rem] mr-[9.3rem]"
                 animationData={ScanLottie}
               />
             </motion.div>
@@ -136,7 +136,7 @@ export default function MainLayout() {
               animate={isInView ? { x: 0, opacity: 1 } : { x: 100, opacity: 0 }}
               transition={{ duration: 1.5 }}
             >
-              <p className="text-[3.3rem] lg:text-[7.5rem]  font-semibold text-center lg:text-right text-black mb-[1rem] lg:mb-[2rem]">
+              <p className="text-[3.3rem] lg:text-[7rem]  font-semibold text-center lg:text-right text-black mb-[1rem] lg:mb-[2rem]">
                 상품을 인식하세요.
               </p>
               <span className="text-[2rem] lg:text-[2.5rem] font-medium text-center lg:text-right text-black">
@@ -172,7 +172,7 @@ export default function MainLayout() {
               }
               transition={{ duration: 1.5 }}
             >
-              <p className="text-[3.3rem] lg:text-[7.5rem] font-semibold text-center lg:text-left text-black mt-0 mb-[2rem]">
+              <p className="text-[3.3rem] lg:text-[7rem] font-semibold text-center lg:text-left text-black mt-0 mb-[2rem]">
                 상품을 담아보세요.
               </p>
               <span className="text-[2rem] lg:text-[2.5rem] font-medium text-center lg:text-left text-black">
@@ -235,10 +235,10 @@ export default function MainLayout() {
               }
               transition={{ duration: 1.5 }}
             >
-              <p className="text-[3.3rem] lg:text-[7.5rem]  font-semibold text-center lg:text-right text-black">
+              <p className="text-[3.3rem] lg:text-[7rem]  font-semibold text-center lg:text-right text-black">
                 인기 있는 상품을
               </p>
-              <p className="text-[3.3rem] lg:text-[7.5rem]  font-semibold text-center lg:text-right mb-[2rem] text-black">
+              <p className="text-[3.3rem] lg:text-[7rem]  font-semibold text-center lg:text-right mb-[2rem] text-black">
                 구매하세요.
               </p>
               <span className="text-[2rem] lg:text-[2.5rem] font-medium text-center lg:text-right text-black">
