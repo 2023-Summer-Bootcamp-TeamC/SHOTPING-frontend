@@ -1,6 +1,7 @@
 import { Dispatch, SetStateAction, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addProduct } from "../../store/ProductSlice";
+import { RootState } from "../../store/store";
 
 /* 제품을 담기 위한 모달
   - / + 버튼을 통해 담을 물건의 개수 조절
@@ -31,6 +32,7 @@ export default function Modal({
 }: ModalProps) {
   const [count, setCount] = useState(1);
   const dispatch = useDispatch();
+  const productList = useSelector((state: RootState) => state.buylist.products);
 
   const decreaseCount = () => {
     if (count > 1) {
@@ -50,7 +52,31 @@ export default function Modal({
     openScroll();
   };
 
+  // const currentTotalQuantity = productList.filter(
+  //   (product) => product.product_name === productName,
+  // );
+  // console.log(currentTotalQuantity);
+
   const addCart = () => {
+    const currentTotalQuantity = productList.filter(
+      (product) => product.product_name === productName,
+    );
+    console.log(currentTotalQuantity[0]);
+    if (currentTotalQuantity.length != 0) {
+      if (currentTotalQuantity[0].quantity + count > stock) {
+        alert("더 이상 담을 수 없습니다. 재고를 확인해주세요.");
+        console.log(
+          "currentTotalQuantity[0].stock",
+          currentTotalQuantity[0].stock,
+        );
+        return;
+      } else {
+        if (count > stock) {
+          alert("더 이상 담을 수 없습니다. 재고를 확인해주세요.");
+          return;
+        }
+      }
+    }
     dispatch(
       addProduct({
         id: id,
