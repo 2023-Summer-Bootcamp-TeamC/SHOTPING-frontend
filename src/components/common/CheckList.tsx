@@ -11,6 +11,7 @@ import {
   minusProduct,
   totalProductPrice,
 } from "../../store/ProductSlice";
+import { BuyProduct } from "../buy/BuyList";
 
 interface CheckListProps {
   onClose: any;
@@ -32,6 +33,12 @@ export default function CheckList({ onClose, isOpen }: CheckListProps) {
   const modifiedProductList = productList.filter(
     (product) => product.selected === true,
   );
+
+  const increaseCount = (item: BuyProduct) => {
+    if (item.quantity <= item.stock) {
+      dispatch(plusProduct(item.id));
+    }
+  };
 
   useEffect(() => {
     dispatch(
@@ -108,8 +115,12 @@ export default function CheckList({ onClose, isOpen }: CheckListProps) {
                             {item.quantity}
                           </span>
                           <CgMathPlus
-                            className="mr-[0.5rem]"
-                            onClick={() => dispatch(plusProduct(item.id))}
+                            className={`mr-[0.5rem] ${
+                              item.quantity >= item.stock
+                                ? "pointer-events-none text-[#D0D0D0]"
+                                : ""
+                            }`}
+                            onClick={() => increaseCount(item)}
                           />
                         </div>
                         <div className="mt-[1rem] text-lg text-right items-end justify-end ml-auto mr-[2.3rem]">
