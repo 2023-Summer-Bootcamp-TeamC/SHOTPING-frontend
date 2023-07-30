@@ -111,7 +111,7 @@ export default function MainLayout() {
             </div>
           </div>
         </div>
-        {isModalOpen && <Modal setIsModalOpen={handleCloseModal} />}
+        {isModalOpen && <Modal onClose={handleCloseModal} />}
       </div>
       <div className="flex flex-col">
         {/*상품을 인식하세요 부분 */}
