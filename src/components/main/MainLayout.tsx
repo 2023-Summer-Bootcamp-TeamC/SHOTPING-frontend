@@ -211,7 +211,6 @@ export default function MainLayout() {
             </motion.div>
           </div>
         </div>
-
         {/*인기 상품 보러가기 부분 */}
         <div
           ref={RankRef}
