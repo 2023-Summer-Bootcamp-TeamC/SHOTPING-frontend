@@ -19,6 +19,7 @@ export interface predictResultProps {
   id: number;
   product_name: string;
   product_price: number;
+  product_stock: number;
   image_url: string;
   quantity: number;
 }
@@ -97,40 +98,60 @@ export default function ScanResult({
         .then((response) => {
           console.log(response);
           setLoading(false);
-          predictData.map((product) => {
-            dispatch(
-              addProduct({
-                id: product.id,
-                product_name: product.product_name,
-                product_price: product.product_price,
-                image_url: product.image_url,
-                selected: true,
-                quantity: 1,
-              }),
-            );
+          uniqueProducts.map((product) => {
+            if (product.product_stock === 0) {
+              alert("품절된 상품이 있습니다. 품절된 상품은 제외됩니다.");
+            } else {
+              predictData.map((product) => {
+                if (product.product_stock === 0) {
+                } else {
+                  dispatch(
+                    addProduct({
+                      id: product.id,
+                      product_name: product.product_name,
+                      product_price: product.product_price,
+                      stock: product.product_stock,
+                      image_url: product.image_url,
+                      selected: true,
+                      quantity: 1,
+                    }),
+                  );
+                }
+              });
+              navigate("/buy");
+            }
           });
-          navigate("/buy");
         });
     } else {
-      predictData.map((product) => {
-        dispatch(
-          addProduct({
-            id: product.id,
-            product_name: product.product_name,
-            product_price: product.product_price,
-            image_url: product.image_url,
-            selected: true,
-            quantity: 1,
-          }),
-        );
+      uniqueProducts.map((product) => {
+        if (product.product_stock === 0) {
+          alert("품절된 상품이 있습니다. 품절된 상품은 제외됩니다.");
+        } else {
+          predictData.map((product) => {
+            if (product.product_stock === 0) {
+            } else {
+              dispatch(
+                addProduct({
+                  id: product.id,
+                  product_name: product.product_name,
+                  product_price: product.product_price,
+                  stock: product.product_stock,
+                  image_url: product.image_url,
+                  selected: true,
+                  quantity: 1,
+                }),
+              );
+            }
+          });
+          navigate("/buy");
+        }
       });
-      navigate("/buy");
     }
   };
 
   const onRetryClickEvent = () => {
     setLoading(true);
-    if (feedbackBoolean !== undefined && feedback !== "") {
+    if (feedbackBoolean !== undefined) {
       axios
         .post("/api/v1/feedback", {
           data_id: dataId,
@@ -217,6 +238,7 @@ export default function ScanResult({
                       id={predictData.id}
                       product_name={predictData.product_name}
                       product_price={predictData.product_price}
+                      product_stock={predictData.product_stock}
                       image_url={predictData.image_url}
                       quantity={predictData.quantity}
                     />
