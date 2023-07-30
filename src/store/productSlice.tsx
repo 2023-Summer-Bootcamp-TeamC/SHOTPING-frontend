@@ -5,11 +5,13 @@ import { BuyProduct } from "../components/buy/BuyList";
 interface BuyCheckProps {
   products: BuyProduct[];
   productTotal: number;
+  productAmount: number;
 }
 
 const initialState: BuyCheckProps = {
   products: [],
   productTotal: 0,
+  productAmount: 0,
 };
 
 const BuyListSlice = createSlice({
@@ -79,6 +81,16 @@ const BuyListSlice = createSlice({
       state.productTotal = totalPrice;
     },
 
+    totalProductAmount: (state, action) => {
+      const selectedProducts = state.products.filter((item) => item.selected);
+
+      const totalAmount = selectedProducts.reduce((acc, product) => {
+        return acc + product.quantity;
+      }, 0);
+
+      state.productAmount = totalAmount;
+    },
+
     checkedProduct: (state, action) => {
       const index = state.products.findIndex(
         (item) => item.id === action.payload,
@@ -129,5 +141,6 @@ export const {
   checkWholeProduct,
   unCheckWholeProduct,
   totalProductPrice,
+  totalProductAmount,
 } = BuyListSlice.actions;
 export default BuyListSlice.reducer;
