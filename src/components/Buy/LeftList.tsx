@@ -10,6 +10,7 @@ import {
   checkedProduct,
   unCheckedProduct,
 } from "../../store/ProductSlice";
+import { BuyProduct } from "./BuyList";
 
 /* 결제 페이지 왼쪽 레이아웃 리스트 */
 
@@ -22,8 +23,13 @@ export default function LeftList() {
     return state.buylist.productTotal;
   });
 
-  console.log(productList);
   const dispatch = useDispatch();
+
+  const increaseCount = (item: BuyProduct) => {
+    if (item.quantity <= item.stock) {
+      dispatch(plusProduct(item.id));
+    }
+  };
 
   return (
     <div className="2xl:h-[39rem] h-[31rem] overflow-y-auto scrollbar-hide">
@@ -36,7 +42,7 @@ export default function LeftList() {
           <div key={item.id}>
             <div className="flex my-[1rem]">
               <div className="flex w-[70%]">
-                <div className="flex items-center mr-5">
+                <div className="flex items-center mr-[1.25rem]">
                   {item.selected ? (
                     <AiFillCheckCircle
                       className="text-[1.875rem] text-[#FF0099]"
@@ -55,18 +61,18 @@ export default function LeftList() {
                 </div>
 
                 <img
-                  className="2xl:w-[6.25rem] 2xl:h-[7.8125rem] w-[4.25rem] h-[5.8125rem] mr-5 transition-all duration-700"
+                  className="2xl:w-[6.25rem] 2xl:h-[7.8125rem] w-[4.25rem] h-[5.8125rem] mr-[1.25rem] transition-all duration-700"
                   src={item.image_url}
                   alt="이미지"
                 />
-                <span className="2xl:text-[1.0625rem] text-[0.9rem] flex items-center font-semibold w-[40rem] mr-4 transition-all duration-700">
+                <span className="2xl:text-[1.0625rem] text-[0.9rem] flex items-center font-semibold w-[40rem] mr-[1rem] transition-all duration-700">
                   {item.product_name}
                 </span>
               </div>
               <div className="flex md:flex-row items-end justify-end w-[30%] ">
                 <div className="flex justify-center items-center xl:w-[6.5rem] w-[5rem] border rounded-[0.3125rem] transition-all duration-700">
                   <CgMathMinus
-                    className="mx-3 xl:text-[1rem] text-[0.7rem]"
+                    className="mx-[0.75rem] xl:text-[1rem] text-[0.7rem]"
                     style={{
                       color: item.quantity === 1 ? "#D0D0D0" : "inherit",
                     }}
@@ -79,8 +85,12 @@ export default function LeftList() {
                   />
 
                   <CgMathPlus
-                    className="mx-3 md:text-[1rem] text-[0.7rem]"
-                    onClick={() => dispatch(plusProduct(item.id))}
+                    className={`mx-[0.75rem] md:text-[1rem] text-[0.7rem] ${
+                      item.quantity >= item.stock
+                        ? "pointer-events-none opacity-50"
+                        : ""
+                    }`}
+                    onClick={() => increaseCount(item)}
                   />
                 </div>
                 <span className="text-right md:w-[10rem] w-[12rem] font-bold xl:text-[1.25rem] text-[1rem] ">

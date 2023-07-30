@@ -1,4 +1,3 @@
-import { useRef, useEffect } from "react";
 import Chart from "./Chart";
 import Ranking from "./Ranking";
 import { motion } from "framer-motion";
@@ -10,31 +9,12 @@ interface MainModalProps {
 }
 
 export default function Modal({ onClose }: MainModalProps) {
-  // const modalRef = useRef<HTMLDivElement>(null);
-
-  // const handleOutsideClick = (e: MouseEvent) => {
-  //   if (modalRef.current && !modalRef.current.contains(e.target as Node)) {
-  //     onClose();
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   // 컴포넌트가 마운트될 때 이벤트 리스너 등록
-  //   document.addEventListener("click", handleOutsideClick);
-
-  //   // 컴포넌트가 언마운트될 때 이벤트 리스너 제거
-  //   return () => {
-  //     document.removeEventListener("click", handleOutsideClick);
-  //   };
-  // }, []);
-
   const stopPropagation = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     e.stopPropagation();
   };
 
   return (
     <div
-      // ref={modalRef}
       className="lg modal flex justify-center items-center fixed z-50 w-full h-full top-0 left-0 right-0 bottom-0 bg-black bg-opacity-50"
       style={{ cursor: "default" }}
       onClick={onClose}

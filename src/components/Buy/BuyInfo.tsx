@@ -27,14 +27,14 @@ export default function RightLayout() {
   const dispatch = useDispatch();
 
   return (
-    <div className="mb-5 2xl:h-[80%] h-[60%] transition-all duration-700 ">
-      <div className="flex justify-between p-5 border 2xl:h-[85%] h-[62%]  border-x-[#D0D0D0] border-t-[#D0D0D0] font-semibold text-[1.125rem] ">
-        <span className="2xl:mt-3">상품금액</span>
-        <span className="2xl:mt-3">{total.toLocaleString()}원</span>
+    <div className="mb-[1.25rem] 2xl:h-[80%] h-[60%] transition-all duration-700 ">
+      <div className="flex justify-between p-[1.25rem] border 2xl:h-[85%] h-[62%]  border-x-[#D0D0D0] border-t-[#D0D0D0] font-semibold text-[1.125rem] ">
+        <span className="2xl:mt-[0.75rem]">상품금액</span>
+        <span className="2xl:mt-[0.75rem]">{total.toLocaleString()}원</span>
       </div>
-      <div className="flex justify-between items-center border 2xl:h-[15%] h-[38%] p-5 border-x-[#D0D0D0] border-b-[#D0D0D0] bg-[#F9F9F9] font-semibold text-[1.125rem]">
-        <span className="mt-1">총 결제금액</span>
-        <span className="mt-1">{total.toLocaleString()}원</span>
+      <div className="flex justify-between items-center border 2xl:h-[15%] h-[38%] p-[1.25rem] border-x-[#D0D0D0] border-b-[#D0D0D0] bg-[#F9F9F9] font-semibold text-[1.125rem]">
+        <span className="mt-[0.25rem]">총 결제금액</span>
+        <span className="mt-[0.25rem]">{total.toLocaleString()}원</span>
       </div>
     </div>
   );

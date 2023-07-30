@@ -205,13 +205,12 @@ export default function MainLayout() {
               animate={{ rotate: -25 }}
             >
               <img
-                src="https://i.postimg.cc/nzjg1kjS/2023-07-27-160611.png"
+                src="https://i.postimg.cc/Xvx15L1r/2023-07-30-221047.png"
                 className="w-[80rem] pt-[10rem] ml-[20rem] "
               />
             </motion.div>
           </div>
         </div>
-
         {/*인기 상품 보러가기 부분 */}
         <div
           ref={RankRef}
