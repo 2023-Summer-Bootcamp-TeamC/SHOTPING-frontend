@@ -67,6 +67,11 @@ export default function ScanResult({
         setDataId(response.data.data_id);
         setPredictData(response.data.outputProducts);
         setLoading(false);
+        //데이터 확인
+        console.log(response.data);
+        if (response.data.outputProducts.length === 0) {
+          navigate("/scanfail");
+        }
       })
       .catch((error) => {
         console.log(error);
