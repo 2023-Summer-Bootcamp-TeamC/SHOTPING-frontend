@@ -14,7 +14,7 @@ export default function BuyPage() {
           <LeftTab />
           <LeftList />
         </div>
-        <div className="flex flex-col 2xl:mt-[90px] mt-[0px] 2xl:ml-[2%] ml-[0%] 2xl:w-[23%] w-[100%]  2xl:h-[80%] h-[20%] ">
+        <div className="flex flex-col 2xl:mt-[5.625rem] mt-[0rem] ml-[2%] 2xl:w-[23%] w-[100%] 2xl:h-[80%] h-[20%] ">
           <BuyInfo />
           <BuyButton />
         </div>

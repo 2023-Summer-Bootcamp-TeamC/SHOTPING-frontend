@@ -57,7 +57,7 @@ export default function LeftTab() {
   return (
     <>
       <div>
-        <div className="flex flex-row justify-between mt-10 items-center  2xl:h-[6%] h-[8%] ">
+        <div className="flex flex-row justify-between mt-[2.5rem] items-center 2xl:h-[6%] h-[8%] ">
           <div className="flex flex-row items-center">
             {productList.length === 0 ? (
               <AiOutlineCheckCircle size="30" color="#BDBDBD" />
@@ -79,14 +79,15 @@ export default function LeftTab() {
               </>
             )}
 
-            <h3 className="font-semibold text-[1rem] text-gray-600  mx-4">
+            <h3 className="font-semibold text-[1rem] text-gray-600  mx-[1rem]">
               전체선택 (
               {productList.filter((product) => product.selected).length}/
               {productList.length})
             </h3>
-            <div className="border h-5 border-l-[#A5A5A5] " />
+            <div className="border h-[1.25rem] border-l-[#A5A5A5] " />
             <button
-              className="font-semibold text-[1rem] ml-2 text-gray-600 w-[5rem] "
+              className="font-semibold text-[1rem] ml-[0.5rem
+              ] text-gray-600 w-[5rem] "
               onClick={handleDeleteSelectedItems}
               disabled={!isAnySelected}
             >
