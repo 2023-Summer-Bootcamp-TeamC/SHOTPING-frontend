@@ -89,7 +89,7 @@ export default function ScanResult({
 
   const clickEvent = () => {
     setLoading(true);
-    if (feedbackBoolean !== undefined && feedback !== "") {
+    if (feedbackBoolean !== undefined) {
       axios
         .post("/api/v1/feedback", {
           data_id: dataId,
