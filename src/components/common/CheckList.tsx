@@ -116,7 +116,7 @@ export default function CheckList({ onClose, isOpen }: CheckListProps) {
                       </div>
                     </div>
                   </div>
-                  <motion.button className="mb-auto ml-auto">
+                  <motion.button className="mb-auto ml-auto mr-[0.3rem]">
                     <IoClose
                       className="text-[2.3rem] text-[#b9b9b9]"
                       onClick={() => dispatch(deleteProduct(item.id))}

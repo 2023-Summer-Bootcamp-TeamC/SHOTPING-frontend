@@ -15,7 +15,7 @@ export function Header() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const location = useLocation();
-  const isAllowedPath = ["/scan", "/list", "/searchlist"].includes(
+  const isAllowedPath = ["/scan", "/list", "/searchresult"].includes(
     location.pathname,
   );
 
