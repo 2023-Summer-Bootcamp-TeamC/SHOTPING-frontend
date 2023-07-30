@@ -27,6 +27,7 @@ export default function Modal({
   price,
   id,
   image,
+  stock,
 }: ModalProps) {
   const [count, setCount] = useState(1);
   const dispatch = useDispatch();
@@ -38,7 +39,9 @@ export default function Modal({
   };
 
   const increaseCount = () => {
-    setCount(count + 1);
+    if (count < stock) {
+      setCount(count + 1);
+    }
   };
 
   const closeModal = () => {
@@ -56,6 +59,7 @@ export default function Modal({
         product_price: price,
         quantity: count,
         selected: true,
+        stock: stock,
       }),
     );
     addToCart();

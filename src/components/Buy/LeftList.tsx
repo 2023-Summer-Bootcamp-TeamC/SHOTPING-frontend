@@ -10,6 +10,7 @@ import {
   checkedProduct,
   unCheckedProduct,
 } from "../../store/ProductSlice";
+import { BuyProduct } from "./BuyList";
 
 /* 결제 페이지 왼쪽 레이아웃 리스트 */
 
@@ -23,6 +24,12 @@ export default function LeftList() {
   });
 
   const dispatch = useDispatch();
+
+  const increaseCount = (item: BuyProduct) => {
+    if (item.quantity <= item.stock) {
+      dispatch(plusProduct(item.id));
+    }
+  };
 
   return (
     <div className="2xl:h-[39rem] h-[31rem] overflow-y-auto scrollbar-hide">
@@ -78,8 +85,12 @@ export default function LeftList() {
                   />
 
                   <CgMathPlus
-                    className="mx-[0.75rem] md:text-[1rem] text-[0.7rem]"
-                    onClick={() => dispatch(plusProduct(item.id))}
+                    className={`mx-[0.75rem] md:text-[1rem] text-[0.7rem] ${
+                      item.quantity >= item.stock
+                        ? "pointer-events-none opacity-50"
+                        : ""
+                    }`}
+                    onClick={() => increaseCount(item)}
                   />
                 </div>
                 <span className="text-right md:w-[10rem] w-[12rem] font-bold xl:text-[1.25rem] text-[1rem] ">
