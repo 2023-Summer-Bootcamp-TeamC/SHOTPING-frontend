@@ -1,5 +1,5 @@
 import { useRef, useEffect } from "react";
-import Chart from "./chart";
+import Chart from "./Chart";
 import Ranking from "./Ranking";
 import { motion } from "framer-motion";
 
