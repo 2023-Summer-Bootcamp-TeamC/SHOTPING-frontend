@@ -5,4 +5,5 @@ export interface BuyProduct {
   image_url: string;
   quantity: number;
   selected: boolean;
+  stock: number;
 }
