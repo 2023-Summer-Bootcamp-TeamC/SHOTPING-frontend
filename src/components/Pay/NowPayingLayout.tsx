@@ -1,5 +1,7 @@
 import Loading from "../common/Loading";
 
+/* 결제 진행 중 레이아웃 */
+
 export default function NowPayingLayout() {
   return (
     <div className="flex flex-col items-center justify-center h-full">

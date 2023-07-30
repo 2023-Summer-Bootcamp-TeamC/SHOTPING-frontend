@@ -67,8 +67,6 @@ export default function ScanResult({
         setDataId(response.data.data_id);
         setPredictData(response.data.outputProducts);
         setLoading(false);
-        //데이터 확인
-        console.log(response.data);
         if (response.data.outputProducts.length === 0) {
           navigate("/scanfail");
         }
@@ -149,7 +147,6 @@ export default function ScanResult({
     }
   };
 
-  // 중복 상품을 제거한 리스트 생성
   const uniqueProducts: predictResultProps[] = [];
   predictData.forEach((product) => {
     const existingProduct = uniqueProducts.find(
@@ -157,9 +154,9 @@ export default function ScanResult({
     );
 
     if (existingProduct) {
-      existingProduct.quantity += 1; // 이미 있는 상품이면 수량을 더해줌
+      existingProduct.quantity += 1;
     } else {
-      uniqueProducts.push({ ...product, quantity: 1 }); // 새로운 상품이면 리스트에 추가
+      uniqueProducts.push({ ...product, quantity: 1 });
     }
   });
 

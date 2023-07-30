@@ -1,6 +1,5 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
-
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -15,7 +14,6 @@ export default function BuyButton() {
     return state.buylist.productTotal;
   });
 
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleKakaoPay = async () => {
@@ -36,24 +34,9 @@ export default function BuyButton() {
     }
   };
 
-  // const handlePayButtonClick = async () => {
-  //   if (productList.length === 0) {
-  //     alert("상품을 담아주세요.");
-  //   } else {
-  //     const allUnselected = productList.every((item) => !item.selected);
-
-  //     if (allUnselected) {
-  //       alert("상품을 선택해주세요.");
-  //     } else {
-  //       await handleKakaoPay();
-  //     }
-  //   }
-  // };
   const handlePayButtonClick = async () => {
     await handleKakaoPay();
   };
-
-  // Determine the button styles based on the conditions
   const buttonStyles =
     productList.length === 0 || productList.every((item) => !item.selected)
       ? "bg-[#CCCCCC] font-semibold text-[1.25rem] cursor-not-allowed"
