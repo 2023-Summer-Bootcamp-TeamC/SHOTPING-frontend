@@ -20,7 +20,7 @@ export default function Modal({ onClose }: MainModalProps) {
       onClick={onClose}
     >
       <motion.div
-        className="w-[35rem] lg:w-[60rem] lg:h-[40rem] lg:mt-16 bg-white rounded-[1.25rem] flex flex-col justify-center items-center"
+        className="w-[35rem] lg:w-[70rem] lg:h-[44rem] lg:mt-10 bg-white rounded-[1.25rem] flex flex-col justify-center items-center"
         initial={{ opacity: 0, y: "-50%" }}
         animate={{ opacity: 1, y: 0 }}
         transition={{
@@ -29,11 +29,11 @@ export default function Modal({ onClose }: MainModalProps) {
         }}
         onClick={stopPropagation}
       >
-        <div className="mt-12 mb-[1rem] text-2xl font-semibold lg:mb-2 lg:mt-4 transition-all duration-700">
+        <div className="mt-12 mb-[1rem] text-2xl font-semibold lg:mb-5 lg:mt-2 transition-all duration-700">
           지금 인기있는 상품들이에요!
         </div>
         <div className="flex">
-          <div className="mobile mb-4 mr-2 lg:ranking lg:w-[27rem] lg:h-[32rem] lg:ml-4">
+          <div className="mobile ml-9 mb-4 mr-2 lg:ranking lg:w-[30rem] lg:h-[32rem] lg:ml-4">
             <Ranking />
           </div>
           <div className="lg:chartContainer">

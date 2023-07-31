@@ -32,7 +32,7 @@ export default function Chart() {
             ],
             chart: {
               type: "bar",
-              height: 450,
+              height: 480,
               width: 450,
             },
             plotOptions: {
