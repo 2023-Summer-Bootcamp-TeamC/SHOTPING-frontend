@@ -8,6 +8,6 @@ COPY ./package-lock.json ./
 
 COPY . ./
 
-RUN npm run build
+EXPOSE 80
 
-EXPOSE 3000 
+CMD npm ci && npm run build && npm run serve
