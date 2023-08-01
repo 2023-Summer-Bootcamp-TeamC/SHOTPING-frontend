@@ -29,9 +29,7 @@ export default function SearchProductList({
         });
 
         setData(response.data);
-      } catch (error) {
-        console.log("서치에러", error);
-      }
+      } catch (error) {}
     }
 
     fetchData();
