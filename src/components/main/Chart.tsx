@@ -90,10 +90,7 @@ export default function Chart() {
 
           setChartRendered(true);
         })
-        .catch((error) => {
-          console.log("차트 데이터 가져오기 실패");
-          console.log(error);
-        });
+        .catch((error) => {});
     }
   }, [isChartRendered]);
 

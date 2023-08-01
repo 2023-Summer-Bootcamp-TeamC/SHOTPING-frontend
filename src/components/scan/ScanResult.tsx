@@ -73,7 +73,6 @@ export default function ScanResult({
         }
       })
       .catch((error) => {
-        console.log(error);
         navigate("/scanfail");
       });
   }, [imgFormData]);
@@ -96,7 +95,6 @@ export default function ScanResult({
           feedback_text: feedback,
         })
         .then((response) => {
-          console.log(response);
           setLoading(false);
           uniqueProducts.map((product) => {
             if (product.product_stock === 0) {
@@ -159,7 +157,6 @@ export default function ScanResult({
           feedback_text: feedback,
         })
         .then((response) => {
-          console.log(response);
           setLoading(false);
           onRetry();
         });

@@ -97,14 +97,9 @@ export default function Ranking() {
     axios
       .get("/api/v1/popular")
       .then((response) => {
-        console.log("랭킹 데이터 가져오기 성공");
-        console.log(response.data);
         setRankingData(response.data.slice(0, 3));
       })
-      .catch((error) => {
-        console.log("랭킹 데이터 가져오기 실패");
-        console.log(error);
-      });
+      .catch((error) => {});
   }, []);
 
   return (

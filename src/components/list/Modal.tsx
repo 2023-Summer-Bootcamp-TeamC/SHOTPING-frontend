@@ -52,23 +52,14 @@ export default function Modal({
     openScroll();
   };
 
-  // const currentTotalQuantity = productList.filter(
-  //   (product) => product.product_name === productName,
-  // );
-  // console.log(currentTotalQuantity);
-
   const addCart = () => {
     const currentTotalQuantity = productList.filter(
       (product) => product.product_name === productName,
     );
-    console.log(currentTotalQuantity[0]);
+
     if (currentTotalQuantity.length != 0) {
       if (currentTotalQuantity[0].quantity + count > stock) {
         alert("더 이상 담을 수 없습니다. 재고를 확인해주세요.");
-        console.log(
-          "currentTotalQuantity[0].stock",
-          currentTotalQuantity[0].stock,
-        );
         return;
       } else {
         if (count > stock) {
