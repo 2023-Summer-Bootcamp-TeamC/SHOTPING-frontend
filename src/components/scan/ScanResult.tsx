@@ -6,7 +6,8 @@ import ScanList from "./ScanList";
 import Loading from "../common/Loading";
 import Feedback from "./Feedback";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../store/store";
 import { addProduct } from "../../store/ProductSlice";
 import axios from "axios";
 
@@ -44,6 +45,11 @@ export default function ScanResult({
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 1536);
 
   const dispatch = useDispatch();
+  let alertShown = false;
+
+  const productList = useSelector((state: RootState) => {
+    return state.buylist.products;
+  });
 
   useEffect(() => {
     const handleResize = () => {
@@ -85,6 +91,19 @@ export default function ScanResult({
     setFeedback(feedback);
   };
 
+  const uniqueProducts: predictResultProps[] = [];
+  predictData.forEach((product) => {
+    const existingProduct = uniqueProducts.find(
+      (item) => item.product_name === product.product_name,
+    );
+
+    if (existingProduct) {
+      existingProduct.quantity += 1;
+    } else {
+      uniqueProducts.push({ ...product, quantity: 1 });
+    }
+  });
+
   const clickEvent = () => {
     setLoading(true);
     if (feedbackBoolean !== undefined) {
@@ -99,9 +118,41 @@ export default function ScanResult({
           uniqueProducts.map((product) => {
             if (product.product_stock === 0) {
               alert("품절된 상품이 있습니다. 품절된 상품은 제외됩니다.");
+              alertShown = true;
             } else {
-              predictData.map((product) => {
-                if (product.product_stock === 0) {
+              const currentListItem = productList.filter(
+                (item) => item.product_name === product.product_name,
+              );
+
+              if (currentListItem.length != 0) {
+                if (
+                  currentListItem[0].quantity !== product.product_stock &&
+                  currentListItem[0].quantity + product.quantity >
+                    product.product_stock
+                ) {
+                  alert(
+                    "재고가 부족하여 남은 최대 재고 수만큼 물건이 담깁니다.",
+                  );
+                  dispatch(
+                    addProduct({
+                      id: product.id,
+                      product_name: product.product_name,
+                      product_price: product.product_price,
+                      stock: product.product_stock,
+                      image_url: product.image_url,
+                      selected: true,
+                      quantity:
+                        product.product_stock - currentListItem[0].quantity,
+                    }),
+                  );
+                  alertShown = true;
+                } else if (
+                  currentListItem[0].quantity === product.product_stock
+                ) {
+                  alert(
+                    "재고가 부족하여 더 이상 담을 수 없는 물건이 있습니다.",
+                  );
+                  alertShown = true;
                 } else {
                   dispatch(
                     addProduct({
@@ -111,11 +162,24 @@ export default function ScanResult({
                       stock: product.product_stock,
                       image_url: product.image_url,
                       selected: true,
-                      quantity: 1,
+                      quantity: product.quantity,
                     }),
                   );
                 }
-              });
+              } else {
+                dispatch(
+                  addProduct({
+                    id: product.id,
+                    product_name: product.product_name,
+                    product_price: product.product_price,
+                    stock: product.product_stock,
+                    image_url: product.image_url,
+                    selected: true,
+                    quantity: product.quantity,
+                  }),
+                );
+              }
+
               navigate("/buy");
             }
           });
@@ -124,9 +188,34 @@ export default function ScanResult({
       uniqueProducts.map((product) => {
         if (product.product_stock === 0) {
           alert("품절된 상품이 있습니다. 품절된 상품은 제외됩니다.");
+          alertShown = true;
         } else {
-          predictData.map((product) => {
-            if (product.product_stock === 0) {
+          const currentListItem = productList.filter(
+            (item) => item.product_name === product.product_name,
+          );
+
+          if (currentListItem.length != 0) {
+            if (
+              currentListItem[0].quantity !== product.product_stock &&
+              currentListItem[0].quantity + product.quantity >
+                product.product_stock
+            ) {
+              alert("재고가 부족하여 남은 최대 재고 수만큼 물건이 담깁니다.");
+              dispatch(
+                addProduct({
+                  id: product.id,
+                  product_name: product.product_name,
+                  product_price: product.product_price,
+                  stock: product.product_stock,
+                  image_url: product.image_url,
+                  selected: true,
+                  quantity: product.product_stock - currentListItem[0].quantity,
+                }),
+              );
+              alertShown = true;
+            } else if (currentListItem[0].quantity === product.product_stock) {
+              alert("재고가 부족하여 더 이상 담을 수 없는 물건이 있습니다.");
+              alertShown = true;
             } else {
               dispatch(
                 addProduct({
@@ -136,11 +225,24 @@ export default function ScanResult({
                   stock: product.product_stock,
                   image_url: product.image_url,
                   selected: true,
-                  quantity: 1,
+                  quantity: product.quantity,
                 }),
               );
             }
-          });
+          } else {
+            dispatch(
+              addProduct({
+                id: product.id,
+                product_name: product.product_name,
+                product_price: product.product_price,
+                stock: product.product_stock,
+                image_url: product.image_url,
+                selected: true,
+                quantity: product.quantity,
+              }),
+            );
+          }
+
           navigate("/buy");
         }
       });
@@ -164,19 +266,6 @@ export default function ScanResult({
       onRetry();
     }
   };
-
-  const uniqueProducts: predictResultProps[] = [];
-  predictData.forEach((product) => {
-    const existingProduct = uniqueProducts.find(
-      (item) => item.product_name === product.product_name,
-    );
-
-    if (existingProduct) {
-      existingProduct.quantity += 1;
-    } else {
-      uniqueProducts.push({ ...product, quantity: 1 });
-    }
-  });
 
   if (loading) {
     return <Loading />;

@@ -161,7 +161,7 @@ export default function MainLayout() {
           </div>
         </div>
         {/*상품을 담아보세요 부분 */}
-        <div className="flex flex-row w-full h-full justify-center items-center lg:items-left relative transition-all duration-700">
+        <div className="flex flex-row w-full h-full justify-center items-center lg:items-left relative transition-all duration-700 lg:my-20">
           <div className="flex flex-col z-20 justify-center items-left h-full mt-[17rem] lg:mr-[33rem]">
             <motion.div
               ref={ListRef}
@@ -212,10 +212,7 @@ export default function MainLayout() {
           </div>
         </div>
         {/*인기 상품 보러가기 부분 */}
-        <div
-          ref={RankRef}
-          className="flex flex-row w-full h-full justify-center lg:items-right transition-all duration-700"
-        >
+        <div className="flex flex-row w-full h-full justify-center lg:items-right transition-all duration-700 lg:mt-16 mt-5">
           <div
             className={` invisible md:visible transition-all duration-700${
               isMobile ? "w-1/12 hidden" : ""
@@ -226,8 +223,12 @@ export default function MainLayout() {
               src="https://i.postimg.cc/4y6WMLgW/2023-07-27-225947.png"
             ></img>
           </div>
-          <div className="flex flex-col justify-center lg:items-right h-full mt-[15rem] mb-[10rem] lg:mb-0 lg:mt-[17rem] lg:ml-[4.5rem]">
+          <div
+            ref={RankRef}
+            className="flex flex-col justify-center lg:items-right h-full mt-[15rem] mb-[10rem] lg:mb-0 lg:mt-[17rem] lg:ml-[4.5rem]"
+          >
             <motion.div
+              ref={RankRef}
               className="flex flex-col justify-center lg:items-right h-full"
               initial={{ x: 100, opacity: 0 }}
               animate={
