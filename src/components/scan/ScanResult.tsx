@@ -104,8 +104,6 @@ export default function ScanResult({
     }
   });
 
-  //console.log("uniqueProducts", uniqueProducts);
-
   const clickEvent = () => {
     setLoading(true);
     if (feedbackBoolean !== undefined) {
@@ -118,15 +116,13 @@ export default function ScanResult({
         .then((response) => {
           setLoading(false);
           uniqueProducts.map((product) => {
-            if (product.product_stock === 0 && !alertShown) {
+            if (product.product_stock === 0) {
               alert("품절된 상품이 있습니다. 품절된 상품은 제외됩니다.");
               alertShown = true;
             } else {
               const currentListItem = productList.filter(
                 (item) => item.product_name === product.product_name,
               );
-
-              // console.log("currentListItem", currentListItem);
 
               if (currentListItem.length != 0) {
                 if (
@@ -190,15 +186,13 @@ export default function ScanResult({
         });
     } else {
       uniqueProducts.map((product) => {
-        if (product.product_stock === 0 && !alertShown) {
+        if (product.product_stock === 0) {
           alert("품절된 상품이 있습니다. 품절된 상품은 제외됩니다.");
           alertShown = true;
         } else {
           const currentListItem = productList.filter(
             (item) => item.product_name === product.product_name,
           );
-
-          // console.log("currentListItem", currentListItem);
 
           if (currentListItem.length != 0) {
             if (
